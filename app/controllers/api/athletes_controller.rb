@@ -15,7 +15,7 @@ class Api::AthletesController < ApplicationController
     private
 
     def user_params
-        params.require(:athlete).permit(:email, :password)
+        params.require(:athlete).permit(:email, :username, :password)
     end
 
 end
