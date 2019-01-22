@@ -1,5 +1,13 @@
 {
   "name": "Strive",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+
+  "engines": {
+    "node": "8.4.0",
+    "npm": "6.1.0"
+  },
+  "scripts": {
+    "postinstall": "webpack"
+  }
 }
