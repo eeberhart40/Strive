@@ -26,6 +26,10 @@
     "postinstall": "webpack",
     "start": "webpack --watch --mode=development"
   },
+  "engines": {
+    "node": "10.6.0",
+    "npm": "6.1.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/eeberhart40/Strive.git"
