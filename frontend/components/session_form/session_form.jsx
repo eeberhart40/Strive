@@ -11,6 +11,7 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const athlete = Object.assign({}, this.state);
         this.props.processForm(athlete);
+        this.setState({ email: "", username: "", password: ""})
     }
 
     update(field){
@@ -20,9 +21,7 @@ class SessionForm extends React.Component {
     }
 
     render() {
-
         const errors = this.props.errors.map((error, i) => {
-
             return(
                 <ul>
                     <li key={`error-${i}`}>{error}</li>
@@ -68,6 +67,7 @@ class SessionForm extends React.Component {
                 </form>
             </div>
         )
+  
     }
 }
 
