@@ -29,5 +29,14 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
 /app/assets/javascripts/bundle.js
 /app/assets/javascripts/bundle.js.map
+=======
+<<<<<<< HEAD
+
+node_modules/
+/app/assets/javascripts/bundle.js
+/app/assets/javascripts/bundle.js.map
+
+>>>>>>> userAuth
