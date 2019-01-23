@@ -20,6 +20,7 @@ export const login = athlete => {
 };
 
 export const logout = () => {
+ 
     return(
         $.ajax({
             method: "DELETE",

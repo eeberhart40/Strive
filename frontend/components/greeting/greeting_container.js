@@ -4,6 +4,7 @@ import { logout } from '../../actions/session_actions';
 import Greeting from './greeting';
 
 const msp = ({ session, entities: { athletes } }) => {
+
     return {
         currentUser: athletes[session.id]
     };

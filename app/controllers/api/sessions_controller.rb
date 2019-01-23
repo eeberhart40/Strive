@@ -10,12 +10,13 @@ class Api::SessionsController < ApplicationController
             login(@user)
             render 'api/athletes/show'
         else
-            render json: ["Invalid username and/or password"], status: 401 
+            render json: ["Invalid email, username and/or password"], status: 401 
         end
     end
 
     def destroy
         @user = current_user
+       
         if @user 
             logout
             render 'api/athletes/show'
