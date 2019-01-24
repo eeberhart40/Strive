@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_192958) do
+ActiveRecord::Schema.define(version: 2019_01_24_191143) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "athletes", force: :cascade do |t|
     t.string "email", null: false
@@ -21,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_01_22_192958) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_athletes_on_email", unique: true
     t.index ["session_token"], name: "index_athletes_on_session_token", unique: true
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.integer "athlete_id", null: false
+    t.string "route_data", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["athlete_id"], name: "index_routes_on_athlete_id"
   end
 
 end

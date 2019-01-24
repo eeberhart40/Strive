@@ -1,9 +1,16 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
-import Splash from './splash/splash';
-import { Route }  from 'react-router-dom';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';;
+import {
+    Route,
+    Redirect,
+    Switch,
+    Link,
+    HashRouter
+} from 'react-router-dom';
+import Splash from './splash/splash';
+import Dashboard from './dashboard/dashboard';
 
 const App = () => (
     <div>
@@ -13,7 +20,8 @@ const App = () => (
             <h1>STRIVE</h1>
             <GreetingContainer />
         </header>
-        <Splash />
+        <AuthRoute exact path="/" component={Splash} />
+        <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
     </div>
 );
 

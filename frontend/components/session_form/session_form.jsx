@@ -11,7 +11,7 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const athlete = Object.assign({}, this.state);
-        this.props.processForm(athlete).then(this.props.closeModal);
+        this.props.processForm(athlete).then(this.props.closeModal).then(this.props.history.push('/dashboard'));
     }
 
     update(field){
