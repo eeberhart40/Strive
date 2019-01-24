@@ -1,3 +1,146 @@
 // Place all the styles related to the api/session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1{
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 1000;
+}
+h2 {
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
+
+.vsc-initialized {
+    margin: 0;
+}
+.login-header {
+    background: #fff;
+    border-bottom: solid 1px #e6e6eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ff5300;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 66px;
+    padding-right: 66px;
+    min-height: 50px;
+    max-height: 50px;
+    min-width: 350px;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.modal-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  display: inline-block;
+}
+.login-form {
+    justify-content: center;
+    width: 350px;
+    height: 40px;
+}
+
+.login-input {
+    display: flex;
+    font-size: 14px;
+    min-height: 40px;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #666;
+    color: #CCC;
+    margin: 6px 0;
+}
+
+.close-X {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: gray;
+}
+
+.session-submit{
+    background: #ff5300;
+    color: white;
+    width: 100%;
+    min-height: 40px;
+    line-height: inherit;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+.login-button {
+    color: #ff5300;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid gray;
+    white-space: nowrap;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 2px;
+}
+
+.main-container {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.contain {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.devices-image{
+    display: inline-block;
+    width: 100%;
+    max-width: 468px;
+    margin: 0 auto;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.footer {
+    margin-top: 0;
+    background-color: #2d2d32;
+    color: #fff;
+    height: 200px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+#footer-logo{
+    margin: 50px;
+}
+

@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
     constructor(props){
@@ -10,8 +11,8 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const athlete = Object.assign({}, this.state);
-        this.props.processForm(athlete);
-        this.setState({ email: "", username: "", password: ""})
+        this.props.processForm(athlete).then(this.props.closeModal);
+        
     }
 
     update(field){
@@ -32,32 +33,30 @@ class SessionForm extends React.Component {
         return(
             <div className="login-form-container">
                 <form className="login-form-box" onSubmit={this.handleSubmit}>
-                    Welcome to Strive!
-                    <br/>
-                    Please {this.props.formType} or {this.props.navLink}
+                    <div onClick={this.props.closeModal} className="close-X">X</div>
                     {errors}
                     <div className="login-form">
                         <br/>
                         <label>
-                            Email:
                             <input type="text" 
                             value={this.state.email} 
+                            placeholder="Your Email"
                             onChange={this.update('email')}
                             className="login-input"
                             />
                         </label>
                         <label>
-                            Username:
                             <input type="text"
                             value={this.state.username}
+                            placeholder="Username"
                             onChange={this.update('username')}
                             className="login-input"
                               />
                         </label>
                         <label>
-                            Password:
                             <input type="password"
                             value={this.state.password}
+                            placeholder="Password"
                             onChange={this.update('password')}
                             className="login-input"
                             />
@@ -71,4 +70,4 @@ class SessionForm extends React.Component {
     }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);
