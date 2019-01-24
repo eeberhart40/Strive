@@ -2,7 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+h1{
+    font-family: 'Sarabun', sans-serif;
+    font-weight: 1000;
+}
+h2 {
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+}
 
+.vsc-initialized {
+    margin: 0;
+}
 .login-header {
     background: #fff;
     border-bottom: solid 1px #e6e6eb;
@@ -12,8 +24,11 @@
     color: #ff5300;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 66px;
+    padding-right: 66px;
+    min-height: 50px;
+    max-height: 50px;
+    min-width: 350px;
 }
 
 .modal-background {
@@ -44,7 +59,6 @@
     display: flex;
     font-size: 14px;
     min-height: 40px;
-    padding: 12px 10px;
     width: 100%;
     background: rgba(0,0,0,0.5);
     border: 1px solid #666;
@@ -96,3 +110,37 @@
     font-weight: 700;
     border-radius: 2px;
 }
+
+.main-container {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.contain {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+.devices-image{
+    display: inline-block;
+    width: 100%;
+    max-width: 468px;
+    margin: 0 auto;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.footer {
+    margin-top: 0;
+    background-color: #2d2d32;
+    color: #fff;
+    height: 200px;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+#footer-logo{
+    margin: 50px;
+}
+
