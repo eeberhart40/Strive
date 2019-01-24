@@ -48,6 +48,20 @@ h2 {
   transform: translate(-50%, -50%);
   color: white;
   display: inline-block;
+  background:rgba(0, 0, 0, 0.8);
+  height: 400px;
+  width: 400px;
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  border-radius: 5px;
+  text-align: left;
+
+}
+
+.modal-child h1 {
+    text-align: center;
+    font-family: 'Sarabun', sans-serif;
 }
 .login-form {
     justify-content: center;
@@ -113,6 +127,7 @@ h2 {
 
 .main-container {
     margin-top: 80px;
+    margin-bottom: 80px;
     text-align: center;
 }
 
@@ -144,3 +159,10 @@ h2 {
     margin: 50px;
 }
 
+.errors{
+    background: red;
+    color: white;
+    list-style: none;
+    margin: 0;
+    font-size: 16;
+}

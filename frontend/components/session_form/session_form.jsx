@@ -12,7 +12,6 @@ class SessionForm extends React.Component {
         e.preventDefault();
         const athlete = Object.assign({}, this.state);
         this.props.processForm(athlete).then(this.props.closeModal);
-        
     }
 
     update(field){
@@ -24,9 +23,7 @@ class SessionForm extends React.Component {
     render() {
         const errors = this.props.errors.map((error, i) => {
             return(
-                <ul>
-                    <li key={`error-${i}`}>{error}</li>
-                </ul>
+                 <li key={`error-${i}`}>{error}</li>
             )
         });
     
@@ -34,7 +31,10 @@ class SessionForm extends React.Component {
             <div className="login-form-container">
                 <form className="login-form-box" onSubmit={this.handleSubmit}>
                     <div onClick={this.props.closeModal} className="close-X">X</div>
-                    {errors}
+                    <h1>{this.props.formType}</h1>
+                    <ul className="errors">
+                        {errors}
+                    </ul>
                     <div className="login-form">
                         <br/>
                         <label>
