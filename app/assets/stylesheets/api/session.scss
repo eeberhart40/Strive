@@ -10,8 +10,10 @@
     justify-content: space-between;
     align-items: center;
     color: #ff5300;
-    padding-left: 50px;
-    padding-right: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .modal-background {
@@ -29,4 +31,68 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: white;
+  display: inline-block;
+}
+.login-form {
+    justify-content: center;
+    width: 350px;
+    height: 40px;
+}
+
+.login-input {
+    display: flex;
+    font-size: 14px;
+    min-height: 40px;
+    padding: 12px 10px;
+    width: 100%;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid #666;
+    color: #CCC;
+    margin: 6px 0;
+}
+
+.close-X {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: gray;
+}
+
+.session-submit{
+    background: #ff5300;
+    color: white;
+    width: 100%;
+    min-height: 40px;
+    line-height: inherit;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 1.42857143;
+}
+
+.login-button {
+    color: #ff5300;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid gray;
+    white-space: nowrap;
+    padding: 10px 30px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 2px;
 }

@@ -9,8 +9,8 @@ import Modal from './modal/modal';;
 const App = () => (
     <div>
         <Modal />
-        <header className="login-header">
-            <h1>Strive</h1>
+        <header className="container login-header">
+            <h1>STRIVE</h1>
             <GreetingContainer />
         </header>
     </div>
