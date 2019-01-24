@@ -438,7 +438,7 @@ var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
     errors: errors.session,
-    formType: 'login'
+    formType: 'Log In'
   };
 };
 
@@ -537,9 +537,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var errors = this.props.errors.map(function (error, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: "error-".concat(i)
-        }, error));
+        }, error);
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
@@ -549,7 +549,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         onClick: this.props.closeModal,
         className: "close-X"
-      }, "X"), errors, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "errors"
+      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -609,7 +611,7 @@ var msp = function msp(_ref) {
   var errors = _ref.errors;
   return {
     errors: errors.session,
-    formType: 'signup'
+    formType: 'Sign Up'
   };
 };
 
@@ -811,6 +813,8 @@ var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])(
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -822,6 +826,9 @@ __webpack_require__.r(__webpack_exports__);
       return action.errors;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      return [];
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
       return [];
 
     default:
