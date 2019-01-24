@@ -2,7 +2,7 @@
 #
 # Table name: athletes
 #
-#  id              :integer          not null, primary key
+#  id              :bigint(8)        not null, primary key
 #  email           :string           not null
 #  username        :string           not null
 #  password_digest :string           not null
@@ -18,6 +18,8 @@ class Athlete < ApplicationRecord
     attr_reader :password 
 
     after_initialize :ensure_session_token
+
+    has_many :routes
 
     def self.find_by_credentials(username, password)
         user = Athlete.find_by(username: username)
