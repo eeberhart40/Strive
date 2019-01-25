@@ -11,6 +11,9 @@ class Api::AthletesController < ApplicationController
         end
     end
 
+    def show
+        @user = Athlete.find(params[:id])
+    end
 
     private
 

@@ -1,0 +1,1 @@
+json.array! @routes, :athlete_id, :route_data
