@@ -11,6 +11,7 @@ import {
 } from 'react-router-dom';
 import Splash from './splash/splash';
 import Dashboard from './dashboard/dashboard';
+import RouteIndexContainer from './routes/route_index_container';
 
 const App = () => (
     <div>
@@ -22,6 +23,7 @@ const App = () => (
         </header>
         <AuthRoute exact path="/" component={Splash} />
         <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
+        <ProtectedRoute exact path="/routes" component={RouteIndexContainer}/>
     </div>
 );
 

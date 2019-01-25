@@ -4,7 +4,6 @@ export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
 
 const receiveAllRoutes = (routes) => {
- 
     return({
         type: RECEIVE_ALL_ROUTES,
         routes

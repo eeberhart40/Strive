@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { createRoute, deleteRoute, fetchRoute, fetchRoutes } from './util/map_routes_util';
+import { createRoute, deleteRoute, fetchRoute, fetchRoutes } from './actions/map_route_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
