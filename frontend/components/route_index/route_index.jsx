@@ -1,5 +1,7 @@
 import React from 'react';
 import RouteIndexItem from './route_index_item';
+import { Link } from 'react-router-dom';
+
 
 class RouteIndex extends React.Component {
 
@@ -29,6 +31,7 @@ class RouteIndex extends React.Component {
                 <ul>
                     {routes}
                 </ul>
+                <Link to={"/dashboard"}>Home</Link>
             </div>
         );
     };
