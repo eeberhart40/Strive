@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const RouteIndexItem = (props) => {
 
@@ -7,10 +8,11 @@ const RouteIndexItem = (props) => {
     // let athlete = state.athletes[athleteId];
     return(
         <div>
-            {route.route_data}
+            Route: <Link to={`/routes/${route.id}`}>{route.route_data}</Link>
             <button onClick={() => props.deleteRoute(route.id)}>Delete</button>
         </div>
     )
 }
 
 export default RouteIndexItem;
+

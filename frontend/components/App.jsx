@@ -11,19 +11,20 @@ import {
 } from 'react-router-dom';
 import Splash from './splash/splash';
 import Dashboard from './dashboard/dashboard';
-import RouteIndexContainer from './routes/route_index_container';
+import RouteIndexContainer from './route_index/route_index_container';
+import RouteShowContainer from './route_show/route_show_container'
 
 const App = () => (
     <div>
         <Modal />
         <header className="container login-header">
-        
             <h1>STRIVE</h1>
             <GreetingContainer />
         </header>
         <AuthRoute exact path="/" component={Splash} />
-        <ProtectedRoute exact path="/dashboard" component={Dashboard}/>
-        <ProtectedRoute exact path="/routes" component={RouteIndexContainer}/>
+        <ProtectedRoute path="/dashboard" component={Dashboard}/>
+        <ProtectedRoute path="/routes" component={RouteIndexContainer}/>
+        <Route path="/routes/:routeId" component={RouteShowContainer} />
     </div>
 );
 

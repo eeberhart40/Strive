@@ -14,4 +14,9 @@
  *= require_self
  */
 
- 
+ .map-container {
+   width: 800px;
+   height: 350px;
+   float: left;
+   position: relative;
+ }
