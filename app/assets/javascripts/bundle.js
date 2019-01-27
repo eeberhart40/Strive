@@ -584,9 +584,83 @@ function (_React$Component) {
   }
 
   _createClass(CreateRouteForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this = this;
+
+      // set the map to show SF
+      var mapOptions = {
+        center: {
+          lat: 37.7758,
+          lng: -122.435
+        },
+        // this is SF
+        zoom: 13
+      };
+      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      this.infoWindow = new google.maps.InfoWindow();
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          _this.infoWindow.setPosition(pos);
+
+          _this.infoWindow.setContent('Location found.');
+
+          _this.infoWindow.open(_this.map);
+
+          _this.map.setCenter(pos);
+        }, function () {
+          handleLocationError(true, _this.infoWindow, _this.map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, this.infoWindow, this.map.getCenter());
+      }
+
+      this.drawingManager = new google.maps.drawing.DrawingManager({
+        drawingMode: google.maps.drawing.OverlayType.MARKER,
+        drawingControl: true,
+        drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+        },
+        markerOptions: {
+          icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+        },
+        circleOptions: {
+          fillColor: '#ffff00',
+          fillOpacity: 1,
+          strokeWeight: 5,
+          clickable: false,
+          editable: true,
+          zIndex: 1
+        }
+      });
+      this.drawingManager.setMap(this.map);
+    }
+  }, {
+    key: "handleLocationError",
+    value: function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+      infoWindow.setPosition(pos);
+      infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+      infoWindow.open(map);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "this will render a map in which we can create a route"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "map-container",
+        ref: function ref(map) {
+          return _this2.mapNode = map;
+        }
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/routes"
