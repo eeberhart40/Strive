@@ -12,6 +12,7 @@ class RouteMap extends React.Component {
             zoom: 13
         };
         this.map = new google.maps.Map(this.mapNode, mapOptions);
+
     }
 
     render() {

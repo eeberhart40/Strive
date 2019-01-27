@@ -1,19 +1,42 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import RouteManager from '../../util/route_manager';
+import route_show_container from '../route_show/route_show_container';
+
+const getCoordsObj = latLng => ({
+    lat: latLng.lat(),
+    lng: latLng.lng()
+});
+
+const mapOptions = {
+    center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
+    zoom: 13
+};
+
+let poly;
 
 class CreateRouteForm extends React.Component {
 
     componentDidMount() {
-        // set the map to show SF
-        const mapOptions = {
-            center: { lat: 37.7758, lng: -122.435 }, // this is SF
-            zoom: 13
-        };
+
         this.map = new google.maps.Map(this.mapNode, mapOptions);
         this.infoWindow = new google.maps.InfoWindow;
+        poly = new google.maps.Polyline({
+            strokeColor: '#000000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+        });
+        // poly.setMap(this.map);
+
+        // Add a listener for the click event
+        google.maps.event.addListener(this.map, 'click', (event) =>{
+            const coords = getCoordsObj(event.latLng);
+            this.handleClick(coords);
+        });
+
 
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition( position => {
+            navigator.geolocation.getCurrentPosition(position => {
                 let pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
@@ -22,33 +45,25 @@ class CreateRouteForm extends React.Component {
                 this.infoWindow.setContent('Location found.');
                 this.infoWindow.open(this.map);
                 this.map.setCenter(pos);
-            },  () => {
-                handleLocationError(true, this.infoWindow, this.map.getCenter());
+            }, () => {
+                this.handleLocationError(true, this.infoWindow, this.map.getCenter());
             });
         } else {
             // Browser doesn't support Geolocation
-            handleLocationError(false, this.infoWindow, this.map.getCenter());
+            this.handleLocationError(false, this.infoWindow, this.map.getCenter());
         }
-
-       this.drawingManager = new google.maps.drawing.DrawingManager({
-            drawingMode: google.maps.drawing.OverlayType.MARKER,
-            drawingControl: true,
-            drawingControlOptions: {
-                position: google.maps.ControlPosition.TOP_CENTER,
-                drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
-            },
-            markerOptions: { icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png' },
-            circleOptions: {
-                fillColor: '#ffff00',
-                fillOpacity: 1,
-                strokeWeight: 5,
-                clickable: false,
-                editable: true,
-                zIndex: 1
-            }
-        });
-        this.drawingManager.setMap(this.map);
     }
+
+
+
+    handleClick(coords) {
+        debugger
+        let marker = new google.maps.Marker({
+            position: coords,
+            map: this.map
+        })
+    }
+
 
     handleLocationError(browserHasGeolocation, infoWindow, pos){
         infoWindow.setPosition(pos);
@@ -57,6 +72,8 @@ class CreateRouteForm extends React.Component {
             'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
     }
+
+
 
 
     render () {

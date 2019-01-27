@@ -8,7 +8,6 @@ const msp = state => {
     // let athletes = state.entities.athletes;
     return {
         routes: routes,
-
     };
 };
 
