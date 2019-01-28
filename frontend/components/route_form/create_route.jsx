@@ -14,6 +14,7 @@ class CreateRouteForm extends React.Component {
 
     componentDidMount() {
         let that = this;
+        //map centered on manhattan
         this.map = new google.maps.Map(this.mapNode, {
             center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
             zoom: 13,
@@ -24,14 +25,32 @@ class CreateRouteForm extends React.Component {
                 mapTypeIds: ['roadmap', 'terrain']
             }
         });
+
+        //adds place search bar with autocomplete
+        this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
+            document.getElementById('bar'));
+        const autocomplete = new google.maps.places.Autocomplete(
+            document.getElementById('autoc'));
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function () {
+            const place = autocomplete.getPlace();
+            if (place.geometry.viewport) {
+                that.map.fitBounds(place.geometry.viewport);
+            } else {
+                that.map.setCenter(place.geometry.location);
+                that.map.setZoom(17);
+            }
+        });
+
         this.infoWindow = new google.maps.InfoWindow;
         this.directionsService = new google.maps.DirectionsService;
+       
         this.directionsDisplay = new google.maps.DirectionsRenderer({
              draggable: true,
              map: this.map,
          });
         
-
+        //sets map to current location if browser location enabled
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 let pos = {
@@ -54,7 +73,7 @@ class CreateRouteForm extends React.Component {
         // Add a listener for the click event
         google.maps.event.addListener(this.map, 'click', (event) => {
             // const coords = getCoordsObj(event.latLng);
-            // debugger
+            //
             const coords = event.latLng;
             this.handleClick(coords);
             waypoints.push(coords);
@@ -62,6 +81,10 @@ class CreateRouteForm extends React.Component {
                 this.deleteOriginalMarkers();
                 this.displayRoute(waypoints[0], waypoints[1], this.directionsService, this.directionsDisplay);
             }
+        });
+
+        document.getElementById('mode').addEventListener('change', function () {
+            that.displayRoute(waypoints[0], waypoints[1], that.directionsService, that.directionsDisplay);
         });
 
     }
@@ -85,6 +108,7 @@ class CreateRouteForm extends React.Component {
 
 
     displayRoute(origin, destination, service, display) {
+       
         service.route({
             origin: origin,
             destination: destination,
@@ -96,14 +120,15 @@ class CreateRouteForm extends React.Component {
                 alert('Could not display directions due to: ' + status);
             }
         });
+       
     }
 
     clearRoute(){
         this.directionsDisplay.set('directions', null);
         markers = [];
         waypoints = [];
-    
     }
+
 
 
     handleLocationError(browserHasGeolocation, infoWindow, pos){
@@ -122,7 +147,14 @@ class CreateRouteForm extends React.Component {
             <div>
                 <div className="map-container" ref={map => this.mapNode = map}>
                 </div>
+                <div id="bar">
+                    <p className="auto"><input type="text" id="autoc" /></p>
                     <button onClick={this.clearRoute}>Clear</button>
+                    <select id="mode">
+                        <option value="WALKING">Walking</option>
+                        <option value="BICYCLING">Bicycling</option>
+                    </select>
+                </div>
                 <Link to={"/dashboard"}>Home</Link>
                 <Link to={"/routes"}>Index</Link>
             </div>

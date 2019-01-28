@@ -598,7 +598,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var that = this;
+      var that = this; //map centered on manhattan
+
       this.map = new google.maps.Map(this.mapNode, {
         center: {
           lat: 40.771,
@@ -612,13 +613,27 @@ function (_React$Component) {
           style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
           mapTypeIds: ['roadmap', 'terrain']
         }
+      }); //adds place search bar with autocomplete
+
+      this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document.getElementById('bar'));
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autoc'));
+      autocomplete.bindTo('bounds', this.map);
+      autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+
+        if (place.geometry.viewport) {
+          that.map.fitBounds(place.geometry.viewport);
+        } else {
+          that.map.setCenter(place.geometry.location);
+          that.map.setZoom(17);
+        }
       });
       this.infoWindow = new google.maps.InfoWindow();
       this.directionsService = new google.maps.DirectionsService();
       this.directionsDisplay = new google.maps.DirectionsRenderer({
         draggable: true,
         map: this.map
-      });
+      }); //sets map to current location if browser location enabled
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -645,7 +660,7 @@ function (_React$Component) {
 
       google.maps.event.addListener(this.map, 'click', function (event) {
         // const coords = getCoordsObj(event.latLng);
-        // debugger
+        //
         var coords = event.latLng;
 
         _this2.handleClick(coords);
@@ -657,6 +672,9 @@ function (_React$Component) {
 
           _this2.displayRoute(waypoints[0], waypoints[1], _this2.directionsService, _this2.directionsDisplay);
         }
+      });
+      document.getElementById('mode').addEventListener('change', function () {
+        that.displayRoute(waypoints[0], waypoints[1], that.directionsService, that.directionsDisplay);
       });
     }
   }, {
@@ -715,9 +733,22 @@ function (_React$Component) {
         ref: function ref(map) {
           return _this3.mapNode = map;
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "auto"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        id: "autoc"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.clearRoute
-      }, "Clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        id: "mode"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "WALKING"
+      }, "Walking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "BICYCLING"
+      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/routes"
