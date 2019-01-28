@@ -563,65 +563,61 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
 
 
-var getCoordsObj = function getCoordsObj(latLng) {
-  return {
-    lat: latLng.lat(),
-    lng: latLng.lng()
-  };
-};
-
-var mapOptions = {
-  center: {
-    lat: 40.771,
-    lng: -73.974
-  },
-  // this is Manhattan
-  zoom: 13
-};
-var poly;
+var waypoints = [];
+var markers = [];
 
 var CreateRouteForm =
 /*#__PURE__*/
 function (_React$Component) {
   _inherits(CreateRouteForm, _React$Component);
 
-  function CreateRouteForm() {
+  function CreateRouteForm(props) {
+    var _this;
+
     _classCallCheck(this, CreateRouteForm);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(CreateRouteForm).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(CreateRouteForm).call(this, props));
+    _this.clearRoute = _this.clearRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(CreateRouteForm, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this = this;
+      var _this2 = this;
 
-      this.map = new google.maps.Map(this.mapNode, mapOptions);
+      var that = this;
+      this.map = new google.maps.Map(this.mapNode, {
+        center: {
+          lat: 40.771,
+          lng: -73.974
+        },
+        // this is Manhattan
+        zoom: 13,
+        mapTypeId: 'terrain',
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+          mapTypeIds: ['roadmap', 'terrain']
+        }
+      });
       this.infoWindow = new google.maps.InfoWindow();
-      poly = new google.maps.Polyline({
-        strokeColor: '#000000',
-        strokeOpacity: 1.0,
-        strokeWeight: 3
-      }); // poly.setMap(this.map);
-      // Add a listener for the click event
-
-      google.maps.event.addListener(this.map, 'click', function (event) {
-        var coords = getCoordsObj(event.latLng);
-
-        _this.handleClick(coords);
+      this.directionsService = new google.maps.DirectionsService();
+      this.directionsDisplay = new google.maps.DirectionsRenderer({
+        draggable: true,
+        map: this.map
       });
 
       if (navigator.geolocation) {
@@ -631,29 +627,76 @@ function (_React$Component) {
             lng: position.coords.longitude
           };
 
-          _this.infoWindow.setPosition(pos);
+          _this2.infoWindow.setPosition(pos);
 
-          _this.infoWindow.setContent('Location found.');
+          _this2.infoWindow.setContent('Location found.');
 
-          _this.infoWindow.open(_this.map);
+          _this2.infoWindow.open(_this2.map);
 
-          _this.map.setCenter(pos);
+          _this2.map.setCenter(pos);
         }, function () {
-          _this.handleLocationError(true, _this.infoWindow, _this.map.getCenter());
+          _this2.handleLocationError(true, _this2.infoWindow, _this2.map.getCenter());
         });
       } else {
         // Browser doesn't support Geolocation
         this.handleLocationError(false, this.infoWindow, this.map.getCenter());
-      }
+      } // Add a listener for the click event
+
+
+      google.maps.event.addListener(this.map, 'click', function (event) {
+        // const coords = getCoordsObj(event.latLng);
+        // debugger
+        var coords = event.latLng;
+
+        _this2.handleClick(coords);
+
+        waypoints.push(coords);
+
+        if (waypoints.length === 2) {
+          _this2.deleteOriginalMarkers();
+
+          _this2.displayRoute(waypoints[0], waypoints[1], _this2.directionsService, _this2.directionsDisplay);
+        }
+      });
     }
   }, {
     key: "handleClick",
     value: function handleClick(coords) {
-      debugger;
+      if (markers.length > 1) return;
       var marker = new google.maps.Marker({
         position: coords,
         map: this.map
       });
+      markers.push(marker);
+    }
+  }, {
+    key: "deleteOriginalMarkers",
+    value: function deleteOriginalMarkers() {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+    }
+  }, {
+    key: "displayRoute",
+    value: function displayRoute(origin, destination, service, display) {
+      service.route({
+        origin: origin,
+        destination: destination,
+        travelMode: 'BICYCLING'
+      }, function (response, status) {
+        if (status === 'OK') {
+          display.setDirections(response);
+        } else {
+          alert('Could not display directions due to: ' + status);
+        }
+      });
+    }
+  }, {
+    key: "clearRoute",
+    value: function clearRoute() {
+      this.directionsDisplay.set('directions', null);
+      markers = [];
+      waypoints = [];
     }
   }, {
     key: "handleLocationError",
@@ -665,14 +708,16 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-container",
         ref: function ref(map) {
-          return _this2.mapNode = map;
+          return _this3.mapNode = map;
         }
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.clearRoute
+      }, "Clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/routes"
@@ -1369,11 +1414,11 @@ var routesReducer = function routesReducer() {
       return action.routes;
 
     case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ROUTE"]:
-      newState = Object(lodash_merge__WEBPACK_IMPORTED_MODULE_0__["merge"])({}, state, _defineProperty({}, action.route.id, action.route));
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.route.id, action.route));
       return newState;
 
     case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_ROUTE"]:
-      newState = Object(lodash_merge__WEBPACK_IMPORTED_MODULE_0__["merge"])({}, state);
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
       delete newState[action.routeId];
       return newState;
 

@@ -1,4 +1,4 @@
-import { merge } from 'lodash/merge';
+import merge  from 'lodash/merge';
 import { 
     RECEIVE_ALL_ROUTES, 
     RECEIVE_ROUTE, 
