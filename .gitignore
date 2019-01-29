@@ -40,3 +40,6 @@ node_modules/
 /app/assets/javascripts/bundle.js.map
 
 >>>>>>> userAuth
+
+# Ignore application configuration
+/config/application.yml

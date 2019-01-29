@@ -108,7 +108,7 @@ class CreateRouteForm extends React.Component {
 
 
     displayRoute(origin, destination, service, display) {
-       
+        let that = this;
         service.route({
             origin: origin,
             destination: destination,
@@ -116,6 +116,10 @@ class CreateRouteForm extends React.Component {
         }, function (response, status) {
             if (status === 'OK') {
                 display.setDirections(response);
+                document.getElementById('distance').innerHTML =
+                    that.getMiles(response.routes[0].legs[0].distance.value) + " miles";
+                document.getElementById('duration').innerHTML =
+                    response.routes[0].legs[0].duration.value + " seconds";
             } else {
                 alert('Could not display directions due to: ' + status);
             }
@@ -139,6 +143,9 @@ class CreateRouteForm extends React.Component {
         infoWindow.open(map);
     }
 
+    getMiles(m) {
+        return Number((m / 1609).toFixed(2));
+    }
 
 
 
@@ -155,6 +162,8 @@ class CreateRouteForm extends React.Component {
                         <option value="BICYCLING">Bicycling</option>
                     </select>
                 </div>
+                <div id='distance'>Distance: </div>
+                <div id='duration'>Est. Duration: </div>
                 <Link to={"/dashboard"}>Home</Link>
                 <Link to={"/routes"}>Index</Link>
             </div>

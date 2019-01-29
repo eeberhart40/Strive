@@ -697,6 +697,7 @@ function (_React$Component) {
   }, {
     key: "displayRoute",
     value: function displayRoute(origin, destination, service, display) {
+      var that = this;
       service.route({
         origin: origin,
         destination: destination,
@@ -704,6 +705,8 @@ function (_React$Component) {
       }, function (response, status) {
         if (status === 'OK') {
           display.setDirections(response);
+          document.getElementById('distance').innerHTML = that.getMiles(response.routes[0].legs[0].distance.value) + " miles";
+          document.getElementById('duration').innerHTML = response.routes[0].legs[0].duration.value + " seconds";
         } else {
           alert('Could not display directions due to: ' + status);
         }
@@ -722,6 +725,11 @@ function (_React$Component) {
       infoWindow.setPosition(pos);
       infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
       infoWindow.open(map);
+    }
+  }, {
+    key: "getMiles",
+    value: function getMiles(m) {
+      return Number((m / 1609).toFixed(2));
     }
   }, {
     key: "render",
@@ -748,7 +756,11 @@ function (_React$Component) {
         value: "WALKING"
       }, "Walking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "BICYCLING"
-      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "distance"
+      }, "Distance: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "duration"
+      }, "Est. Duration: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/routes"
