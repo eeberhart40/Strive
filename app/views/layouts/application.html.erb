@@ -4,10 +4,10 @@
     <title>Strive</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="maps_api" content=<%= "#{Rails.application.credentials.google[:maps_api]}" %>>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDueTaPzkZW4eEb7andxZHkmoa4seQsQZs&libraries=drawing,geometry,places"%>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.google[:maps_api]}&libraries=visualization,drawing,geometry,places"%>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
   </head>

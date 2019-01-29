@@ -5,6 +5,11 @@ import route_show_container from '../route_show/route_show_container';
 
 let waypoints = [];
 let markers = [];
+let path = 'path';
+let distance = 'distance';
+let travelTime = 'travelTime';
+let sport = 'sport';
+let routeData = {};
 
 class CreateRouteForm extends React.Component {
     constructor(props) {
@@ -25,7 +30,6 @@ class CreateRouteForm extends React.Component {
                 mapTypeIds: ['roadmap', 'terrain']
             }
         });
-
         //adds place search bar with autocomplete
         this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
             document.getElementById('bar'));
@@ -41,7 +45,7 @@ class CreateRouteForm extends React.Component {
                 that.map.setZoom(17);
             }
         });
-
+        this.elevator = new google.maps.ElevationService;
         this.infoWindow = new google.maps.InfoWindow;
         this.directionsService = new google.maps.DirectionsService;
        
@@ -81,6 +85,7 @@ class CreateRouteForm extends React.Component {
                 this.deleteOriginalMarkers();
                 this.displayRoute(waypoints[0], waypoints[1], this.directionsService, this.directionsDisplay);
             }
+        
         });
 
         document.getElementById('mode').addEventListener('change', function () {
@@ -110,6 +115,7 @@ class CreateRouteForm extends React.Component {
     displayRoute(origin, destination, service, display) {
         let that = this;
         let selectedMode = document.getElementById('mode').value;
+        routeData[sport] = selectedMode;
         service.route({
             origin: origin,
             destination: destination,
@@ -117,10 +123,13 @@ class CreateRouteForm extends React.Component {
         }, function (response, status) {
             if (status === 'OK') {
                 display.setDirections(response);
+                routeData[distance] = that.getMiles(response.routes[0].legs[0].distance.value);
+                routeData[travelTime] = that.getTravelTime(response.routes[0].legs[0].duration.value)
+                routeData[path] = response.routes[0].overview_path;
                 document.getElementById('distance').innerHTML =
-                    that.getMiles(response.routes[0].legs[0].distance.value) + " miles";
+                    routeData[distance] + " miles";
                 document.getElementById('duration').innerHTML =
-                    response.routes[0].legs[0].duration.value + " seconds";
+                    routeData[travelTime];
             } else {
                 alert('Could not display directions due to: ' + status);
             }
@@ -130,6 +139,8 @@ class CreateRouteForm extends React.Component {
 
     clearRoute(){
         this.directionsDisplay.set('directions', null);
+        // document.getElementById('distance').innerHTML = "";
+        // document.getElementById('duration').innerHTML = "";
         markers = [];
         waypoints = [];
     }
@@ -148,7 +159,57 @@ class CreateRouteForm extends React.Component {
         return Number((m / 1609).toFixed(2));
     }
 
+    getTravelTime(secs) {
+        let hours = Math.floor(secs / 3600);
+        let minutes = Math.floor((secs - (hours * 3600)) / 60);
+        let seconds = secs - (hours * 3600) - (minutes * 60);
+        if (minutes < 10) minutes = `0${minutes}`;
+        if (seconds < 10) seconds = `0${seconds}`;
 
+        return`${hours}:${minutes}:${seconds}`;
+    }
+
+//    displayPathElevation(path, elevator) {
+//         // Create a PathElevationRequest object using this array.
+//         // Ask for 256 samples along that path.
+//         // Initiate the path request.
+//         elevator.getElevationAlongPath({
+//             'path': path,
+//             'samples': path.length
+//         }, this.plotElevation);
+//     }
+
+//     plotElevation(elevations, status) {
+//         var chartDiv = document.getElementById('elevation_chart');
+//         if (status !== 'OK') {
+//             // Show the error code inside the chartDiv.
+//             chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+//                 status;
+//             return;
+//         }
+//         // Create a new chart in the elevation_chart DIV.
+        
+
+//         var chart = new google.visualization.ColumnChart(chartDiv);
+
+//         // Extract the data from which to populate the chart.
+//         // Because the samples are equidistant, the 'Sample'
+//         // column here does double duty as distance along the
+//         // X axis.
+//         var data = new google.visualization.DataTable();
+//         data.addColumn('string', 'Sample');
+//         data.addColumn('number', 'Elevation');
+//         for (var i = 0; i < elevations.length; i++) {
+//             data.addRow(['', elevations[i].elevation]);
+//         }
+
+//         // Draw the chart using the data within its DIV.
+//         chart.draw(data, {
+//             height: 150,
+//             legend: 'none',
+//             titleY: 'Elevation (m)'
+//         });
+//     }
 
     render () {
         return(
@@ -163,6 +224,7 @@ class CreateRouteForm extends React.Component {
                         <option value="BICYCLING">Bicycling</option>
                     </select>
                 </div>
+                <div id='elevation_chart'></div>
                 <br/>
                 <div id='distance'>Distance: </div>
                 <div id='duration'>Est. Duration: </div>

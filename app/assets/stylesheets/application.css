@@ -14,13 +14,19 @@
  *= require_self
  */
 
- .map-container {
+ #map-show {
    width: 800px;
    height: 350px;
    float: left;
    position: relative;
  }
 
+ .map-container {
+   width: 800px;
+   height: 500px;
+   float: left;
+   position: relative;
+ }
  /* #map-thumb{
    width: 300px;
    height: 175;

@@ -1,3 +1,5 @@
+const mapKey = document.head.querySelector("[name=maps_api]").content;
+
 export const fetchRoutes = () => {
     return(
         $.ajax({
