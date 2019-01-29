@@ -106,13 +106,14 @@ class CreateRouteForm extends React.Component {
         }
     }
 
-
+    //displays the route and length in miles
     displayRoute(origin, destination, service, display) {
         let that = this;
+        let selectedMode = document.getElementById('mode').value;
         service.route({
             origin: origin,
             destination: destination,
-            travelMode: 'BICYCLING',
+            travelMode: google.maps.TravelMode[selectedMode],
         }, function (response, status) {
             if (status === 'OK') {
                 display.setDirections(response);
@@ -134,7 +135,7 @@ class CreateRouteForm extends React.Component {
     }
 
 
-
+    //does this work?
     handleLocationError(browserHasGeolocation, infoWindow, pos){
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -162,6 +163,7 @@ class CreateRouteForm extends React.Component {
                         <option value="BICYCLING">Bicycling</option>
                     </select>
                 </div>
+                <br/>
                 <div id='distance'>Distance: </div>
                 <div id='duration'>Est. Duration: </div>
                 <Link to={"/dashboard"}>Home</Link>

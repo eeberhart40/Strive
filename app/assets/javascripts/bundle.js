@@ -693,15 +693,17 @@ function (_React$Component) {
       for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
       }
-    }
+    } //displays the route and length in miles
+
   }, {
     key: "displayRoute",
     value: function displayRoute(origin, destination, service, display) {
       var that = this;
+      var selectedMode = document.getElementById('mode').value;
       service.route({
         origin: origin,
         destination: destination,
-        travelMode: 'BICYCLING'
+        travelMode: google.maps.TravelMode[selectedMode]
       }, function (response, status) {
         if (status === 'OK') {
           display.setDirections(response);
@@ -718,7 +720,8 @@ function (_React$Component) {
       this.directionsDisplay.set('directions', null);
       markers = [];
       waypoints = [];
-    }
+    } //does this work?
+
   }, {
     key: "handleLocationError",
     value: function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -756,7 +759,7 @@ function (_React$Component) {
         value: "WALKING"
       }, "Walking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "BICYCLING"
-      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
       }, "Distance: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
