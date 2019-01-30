@@ -122,10 +122,10 @@ var receiveRoute = function receiveRoute(route) {
   };
 };
 
-var removeRoute = function removeRoute(route) {
+var removeRoute = function removeRoute(id) {
   return {
     type: REMOVE_ROUTE,
-    routeId: route.id
+    routeId: id
   };
 };
 
@@ -145,8 +145,8 @@ var fetchRoute = function fetchRoute(id) {
 };
 var deleteRoute = function deleteRoute(id) {
   return function (dispatch) {
-    return _util_map_routes_util__WEBPACK_IMPORTED_MODULE_0__["deleteRoute"](id).then(function (route) {
-      return dispatch(removeRoute(route));
+    return _util_map_routes_util__WEBPACK_IMPORTED_MODULE_0__["deleteRoute"](id).then(function () {
+      return dispatch(removeRoute(id));
     });
   };
 };
@@ -249,6 +249,7 @@ var receiveErrors = function receiveErrors(errors) {
 };
 var signup = function signup(user) {
   return function (dispatch) {
+    debugger;
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
@@ -641,8 +642,11 @@ function (_React$Component) {
       var route = Object.assign({}, this.state);
       debugger; //trying to send to routes showpage once route is created
 
-      this.props.createRoute(route).then(this.props.closeModalSave).then(function (route) {
-        return _this2.props.history.replace("/routes/".concat(route.id));
+      this.props.createRoute(route).then(this.props.closeModalSave()).then(function (_ref) {
+        var route = _ref.route;
+        debugger;
+
+        _this2.props.history.replace("/routes/".concat(route.id));
       });
     }
   }, {
@@ -1491,22 +1495,24 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRoute(this.props.routeId);
+      this.deleteRoute = this.deleteRoute.bind(this);
+    }
+  }, {
+    key: "deleteRoute",
+    value: function deleteRoute() {
+      this.props.deleteRoute(this.props.route.id).then(this.props.history.replace('/routes'));
     } // const RouteShow = ({ route, routeId, fetchRoute, deleteRoute }) 
 
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
-
       var route = this.props.route;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Route ID: ", route.id, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this.props.deleteRoute(route.id);
-        }
+        onClick: this.deleteRoute
       }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: '/routes'
       }, "Back to Index"));

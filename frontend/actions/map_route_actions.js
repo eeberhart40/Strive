@@ -17,10 +17,10 @@ const receiveRoute = (route) => {
     });
 };
 
-const removeRoute = (route) => {
+const removeRoute = (id) => {
     return({
         type: REMOVE_ROUTE,
-        routeId: route.id
+        routeId: id
     });
 };
 
@@ -38,7 +38,7 @@ export const fetchRoute = (id) => dispatch => {
 
 export const deleteRoute = (id) => dispatch => {
     return(
-        ApiUtil.deleteRoute(id).then(route => dispatch(removeRoute(route)))
+        ApiUtil.deleteRoute(id).then(() => dispatch(removeRoute(id)))
     );
 };
 

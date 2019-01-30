@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 class RouteShow extends React.Component {
     componentDidMount(){
         this.props.fetchRoute(this.props.routeId);
+        this.deleteRoute = this.deleteRoute.bind(this);
+    }
+
+    deleteRoute(){
+        this.props.deleteRoute(this.props.route.id).then(this.props.history.replace('/routes'));
     }
 
 // const RouteShow = ({ route, routeId, fetchRoute, deleteRoute }) 
@@ -19,7 +24,7 @@ class RouteShow extends React.Component {
                     route={route}
                     />
                 </div>
-                <button onClick={() => this.props.deleteRoute(route.id)}>Delete</button>
+                <button onClick={this.deleteRoute}>Delete</button>
                 <Link to={'/routes'}>Back to Index</Link>
             </div>
         )
