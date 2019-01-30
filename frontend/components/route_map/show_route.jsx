@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class ShowRoute extends React.Component {
     constructor(props) {
         super(props);
-        debugger
         this.routeData = JSON.parse(props.route.route_data);
     }
 
@@ -13,8 +12,8 @@ class ShowRoute extends React.Component {
         //map centered on manhattan
         let map = new google.maps.Map(this.mapNode, {
             // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
-            center: this.routeData.path[0], //this would center the map at the start of the route
-            zoom: 13,
+            center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
+            zoom: 12,
             mapTypeId: 'terrain',
             mapTypeControl: true,
             mapTypeControlOptions: {

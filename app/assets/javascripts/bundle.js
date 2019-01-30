@@ -947,9 +947,8 @@ function (_React$Component) {
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
         // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
-        center: this.routeData.path[0],
-        //this would center the map at the start of the route
-        zoom: 12,
+        center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
+        zoom: 11,
         mapTypeId: 'terrain',
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -1396,7 +1395,6 @@ function (_React$Component) {
     _classCallCheck(this, ShowRoute);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowRoute).call(this, props));
-    debugger;
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;
   }
@@ -1407,9 +1405,8 @@ function (_React$Component) {
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
         // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
-        center: this.routeData.path[0],
-        //this would center the map at the start of the route
-        zoom: 13,
+        center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
+        zoom: 12,
         mapTypeId: 'terrain',
         mapTypeControl: true,
         mapTypeControlOptions: {
@@ -1575,7 +1572,6 @@ var msp = function msp(state, _ref) {
   var match = _ref.match;
   var routeId = parseInt(match.params.routeId);
   var route = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectRoute"])(state.entities.routes, routeId);
-  debugger;
   return {
     routeId: routeId,
     route: route
