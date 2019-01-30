@@ -13,7 +13,8 @@ const receiveAllRoutes = (routes) => {
 const receiveRoute = (route) => {
     return({
         type: RECEIVE_ROUTE,
-        route
+        route: route,
+        // routeId: route.id
     });
 };
 

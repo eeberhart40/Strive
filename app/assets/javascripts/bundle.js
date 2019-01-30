@@ -118,7 +118,8 @@ var receiveAllRoutes = function receiveAllRoutes(routes) {
 var receiveRoute = function receiveRoute(route) {
   return {
     type: RECEIVE_ROUTE,
-    route: route
+    route: route // routeId: route.id
+
   };
 };
 
@@ -249,7 +250,6 @@ var receiveErrors = function receiveErrors(errors) {
 };
 var signup = function signup(user) {
   return function (dispatch) {
-    debugger;
     return _util_session_api_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (user) {
       return dispatch(receiveCurrentUser(user));
     }, function (err) {
@@ -639,12 +639,10 @@ function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
-      var route = Object.assign({}, this.state);
-      debugger; //trying to send to routes showpage once route is created
+      var route = Object.assign({}, this.state); //trying to send to routes showpage once route is created
 
       this.props.createRoute(route).then(this.props.closeModalSave()).then(function (_ref) {
         var route = _ref.route;
-        debugger;
 
         _this2.props.history.replace("/routes/".concat(route.id));
       });
@@ -802,21 +800,13 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      var routes;
-
-      if (!(this.props.routes instanceof Array)) {
-        routes = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
-      } else {
-        routes = this.props.routes.map(function (route) {
-          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
-            key: route.id,
-            route: route,
-            deleteRoute: _this.props.deleteRoute
-          });
+      var routes = Object.values(this.props.routes).map(function (route) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: route.id,
+          route: route,
+          deleteRoute: _this.props.deleteRoute
         });
-      }
-
-      ;
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/dashboard"
       }, "Home"));
@@ -888,18 +878,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var RouteIndexItem = function RouteIndexItem(props) {
-  var route = props.route; // let athleteId = props.route.athlete_id;
-  // let athlete = state.athletes[athleteId];
-
-  var styles = {
-    width: '270px',
-    height: '170px'
-  };
+  var route = props.route;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "route-index-item"
   }, "Route: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
     to: "/routes/".concat(route.id)
-  }, route.route_data), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, route.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "map-thumb"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_index_route__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
@@ -1383,9 +1367,14 @@ function (_React$Component) {
   _inherits(ShowRoute, _React$Component);
 
   function ShowRoute(props) {
+    var _this;
+
     _classCallCheck(this, ShowRoute);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ShowRoute).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowRoute).call(this, props));
+    debugger;
+    _this.routeData = JSON.parse(props.route.route_data);
+    return _this;
   }
 
   _createClass(ShowRoute, [{
@@ -1393,12 +1382,9 @@ function (_React$Component) {
     value: function componentDidMount() {
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
-        center: {
-          lat: 40.771,
-          lng: -73.974
-        },
-        // this is Manhattan
-        //center: this.state.path[1]; //this would center the map at the start of the route
+        // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
+        center: this.routeData.path[0],
+        //this would center the map at the start of the route
         zoom: 13,
         mapTypeId: 'terrain',
         mapTypeControl: true,
@@ -1406,23 +1392,40 @@ function (_React$Component) {
           style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
           mapTypeIds: ['roadmap', 'terrain']
         }
-      }); // let poly = new google.maps.Polyline({
-      //     path: this.state.path,
-      //     strokeColor: '#0000CC',
-      //     strokeOpacity: 0.4,
-      //     map: map
-      // });
+      });
+      var start = new google.maps.Marker({
+        position: this.routeData.path[0],
+        label: {
+          text: 'A',
+          color: 'white'
+        },
+        map: map
+      });
+      var end = new google.maps.Marker({
+        position: this.routeData.path[this.routeData.path.length - 1],
+        label: {
+          text: 'B',
+          color: 'white'
+        },
+        map: map
+      });
+      var routePoly = new google.maps.Polyline({
+        path: this.routeData.path,
+        strokeColor: '#0000CC',
+        strokeOpacity: 1.0,
+        map: map
+      });
     } //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
 
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-show",
         ref: function ref(map) {
-          return _this.mapNode = map;
+          return _this2.mapNode = map;
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "elevation_chart"
@@ -1507,7 +1510,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var route = this.props.route;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Route ID: ", route.id, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, route.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
@@ -1548,6 +1551,7 @@ var msp = function msp(state, _ref) {
   var match = _ref.match;
   var routeId = parseInt(match.params.routeId);
   var route = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_2__["selectRoute"])(state.entities.routes, routeId);
+  debugger;
   return {
     routeId: routeId,
     route: route

@@ -12,11 +12,7 @@ class RouteIndex extends React.Component {
 
     render() {
      
-        let routes;
-        if (!(this.props.routes instanceof Array)) {
-           routes = <div></div>
-        } else  {
-        routes = this.props.routes.map(route => {
+        let routes = Object.values(this.props.routes).map(route => {
             return(
                 <RouteIndexItem 
                 key={route.id}
@@ -25,7 +21,6 @@ class RouteIndex extends React.Component {
                 />
             );
         });
-    };
         return (
             <div>
                 <ul>

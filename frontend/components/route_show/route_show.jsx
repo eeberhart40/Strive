@@ -18,7 +18,7 @@ class RouteShow extends React.Component {
         let route = this.props.route;
         return (
             <div>
-                Route ID: {route.id}
+                 {route.title}
                 <div className="map-show">
                     <ShowRoute
                     route={route}

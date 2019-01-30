@@ -32,7 +32,7 @@ class Api::RoutesController < ApplicationController
     private 
 
     def route_params
-        params.require(:route).permit(:athlete_id, :route_data)
+        params.require(:route).permit(:athlete_id, :route_data, :title)
     end
 
 end

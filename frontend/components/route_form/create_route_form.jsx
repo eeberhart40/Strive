@@ -19,10 +19,8 @@ class CreateRouteForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const route = Object.assign({}, this.state);
-        debugger
         //trying to send to routes showpage once route is created
         this.props.createRoute(route).then(this.props.closeModalSave()).then(({route}) => {
-            debugger
             this.props.history.replace(`/routes/${route.id}`)});
     
     }
