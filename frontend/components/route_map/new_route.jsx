@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModalSave } from '../../actions/modal_actions';
 
+//*refactor so that user can save route, close modal, and create another route
+//will require clearing routeData in state upon saving a route
+
 let waypoints = [];
 let markers = [];
 let path = 'path';
