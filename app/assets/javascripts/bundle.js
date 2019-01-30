@@ -841,8 +841,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var msp = function msp(state) {
-  var routes = state.entities.routes; // let athletes = state.entities.athletes;
-
+  var routes = state.entities.routes;
   return {
     routes: routes
   };
@@ -885,7 +884,9 @@ var RouteIndexItem = function RouteIndexItem(props) {
     to: "/routes/".concat(route.id)
   }, route.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     id: "map-thumb"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_index_route__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_index_route__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    route: route
+  })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RouteIndexItem);
@@ -931,9 +932,13 @@ function (_React$Component) {
   _inherits(IndexRoute, _React$Component);
 
   function IndexRoute(props) {
+    var _this;
+
     _classCallCheck(this, IndexRoute);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(IndexRoute).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(IndexRoute).call(this, props));
+    _this.routeData = JSON.parse(props.route.route_data);
+    return _this;
   }
 
   _createClass(IndexRoute, [{
@@ -941,31 +946,50 @@ function (_React$Component) {
     value: function componentDidMount() {
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
-        center: {
-          lat: 40.771,
-          lng: -73.974
-        },
-        // this is Manhattan
-        //center: this.state.path[path.length / 2]; //this would center the map at the middle of the route
+        // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
+        center: this.routeData.path[0],
+        //this would center the map at the start of the route
         zoom: 12,
-        mapTypeId: 'terrain'
-      }); // let poly = new google.maps.Polyline({
-      //     path: this.state.path,
-      //     strokeColor: '#0000CC',
-      //     strokeOpacity: 0.4,
-      //     map: map
-      // });
+        mapTypeId: 'terrain',
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+          mapTypeIds: ['roadmap', 'terrain']
+        }
+      });
+      var start = new google.maps.Marker({
+        position: this.routeData.path[0],
+        label: {
+          text: 'A',
+          color: 'white'
+        },
+        map: map
+      });
+      var end = new google.maps.Marker({
+        position: this.routeData.path[this.routeData.path.length - 1],
+        label: {
+          text: 'B',
+          color: 'white'
+        },
+        map: map
+      });
+      var routePoly = new google.maps.Polyline({
+        path: this.routeData.path,
+        strokeColor: '#0000CC',
+        strokeOpacity: 1.0,
+        map: map
+      });
     } //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
 
   }, {
     key: "render",
     value: function render() {
-      var _this = this;
+      var _this2 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-index",
         ref: function ref(map) {
-          return _this.mapNode = map;
+          return _this2.mapNode = map;
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "elevation_chart"

@@ -12,7 +12,8 @@ const RouteIndexItem = (props) => {
         <div className="route-index-item">
             Route: <Link to={`/routes/${route.id}`}>{route.title}</Link>
             <div id="map-thumb">
-                    <IndexRoute />
+                    <IndexRoute 
+                    route={route}/>
                 </div>
         </div>
     )

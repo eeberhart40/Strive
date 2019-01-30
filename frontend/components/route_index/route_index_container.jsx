@@ -5,7 +5,7 @@ import { fetchRoutes } from '../../actions/map_route_actions';
 
 const msp = state => {
     let routes = state.entities.routes;
-    // let athletes = state.entities.athletes;
+    
     return {
         routes: routes,
     };
