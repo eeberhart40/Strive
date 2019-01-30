@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class RouteMap extends React.Component {
+class ShowRoute extends React.Component {
     constructor(props) {
         super(props);
-        // this.props.route = this.state;
-
     }
 
+    
     componentDidMount() {
         //map centered on manhattan
         let map = new google.maps.Map(this.mapNode, {
@@ -29,7 +28,7 @@ class RouteMap extends React.Component {
         // });
     }
 
-    //need divs to display this.state.distance, this.state.travelTime, this.state.sport
+    //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
     render() {
         return (
             <div>
@@ -50,4 +49,4 @@ class RouteMap extends React.Component {
 
 }
 
-export default RouteMap;
+export default ShowRoute;

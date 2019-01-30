@@ -3,6 +3,7 @@ import { fetchRoute, deleteRoute } from '../../actions/map_route_actions';
 import { selectRoute } from '../../reducers/selectors';
 import RouteShow from './route_show';
 
+
 const msp = (state, { match }) => {
     const routeId = parseInt(match.params.routeId);
     const route = selectRoute(state.entities.routes, routeId)

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import RouteManager from '../../util/route_manager';
-import route_show_container from '../route_show/route_show_container';
+import { connect } from 'react-redux';
+import { openModalSave } from '../../actions/modal_actions';
 
 let waypoints = [];
 let markers = [];
@@ -10,16 +10,22 @@ let distance = 'distance';
 let travelTime = 'travelTime';
 let sport = 'sport';
 let routeData = {};
+// let polyPath;
 
-class CreateRouteForm extends React.Component {
+class NewRoute extends React.Component {
     constructor(props) {
         super(props);
+   
+        this.saveRoute = this.saveRoute.bind(this);
         this.clearRoute = this.clearRoute.bind(this);
+        // this.drawPoly = this.drawPoly.bind(this);
     }
 
     componentDidMount() {
         let that = this;
+
         //map centered on manhattan
+        //map type control options enabled
         this.map = new google.maps.Map(this.mapNode, {
             center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
             zoom: 13,
@@ -30,6 +36,7 @@ class CreateRouteForm extends React.Component {
                 mapTypeIds: ['roadmap', 'terrain']
             }
         });
+
         //adds place search bar with autocomplete
         this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(
             document.getElementById('bar'));
@@ -45,14 +52,25 @@ class CreateRouteForm extends React.Component {
                 that.map.setZoom(17);
             }
         });
+
+        //to calculate elevations 
         this.elevator = new google.maps.ElevationService;
+
+        //info popups for places
         this.infoWindow = new google.maps.InfoWindow;
+    
+
         this.directionsService = new google.maps.DirectionsService;
-       
+
         this.directionsDisplay = new google.maps.DirectionsRenderer({
-             draggable: true,
-             map: this.map,
-         });
+            draggable: true,
+            map: this.map,
+        });
+        // this.polyLine = new google.maps.Polyline({
+        //     strokeColor: '#0000CC',
+        //     strokeOpacity: 1.0,
+        //     map: this.map
+        // })
         
         //sets map to current location if browser location enabled
         if (navigator.geolocation) {
@@ -82,10 +100,10 @@ class CreateRouteForm extends React.Component {
             this.handleClick(coords);
             waypoints.push(coords);
             if (waypoints.length === 2) {
-                this.deleteOriginalMarkers();
+                this.removeOriginalMarkers();
                 this.displayRoute(waypoints[0], waypoints[1], this.directionsService, this.directionsDisplay);
             }
-        
+
         });
 
         document.getElementById('mode').addEventListener('change', function () {
@@ -105,7 +123,7 @@ class CreateRouteForm extends React.Component {
     }
 
 
-    deleteOriginalMarkers() {
+    removeOriginalMarkers() {
         for (let i = 0; i < markers.length; i++) {
             markers[i].setMap(null);
         }
@@ -130,24 +148,41 @@ class CreateRouteForm extends React.Component {
                     routeData[distance] + " miles";
                 document.getElementById('duration').innerHTML =
                     routeData[travelTime];
+                // polyPath = routeData[path];
             } else {
                 alert('Could not display directions due to: ' + status);
             }
         });
-       
+
     }
 
-    clearRoute(){
+    clearRoute() {
         this.directionsDisplay.set('directions', null);
         // document.getElementById('distance').innerHTML = "";
         // document.getElementById('duration').innerHTML = "";
         markers = [];
         waypoints = [];
+        routeData = {};
     }
+
+    // drawPoly() {
+    //     let marker1 = new google.maps.Marker({
+    //         position: polyPath[0],
+    //         label: {text:'A', color: 'white'},
+    //         map: this.map
+    //     });
+    //     let marker2 = new google.maps.Marker({
+    //         position: polyPath[polyPath.length - 1],
+    //         label: {text:'B', color: 'white'},
+    //         map: this.map
+    //     })
+    //   this.polyLine.setPath(polyPath);
+
+    // }
 
 
     //does this work?
-    handleLocationError(browserHasGeolocation, infoWindow, pos){
+    handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
             'Error: The Geolocation service failed.' :
@@ -166,66 +201,72 @@ class CreateRouteForm extends React.Component {
         if (minutes < 10) minutes = `0${minutes}`;
         if (seconds < 10) seconds = `0${seconds}`;
 
-        return`${hours}:${minutes}:${seconds}`;
+        return `${hours}:${minutes}:${seconds}`;
     }
 
-//    displayPathElevation(path, elevator) {
-//         // Create a PathElevationRequest object using this array.
-//         // Ask for 256 samples along that path.
-//         // Initiate the path request.
-//         elevator.getElevationAlongPath({
-//             'path': path,
-//             'samples': path.length
-//         }, this.plotElevation);
-//     }
+    //    displayPathElevation(path, elevator) {
+    //         // Create a PathElevationRequest object using this array.
+    //         // Ask for 256 samples along that path.
+    //         // Initiate the path request.
+    //         elevator.getElevationAlongPath({
+    //             'path': path,
+    //             'samples': path.length
+    //         }, this.plotElevation);
+    //     }
 
-//     plotElevation(elevations, status) {
-//         var chartDiv = document.getElementById('elevation_chart');
-//         if (status !== 'OK') {
-//             // Show the error code inside the chartDiv.
-//             chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
-//                 status;
-//             return;
-//         }
-//         // Create a new chart in the elevation_chart DIV.
-        
+    //     plotElevation(elevations, status) {
+    //         var chartDiv = document.getElementById('elevation_chart');
+    //         if (status !== 'OK') {
+    //             // Show the error code inside the chartDiv.
+    //             chartDiv.innerHTML = 'Cannot show elevation: request failed because ' +
+    //                 status;
+    //             return;
+    //         }
+    //         // Create a new chart in the elevation_chart DIV.
 
-//         var chart = new google.visualization.ColumnChart(chartDiv);
 
-//         // Extract the data from which to populate the chart.
-//         // Because the samples are equidistant, the 'Sample'
-//         // column here does double duty as distance along the
-//         // X axis.
-//         var data = new google.visualization.DataTable();
-//         data.addColumn('string', 'Sample');
-//         data.addColumn('number', 'Elevation');
-//         for (var i = 0; i < elevations.length; i++) {
-//             data.addRow(['', elevations[i].elevation]);
-//         }
+    //         var chart = new google.visualization.ColumnChart(chartDiv);
 
-//         // Draw the chart using the data within its DIV.
-//         chart.draw(data, {
-//             height: 150,
-//             legend: 'none',
-//             titleY: 'Elevation (m)'
-//         });
-//     }
+    //         // Extract the data from which to populate the chart.
+    //         // Because the samples are equidistant, the 'Sample'
+    //         // column here does double duty as distance along the
+    //         // X axis.
+    //         var data = new google.visualization.DataTable();
+    //         data.addColumn('string', 'Sample');
+    //         data.addColumn('number', 'Elevation');
+    //         for (var i = 0; i < elevations.length; i++) {
+    //             data.addRow(['', elevations[i].elevation]);
+    //         }
 
-    render () {
-        return(
+    //         // Draw the chart using the data within its DIV.
+    //         chart.draw(data, {
+    //             height: 150,
+    //             legend: 'none',
+    //             titleY: 'Elevation (m)'
+    //         });
+    //     }
+
+    saveRoute(){
+        this.props.openModalSave(routeData);
+    }
+
+    render() {
+        return (
             <div>
                 <div className="map-container" ref={map => this.mapNode = map}>
                 </div>
                 <div id="bar">
                     <p className="auto"><input type="text" id="autoc" /></p>
                     <button onClick={this.clearRoute}>Clear</button>
+                    <button onClick={this.saveRoute}>Save Route</button>
+                    {/* <button onClick={this.drawPoly}>POLY</button> */}
                     <select id="mode">
                         <option value="WALKING">Walking</option>
                         <option value="BICYCLING">Bicycling</option>
                     </select>
                 </div>
                 <div id='elevation_chart'></div>
-                <br/>
+                <br />
                 <div id='distance'>Distance: </div>
                 <div id='duration'>Est. Duration: </div>
                 <Link to={"/dashboard"}>Home</Link>
@@ -239,5 +280,10 @@ class CreateRouteForm extends React.Component {
 
 }
 
+const mdp = dispatch => {
+    return ({
+        openModalSave: (dataString) => dispatch(openModalSave('save', dataString))
+    })
+}
 
-export default CreateRouteForm;
+export default connect(null, mdp)(NewRoute);

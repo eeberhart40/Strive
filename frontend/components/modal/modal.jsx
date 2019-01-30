@@ -3,8 +3,9 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
+import CreateRouteFormContainer from '../route_form/create_route_form_container';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, routeData }) {
     if (!modal) {
         return null;
     }
@@ -15,6 +16,9 @@ function Modal({ modal, closeModal }) {
             break;
         case 'signup':
             component = <SignupFormContainer />;
+            break;
+        case 'save':
+            component = <CreateRouteFormContainer routeData={routeData}/>
             break;
         default:
             return null;
@@ -29,9 +33,17 @@ function Modal({ modal, closeModal }) {
 }
 
 const mapStateToProps = state => {
-    return {
-        modal: state.ui.modal
-    };
+    let routeData = state.ui.routeData
+    if(routeData){
+        return {
+            modal: state.ui.modal,
+            routeData
+        }
+    } else {
+        return{
+            modal: state.ui.modal
+        }
+    }
 };
 
 const mapDispatchToProps = dispatch => {

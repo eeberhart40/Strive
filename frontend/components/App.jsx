@@ -13,7 +13,7 @@ import Splash from './splash/splash';
 import Dashboard from './dashboard/dashboard';
 import RouteIndexContainer from './route_index/route_index_container';
 import RouteShowContainer from './route_show/route_show_container'
-import RouteFormContainer from './route_form/create_route';
+import NewRoute from './route_map/new_route';
 
 const App = () => (
     <div>
@@ -25,11 +25,9 @@ const App = () => (
         <Switch>
         <AuthRoute exact path="/" component={Splash} />
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
-        <ProtectedRoute exact path="/routes/new" component={RouteFormContainer} />
+        <ProtectedRoute exact path="/routes/new" component={NewRoute} />
         <ProtectedRoute path="/routes/:routeId" component={RouteShowContainer} />
         <ProtectedRoute path="/routes" component={RouteIndexContainer}/>
-        
-        
         </Switch>
     </div>
 );
