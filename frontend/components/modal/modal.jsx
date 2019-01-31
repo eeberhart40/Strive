@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import CreateRouteFormContainer from '../route_form/create_route_form_container';
+import NavContainer from '../nav/nav';
 
 function Modal({ modal, closeModal, routeData }) {
     if (!modal) {
@@ -19,6 +20,9 @@ function Modal({ modal, closeModal, routeData }) {
             break;
         case 'save':
             component = <CreateRouteFormContainer routeData={routeData}/>
+            break;
+        case 'navigate':
+            component = <NavContainer />
             break;
         default:
             return null;

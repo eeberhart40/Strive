@@ -1,0 +1,27 @@
+.close-X {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+    color: gray;
+}
+
+.session-submit{
+    background: #ff5300;
+    color: white;
+    width: 100%;
+    min-height: 40px;
+    line-height: inherit;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}

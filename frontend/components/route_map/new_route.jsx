@@ -256,7 +256,7 @@ class NewRoute extends React.Component {
     render() {
         return (
             <div>
-                <div className="map-container" ref={map => this.mapNode = map}>
+                <div id="map-new" ref={map => this.mapNode = map}>
                 </div>
                 <div id="bar">
                     <p className="auto"><input type="text" id="autoc" /></p>

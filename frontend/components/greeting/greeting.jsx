@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Greeting = ({ currentUser, logout, openModal }) => {
 
     const sessionLinks = () => (
@@ -11,14 +10,15 @@ const Greeting = ({ currentUser, logout, openModal }) => {
         </nav>
 
     );
-    const personalGreeting = () => (
+    const dashBoardHeader = () => (
         <hgroup className="header-group">
             {/* <h2 className="header-name">Hi, {currentUser.username}!</h2> */}
-            <button className="header-button" onClick={logout}>Log Out</button>
+            <button className="header-button" onClick={() => openModal('navigate')}>X</button>
+            <button onClick={logout}>logout</button>
         </hgroup>
     );
 
-    return currentUser ? personalGreeting() : sessionLinks();
+    return currentUser ? dashBoardHeader() : sessionLinks();
 };
 
 
