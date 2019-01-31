@@ -15,7 +15,7 @@ class Api::RoutesController < ApplicationController
     end
 
     def index
-        @routes = Route.all
+        @routes = current_user.routes
     end
 
     def destroy
