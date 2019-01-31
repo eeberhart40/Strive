@@ -905,6 +905,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -942,6 +944,8 @@ function (_React$Component) {
   _createClass(IndexRoute, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _ref;
+
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
         // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
@@ -960,7 +964,14 @@ function (_React$Component) {
           text: 'A',
           color: 'white'
         },
-        map: map
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 7.0,
+          fillColor: "#049D1D",
+          fillOpacity: 2.0,
+          strokeWeight: 0.4
+        }
       });
       var end = new google.maps.Marker({
         position: this.routeData.path[this.routeData.path.length - 1],
@@ -968,14 +979,21 @@ function (_React$Component) {
           text: 'B',
           color: 'white'
         },
-        map: map
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 7.0,
+          fillColor: "#000",
+          fillOpacity: 2.0,
+          strokeWeight: 0.4
+        }
       });
-      var routePoly = new google.maps.Polyline({
+      var routePoly = new google.maps.Polyline((_ref = {
         path: this.routeData.path,
-        strokeColor: '#0000CC',
+        strokeColor: '#FF0000',
         strokeOpacity: 1.0,
-        map: map
-      });
+        strokeWeight: 2
+      }, _defineProperty(_ref, "strokeOpacity", 1.0), _defineProperty(_ref, "map", map), _ref));
     } //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
 
   }, {
@@ -1363,6 +1381,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -1400,6 +1420,8 @@ function (_React$Component) {
   _createClass(ShowRoute, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _ref;
+
       //map centered on manhattan
       var map = new google.maps.Map(this.mapNode, {
         // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
@@ -1418,7 +1440,14 @@ function (_React$Component) {
           text: 'A',
           color: 'white'
         },
-        map: map
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 7.0,
+          fillColor: "#049D1D",
+          fillOpacity: 2.0,
+          strokeWeight: 0.4
+        }
       });
       var end = new google.maps.Marker({
         position: this.routeData.path[this.routeData.path.length - 1],
@@ -1426,14 +1455,21 @@ function (_React$Component) {
           text: 'B',
           color: 'white'
         },
-        map: map
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 7.0,
+          fillColor: "#000",
+          fillOpacity: 2.0,
+          strokeWeight: 0.4
+        }
       });
-      var routePoly = new google.maps.Polyline({
+      var routePoly = new google.maps.Polyline((_ref = {
         path: this.routeData.path,
-        strokeColor: '#0000CC',
+        strokeColor: '#FF0000',
         strokeOpacity: 1.0,
-        map: map
-      });
+        strokeWeight: 2
+      }, _defineProperty(_ref, "strokeOpacity", 1.0), _defineProperty(_ref, "map", map), _ref));
     } //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
 
   }, {

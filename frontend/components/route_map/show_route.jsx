@@ -24,19 +24,35 @@ class ShowRoute extends React.Component {
 
         let start = new google.maps.Marker({
             position: this.routeData.path[0],
-            label: {text:'A', color: 'white'},
-            map: map
+            label: { text: 'A', color: 'white' },
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7.0,
+                fillColor: "#049D1D",
+                fillOpacity: 2.0,
+                strokeWeight: 0.4
+            },
         });
 
         let end = new google.maps.Marker({
             position: this.routeData.path[this.routeData.path.length - 1],
             label: {text:'B', color: 'white'},
-            map: map
+            map: map,
+            icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 7.0,
+                fillColor: "#000",
+                fillOpacity: 2.0,
+                strokeWeight: 0.4
+            },
         });
 
         let routePoly = new google.maps.Polyline({
             path: this.routeData.path,
-            strokeColor: '#0000CC',
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
             strokeOpacity: 1.0,
             map: map
         })
