@@ -1413,6 +1413,7 @@ function (_React$Component) {
     _classCallCheck(this, ShowRoute);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowRoute).call(this, props));
+    debugger;
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;
   }
@@ -1499,7 +1500,7 @@ function (_React$Component) {
   return ShowRoute;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["default"] = (ShowRoute);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(ShowRoute));
 
 /***/ }),
 
@@ -1565,11 +1566,11 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var route = this.props.route;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, route.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, route.title, route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.deleteRoute
       }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: '/routes'

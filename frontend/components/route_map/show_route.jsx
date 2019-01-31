@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 
 class ShowRoute extends React.Component {
     constructor(props) {
         super(props);
+        debugger
         this.routeData = JSON.parse(props.route.route_data);
+
     }
 
     
     componentDidMount() {
         //map centered on manhattan
+        
         let map = new google.maps.Map(this.mapNode, {
             // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
             center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
@@ -56,6 +60,7 @@ class ShowRoute extends React.Component {
             strokeOpacity: 1.0,
             map: map
         })
+
     }
 
     //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
@@ -79,4 +84,4 @@ class ShowRoute extends React.Component {
 
 }
 
-export default ShowRoute;
+export default withRouter(ShowRoute);

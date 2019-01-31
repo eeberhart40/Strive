@@ -19,11 +19,11 @@ class RouteShow extends React.Component {
         return (
             <div>
                  {route.title}
-                <div className="map-show">
+                { route.route_data ? (<div className="map-show">
                     <ShowRoute
                     route={route}
                     />
-                </div>
+                </div> ) : null }
                 <button onClick={this.deleteRoute}>Delete</button>
                 <Link to={'/routes'}>Back to Index</Link>
             </div>
