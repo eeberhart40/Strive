@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { closeModal } from '../../actions/modal_actions';
@@ -7,23 +7,32 @@ import { closeModal } from '../../actions/modal_actions';
 class NavContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.logout = this.logout.bind(this);
+        this.navToRoutes = this.navToRoutes.bind(this);
     }
 
-    handleClick(event) {
-        event.preventDefault();
+    logout(e) {
+        e.preventDefault();
         this.props.logout();
         this.props.closeModal();
+    }
+
+    navToRoutes(e) {
+        e.preventDefault();
+        this.props.closeModal().then(this.props.history.replace('/routes'));
+        
     }
 
     render() {
     return(
         <div className='site-nav'>
-            <ul className="dropdown">
-                <li><Link to={'/routes'}>My Routes</Link></li>
-                <li onClick={this.handleClick}>Log Out</li>
-            </ul>
-        </div> 
+            <div className='modal-child'>
+                <ul className="dropdown">
+                    <li onClick={this.navToRoutes}>My Routes</li>
+                    <li onClick={this.logout}>Log Out</li>
+                </ul>
+            </div> 
+        </div>
     )
     }
 }
@@ -35,4 +44,4 @@ const mdp = dispatch => {
     })
 }
 
-export default connect(null, mdp)(NavContainer);
+export default withRouter(connect(null, mdp)(NavContainer));
