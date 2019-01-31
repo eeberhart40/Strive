@@ -377,6 +377,8 @@ var Dashboard = function Dashboard() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 
 
 var Greeting = function Greeting(_ref) {
@@ -403,20 +405,54 @@ var Greeting = function Greeting(_ref) {
   var dashBoardHeader = function dashBoardHeader() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hgroup", {
       className: "header-group"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      className: "header-button",
-      onClick: function onClick() {
-        return openModal('navigate');
-      }
-    }, "X"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "global-nav nav-group"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu"
+    }, "Dashboard v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "options"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/routes"
+    }, "My Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "gray-menu"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu"
+    }, "Training v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "options"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
+    }, "My Activites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "gray-menu"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu"
+    }, "Explore v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "options"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
+    }, "Cool Stuff"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "gray-menu"
+    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "user-nav"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu"
+    }, "Account v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "options"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/dashboard"
+    }, "My Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option",
       onClick: logout
-    }, "logout"));
+    }, "Log Out")))));
   };
 
   return currentUser ? dashBoardHeader() : sessionLinks();
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Greeting);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Greeting));
 
 /***/ }),
 
@@ -608,29 +644,38 @@ function (_React$Component) {
     _classCallCheck(this, NavContainer);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavContainer).call(this, props));
-    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.logout = _this.logout.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.navToRoutes = _this.navToRoutes.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(NavContainer, [{
-    key: "handleClick",
-    value: function handleClick(event) {
-      event.preventDefault();
+    key: "logout",
+    value: function logout(e) {
+      e.preventDefault();
       this.props.logout();
       this.props.closeModal();
+    }
+  }, {
+    key: "navToRoutes",
+    value: function navToRoutes(e) {
+      e.preventDefault();
+      this.props.closeModal().then(this.props.history.replace('/routes'));
     }
   }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "site-nav"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "modal-child"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "dropdown"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: '/routes'
-      }, "My Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        onClick: this.handleClick
-      }, "Log Out")));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: this.navToRoutes
+      }, "My Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: this.logout
+      }, "Log Out"))));
     }
   }]);
 
@@ -648,7 +693,7 @@ var mdp = function mdp(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mdp)(NavContainer));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_2__["connect"])(null, mdp)(NavContainer)));
 
 /***/ }),
 
