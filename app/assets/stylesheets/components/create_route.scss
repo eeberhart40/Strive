@@ -17,6 +17,7 @@
     /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .route-input{
@@ -25,7 +26,15 @@
 }
 
 .route-save {
-    width: 100px;
+    position: absolute;
+    width: 50px;
+    left: 300px;
+    bottom: -82px;
+    background-color: #2d2d32;
+    color: white;
+    border-radius: 2px;
+    cursor: pointer;
+    height: 30px;
 }
 
 .new-route-buttons{
@@ -38,12 +47,26 @@
     display: flex;
     flex-wrap: wrap;
     margin-left: 15%;
+    position: absolute;
+    top: 13px;
+    left: 58px;
 }
 
 .description-input > label {
-    display: flex;
     flex-wrap: wrap;
     margin-right: 50%;
     width: 80%;
     height: 100%;
+    position: absolute;
+    top: 58px;
+    left: 58px;
+}
+
+#cancel-btn {
+    position: absolute;
+    bottom: -82px;
+    left: 244px;
+    cursor: pointer;
+    border-radius: 2px;
+    height: 30px;
 }
