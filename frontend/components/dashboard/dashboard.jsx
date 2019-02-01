@@ -9,11 +9,12 @@ const msp = ({ session, entities: { athletes } }) => {
 };
 
 const Dashboard = ({currentUser}) => {
+    //username is stored as email. fix this
     return (
         <div className="dashboard-container">
             <div className="left col">
                 <div className="profile">
-                    <h2>hello, {currentUser.username}</h2>
+                    <h2>hello, {currentUser.email}</h2>
                 </div>
                     
             </div>
