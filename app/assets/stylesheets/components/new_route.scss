@@ -1,11 +1,5 @@
 // #bar {
-//     z-index: 0;
-//     position: absolute;
-//     top: 0px;
-//     width: 100%;
-//     background-color: #ffffff;
-//     display: flex;
-//     height: 50px
+//     cursor: pointer;
 // }
 
 .new-map-container{
@@ -25,16 +19,19 @@
     width: 50px;
     color: white;
     border-radius: 5;
+    cursor: pointer;
 }
 
 #clear-route-btn {
     height: 30px;
     width: 50px;
     border-radius: 5;
+    cursor: pointer;
 }
 
 #mode {
     height: 30px;
+    cursor: pointer;
 }
 
 .new-route-stats{
