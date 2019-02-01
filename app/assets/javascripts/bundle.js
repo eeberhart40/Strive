@@ -360,14 +360,13 @@ var msp = function msp(_ref) {
 
 var Dashboard = function Dashboard(_ref2) {
   var currentUser = _ref2.currentUser;
-  //username is stored as email. fix this
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "left col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "hello, ", currentUser.email))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "hello, ", currentUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-feed"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "no recent activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right col"
