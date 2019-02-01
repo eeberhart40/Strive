@@ -1,0 +1,41 @@
+
+ .dashboard-container {
+    height: 100%;
+    background-color: #f5f5fa;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+}
+
+.col {
+     width: 25%;
+    background-color: #f5f5fa;
+    padding: 40px;
+    margin: 50px;
+    
+}
+
+.dashboard-feed {
+
+    width: 35%;
+    background-color:#f5f5fa;
+    margin: 50px;
+
+}
+
+
+
+.col-div {
+    background-color: white;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.profile {
+    height: 250px;
+    background-color: white;
+}

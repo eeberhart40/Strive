@@ -5,7 +5,6 @@ import { Link, withRouter } from 'react-router-dom';
 class ShowRoute extends React.Component {
     constructor(props) {
         super(props);
-        debugger
         this.routeData = JSON.parse(props.route.route_data);
 
     }

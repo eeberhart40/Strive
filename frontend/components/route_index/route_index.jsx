@@ -22,8 +22,8 @@ class RouteIndex extends React.Component {
             );
         });
         return (
-            <div>
-                <ul>
+            <div className="index-container">
+                <ul className="index-list">
                     {routes}
                 </ul>
                 <Link to={"/dashboard"}>Home</Link>

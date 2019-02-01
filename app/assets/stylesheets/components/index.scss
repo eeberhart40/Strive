@@ -1,0 +1,13 @@
+.index-container {
+    height: 100%;
+    background-color: #f5f5fa;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+}
+
+.index-list {
+    flex-wrap: wrap;
+    display: flex;
+}
