@@ -1,0 +1,15 @@
+.show-route-stats{
+    // width: 500px;
+    // height: 30px;
+    position: absolute;
+    bottom: 150px;
+    display: flex;
+     justify-content: space-between;
+    font-size: 20px;
+    background-color: #f1f1f1;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.show-route-stats > div {
+    margin-right: 20px;
+}

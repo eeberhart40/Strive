@@ -64,7 +64,6 @@ class ShowRoute extends React.Component {
 
     //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
     render() {
-
         return (
             <div>
                 <div id="map-show" ref={map => this.mapNode = map}>
@@ -72,8 +71,9 @@ class ShowRoute extends React.Component {
                 <div id='elevation_chart'></div>
                 <br />
                 <div className='show-route-stats'>
-                    <div id='distance'>Distance:  </div>
-                    <div id='duration'>Est. Duration: </div>
+                    <div id='ride-type'>Ride Type: {this.routeData.sport} </div>
+                    <div>Distance: {this.routeData.distance} </div>
+                    <div>Est. Travel Time: {this.routeData.travelTime}</div>
                 </div>
             </div>
         )
