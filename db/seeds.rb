@@ -13,6 +13,3 @@ eric =  Athlete.create!({email: 'eric@gmail', username:'badFrank', password: 'st
 wes =  Athlete.create!({email: 'wes@gmail', username:'bigWes', password: 'starwars'})
 matt =  Athlete.create!({email: 'matt@gmail', username:'mamadoo', password: 'starwars'})
 
-route1 = Route.create!({route_data: 'abc', athlete_id: eric.id})
-route2 = Route.create!({route_data: 'def', athlete_id: wes.id})
-route3 = Route.create!({route_data: 'ghi', athlete_id: matt.id})

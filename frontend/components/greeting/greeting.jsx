@@ -38,7 +38,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                 </li>
                 <li>Challenges</li>
             </ul>
-            <ul className="user-nav">
+            <ul className="user-nav nav-group">
                 {/* <li className="upgrade">Upgrade</li>
                 <li className="notifications">notifications</li> */}
                 <li className="drop-down-menu">Account v

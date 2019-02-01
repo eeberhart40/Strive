@@ -346,23 +346,40 @@ var App = function App() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 
 
-var Dashboard = function Dashboard() {
+var msp = function msp(_ref) {
+  var session = _ref.session,
+      athletes = _ref.entities.athletes;
+  return {
+    currentUser: athletes[session.id]
+  };
+};
+
+var Dashboard = function Dashboard(_ref2) {
+  var currentUser = _ref2.currentUser;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "athlete-profile"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/routes"
-  }, "Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/routes/new"
-  }, "Create Route"));
+    className: "left col"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "profile"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello, ", currentUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dashboard-feed"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "no recent activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "right col"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Clubs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-div"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Dashboard);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp)(Dashboard));
 
 /***/ }),
 
@@ -434,7 +451,7 @@ var Greeting = function Greeting(_ref) {
     }, "Cool Stuff"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "gray-menu"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "user-nav"
+      className: "user-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu"
     }, "Account v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -958,7 +975,11 @@ function (_React$Component) {
           deleteRoute: _this.props.deleteRoute
         });
       });
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "index-list"
+      }, routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: "/dashboard"
       }, "Home"));
     }
@@ -1566,7 +1587,6 @@ function (_React$Component) {
     _classCallCheck(this, ShowRoute);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ShowRoute).call(this, props));
-    debugger;
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;
   }
