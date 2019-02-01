@@ -1,6 +1,6 @@
 .index-container {
     height: 100%;
-    background-color: #f5f5fa;
+    background-color: white;
     width: 100%;
     display: flex;
     position: absolute;
@@ -10,4 +10,15 @@
 .index-list {
     flex-wrap: wrap;
     display: flex;
+    
+}
+
+.route-index-item {
+    padding: 10px;
+}
+
+#map-container {
+    background-color: #f7f7f7;
+    width: 270px;
+    height: 340px;
 }

@@ -64,10 +64,12 @@ class IndexRoute extends React.Component {
             <div>
                 <div id="map-index" ref={map => this.mapNode = map}>
                 </div>
+                <div id='title'>
+                    <Link to={`/routes/${this.props.route.id}`}>{this.props.route.title}</Link></div>
                 <div id='elevation_chart'></div>
                 <br />
-                <div id='distance'>Distance: </div>
-                <div id='duration'>Est. Duration: </div>
+                <div id='distance'>Distance: {this.routeData.distance} </div>
+                <div id='duration'>Est. Duration: {this.routeData.travelTime}</div>
                 <Link to={"/dashboard"}>Home</Link>
                 <Link to={"/routes"}>Index</Link>
             </div>

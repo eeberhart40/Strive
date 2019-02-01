@@ -1052,10 +1052,8 @@ var RouteIndexItem = function RouteIndexItem(props) {
   var route = props.route;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "route-index-item"
-  }, "Route: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/routes/".concat(route.id)
-  }, route.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "map-thumb"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    id: "map-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_index_route__WEBPACK_IMPORTED_MODULE_2__["default"], {
     route: route
   })));
@@ -1181,12 +1179,16 @@ function (_React$Component) {
           return _this2.mapNode = map;
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/routes/".concat(this.props.route.id)
+      }, this.props.route.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "elevation_chart"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
-      }, "Distance: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance: ", this.routeData.distance, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Duration: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, "Est. Duration: ", this.routeData.travelTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/dashboard"
       }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/routes"
