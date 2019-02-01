@@ -23,7 +23,7 @@
 
  #map-new {
    width: 100%;
-   height: 500px;
+  height: 700px;
    float: left;
    position: relative;
  }
@@ -35,3 +35,6 @@
    position: relative;
  };
 
+.route-index-item {
+  padding: 0px;
+}

@@ -15,11 +15,7 @@ class IndexRoute extends React.Component {
             center: this.routeData.path[Math.floor(this.routeData.path.length / 2)], 
             zoom: 11,
             mapTypeId: 'terrain',
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                mapTypeIds: ['roadmap', 'terrain']
-            }
+            mapTypeControl: false,
         });
 
         let start = new google.maps.Marker({
@@ -68,16 +64,15 @@ class IndexRoute extends React.Component {
                     <Link to={`/routes/${this.props.route.id}`}>{this.props.route.title}</Link></div>
                 <div id='elevation_chart'></div>
                 <br />
-                <div id='distance'>Distance: {this.routeData.distance} </div>
-                <div id='duration'>Est. Duration: {this.routeData.travelTime}</div>
-                <Link to={"/dashboard"}>Home</Link>
-                <Link to={"/routes"}>Index</Link>
+                    <div className='stats'>Distance: {this.routeData.distance} mi</div>
+                    <div className='stats'>Est. Moving Time: {this.routeData.travelTime}</div>
+                    <div className='stats'>Sport: 
+                        {this.routeData.sport === 'WALKING' ? ' walk' : ' bike'}
+                    </div>
             </div>
+
         )
     }
-
-
-
 
 }
 

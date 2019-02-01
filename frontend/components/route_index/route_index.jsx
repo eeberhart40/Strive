@@ -23,10 +23,14 @@ class RouteIndex extends React.Component {
         });
         return (
             <div className="index-container">
+                <div className='index-bar'>
+                    <h1>My Routes</h1>
+                    <button id='create-route-btn'><Link to={'routes/new'}>Create New Route</Link></button>
+                </div>
+                <div className="bottom-border"></div>
                 <ul className="index-list">
                     {routes}
                 </ul>
-                <Link to={"/dashboard"}>Home</Link>
             </div>
         );
     };

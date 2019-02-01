@@ -33,11 +33,8 @@ class NewRoute extends React.Component {
             center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
             zoom: 13,
             mapTypeId: 'terrain',
-            mapTypeControl: true,
-            mapTypeControlOptions: {
-                style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-                mapTypeIds: ['roadmap', 'terrain']
-            }
+            mapTypeControl: false,
+    
         });
 
         //adds place search bar with autocomplete
@@ -255,25 +252,24 @@ class NewRoute extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="new-map-container">
                 <div id="map-new" ref={map => this.mapNode = map}>
                 </div>
                 <div id="bar">
                     <p className="auto"><input type="text" id="autoc" /></p>
-                    <button onClick={this.clearRoute}>Clear</button>
-                    <button onClick={this.saveRoute}>Save Route</button>
+                    <button id="clear-route-btn" onClick={this.clearRoute}>Clear</button>
+                    <button id="save-route-btn" onClick={this.saveRoute}>Save</button>
                     {/* <button onClick={this.drawPoly}>POLY</button> */}
                     <select id="mode">
                         <option value="WALKING">Walking</option>
                         <option value="BICYCLING">Bicycling</option>
                     </select>
                 </div>
-                <div id='elevation_chart'></div>
-                <br />
-                <div id='distance'>Distance: </div>
-                <div id='duration'>Est. Duration: </div>
-                <Link to={"/dashboard"}>Home</Link>
-                <Link to={"/routes"}>Index</Link>
+                {/* <div id='elevation_chart'></div> */}
+                <div className='new-route-stats'>
+                    <div id='distance'>Distance: {routeData[distance]} </div>
+                    <div id='duration'>Est. Tavel Time: {routeData[travelTime]} </div>
+                </div>
             </div>
         )
     }

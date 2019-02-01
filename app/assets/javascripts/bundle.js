@@ -366,7 +366,7 @@ var Dashboard = function Dashboard(_ref2) {
     className: "left col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "hello, ", currentUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "hello, ", currentUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-feed"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "no recent activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right col"
@@ -977,11 +977,17 @@ function (_React$Component) {
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "create-route-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: 'routes/new'
+      }, "Create New Route"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bottom-border"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "index-list"
-      }, routes), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: "/dashboard"
-      }, "Home"));
+      }, routes));
     }
   }]);
 
@@ -1124,11 +1130,7 @@ function (_React$Component) {
         center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
         zoom: 11,
         mapTypeId: 'terrain',
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-          mapTypeIds: ['roadmap', 'terrain']
-        }
+        mapTypeControl: false
       });
       var start = new google.maps.Marker({
         position: this.routeData.path[0],
@@ -1185,14 +1187,12 @@ function (_React$Component) {
       }, this.props.route.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "elevation_chart"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "distance"
-      }, "Distance: ", this.routeData.distance, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "duration"
-      }, "Est. Duration: ", this.routeData.travelTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/dashboard"
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/routes"
-      }, "Index"));
+        className: "stats"
+      }, "Distance: ", this.routeData.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats"
+      }, "Est. Moving Time: ", this.routeData.travelTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "stats"
+      }, "Sport:", this.routeData.sport === 'WALKING' ? ' walk' : ' bike'));
     }
   }]);
 
@@ -1282,11 +1282,7 @@ function (_React$Component) {
         // this is Manhattan
         zoom: 13,
         mapTypeId: 'terrain',
-        mapTypeControl: true,
-        mapTypeControlOptions: {
-          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-          mapTypeIds: ['roadmap', 'terrain']
-        }
+        mapTypeControl: false
       }); //adds place search bar with autocomplete
 
       this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(document.getElementById('bar'));
@@ -1492,7 +1488,9 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-map-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-new",
         ref: function ref(map) {
           return _this3.mapNode = map;
@@ -1505,26 +1503,24 @@ function (_React$Component) {
         type: "text",
         id: "autoc"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "clear-route-btn",
         onClick: this.clearRoute
       }, "Clear"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "save-route-btn",
         onClick: this.saveRoute
-      }, "Save Route"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+      }, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
         id: "mode"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "WALKING"
       }, "Walking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "BICYCLING"
       }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "elevation_chart"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-route-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
-      }, "Distance: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance: ", routeData[distance], " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Duration: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/dashboard"
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/routes"
-      }, "Index"));
+      }, "Est. Tavel Time: ", routeData[travelTime], " ")));
     }
   }]);
 

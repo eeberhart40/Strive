@@ -13,7 +13,7 @@ const Dashboard = ({currentUser}) => {
         <div className="dashboard-container">
             <div className="left col">
                 <div className="profile">
-                    <h1>hello, {currentUser.username}</h1>
+                    <h2>hello, {currentUser.username}</h2>
                 </div>
                     
             </div>
