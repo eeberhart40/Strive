@@ -2,7 +2,7 @@
     // width: 500px;
     // height: 30px;
     position: absolute;
-    bottom: 150px;
+    top: 435px;
     display: flex;
      justify-content: space-between;
     font-size: 20px;
@@ -12,4 +12,18 @@
 
 .show-route-stats > div {
     margin-right: 20px;
+}
+
+#delete-route-btn {
+    background-color: #f1f1f1;
+    height: 35px;
+    width: 150px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    color: black;
+    position: absolute;
+    left: 242px;
+    top: 82px;
+    font-size:16px;
 }

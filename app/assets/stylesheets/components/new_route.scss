@@ -39,17 +39,17 @@
 
 .new-route-stats{
     position: absolute;
-    bottom: 30px;
+    top: 670px;
     width: 750px;
     height: 50px;
     margin-left: 50px;
     margin-right: 50px;
-    bottom: 30px;
     background-color: #f2f2f2;
     display: flex;
     justify-content: flex-start;
     font-family: 'Montserrat', sans-serif; 
     font-size: 30px;
+    border: 1px solid gray;
 }
 
 #distance{

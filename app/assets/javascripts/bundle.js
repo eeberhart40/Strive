@@ -1756,7 +1756,7 @@ function (_React$Component) {
       })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "delete-route-btn",
         onClick: this.deleteRoute
-      }, "Delete"));
+      }, "Remove"));
     }
   }]);
 

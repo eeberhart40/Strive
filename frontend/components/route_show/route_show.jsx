@@ -24,7 +24,7 @@ class RouteShow extends React.Component {
                     route={route}
                     />
                 </div> ) : null }
-                <button id="delete-route-btn" onClick={this.deleteRoute}>Delete</button>
+                <button id="delete-route-btn" onClick={this.deleteRoute}>Remove</button>
             </div>
         )
     }
