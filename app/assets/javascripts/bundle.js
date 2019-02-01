@@ -839,24 +839,30 @@ function (_React$Component) {
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "route-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Route Name (required)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "name-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Route Name (required)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.title,
         onChange: this.update('title'),
         className: "route-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "description-input"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         type: "text",
         value: this.state.description,
         onChange: this.update('description'),
         className: "route-input"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "new-route-buttons"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: "save",
         className: "route-save"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "cancel-btn",
         onClick: this.props.closeModalSave
-      }, "Cancel"))));
+      }, "Cancel")))));
     }
   }]);
 
@@ -1248,6 +1254,7 @@ var distance = 'distance';
 var travelTime = 'travelTime';
 var sport = 'sport';
 var routeData = {}; // let polyPath;
+//refactor and make routeData part of state
 
 var NewRoute =
 /*#__PURE__*/
@@ -1260,9 +1267,13 @@ function (_React$Component) {
     _classCallCheck(this, NewRoute);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NewRoute).call(this, props));
+    _this.state = {
+      routeSet: false
+    };
     _this.saveRoute = _this.saveRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.clearRoute = _this.clearRoute.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.drawPoly = this.drawPoly.bind(this);
 
+    _this.displayRoute = _this.displayRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1405,6 +1416,9 @@ function (_React$Component) {
       markers = [];
       waypoints = [];
       routeData = {};
+      this.setState({
+        routeSet: false
+      });
     } // drawPoly() {
     //     let marker1 = new google.maps.Marker({
     //         position: polyPath[0],
@@ -1481,6 +1495,7 @@ function (_React$Component) {
   }, {
     key: "saveRoute",
     value: function saveRoute() {
+      if (Object.keys(routeData).length === 0) return;
       this.props.openModalSave(routeData);
     }
   }, {
@@ -1488,6 +1503,7 @@ function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
+      // const disableButton = Object.keys(routeData).length === 0  ?'disabled': '';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-map-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1657,14 +1673,12 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "elevation_chart"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-route-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
-      }, "Distance: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance:  "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Duration: "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/dashboard"
-      }, "Home"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/routes"
-      }, "Index"));
+      }, "Est. Duration: ")));
     }
   }]);
 
@@ -1737,15 +1751,14 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var route = this.props.route;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, route.title, route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, route.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
       })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "delete-route-btn",
         onClick: this.deleteRoute
-      }, "Delete"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-        to: '/routes'
-      }, "Back to Index"));
+      }, "Delete"));
     }
   }]);
 

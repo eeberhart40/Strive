@@ -14,14 +14,17 @@ let travelTime = 'travelTime';
 let sport = 'sport';
 let routeData = {};
 // let polyPath;
+//refactor and make routeData part of state
 
 class NewRoute extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {routeSet: false};
    
         this.saveRoute = this.saveRoute.bind(this);
         this.clearRoute = this.clearRoute.bind(this);
         // this.drawPoly = this.drawPoly.bind(this);
+        this.displayRoute = this.displayRoute.bind(this);
     }
 
     componentDidMount() {
@@ -138,7 +141,7 @@ class NewRoute extends React.Component {
             origin: origin,
             destination: destination,
             travelMode: google.maps.TravelMode[selectedMode],
-        }, function (response, status) {
+        },  (response, status) => {
             if (status === 'OK') {
                 display.setDirections(response);
                 routeData[distance] = that.getMiles(response.routes[0].legs[0].distance.value);
@@ -152,7 +155,7 @@ class NewRoute extends React.Component {
             } else {
                 alert('Could not display directions due to: ' + status);
             }
-        });
+            });
 
     }
 
@@ -163,6 +166,7 @@ class NewRoute extends React.Component {
         markers = [];
         waypoints = [];
         routeData = {};
+        this.setState({routeSet: false});
     }
 
     // drawPoly() {
@@ -247,10 +251,12 @@ class NewRoute extends React.Component {
     //     }
 
     saveRoute(){
+        if(Object.keys(routeData).length === 0) return
         this.props.openModalSave(routeData);
     }
 
     render() {
+        // const disableButton = Object.keys(routeData).length === 0  ?'disabled': '';
         return (
             <div className="new-map-container">
                 <div id="map-new" ref={map => this.mapNode = map}>
@@ -258,7 +264,9 @@ class NewRoute extends React.Component {
                 <div id="bar">
                     <p className="auto"><input type="text" id="autoc" /></p>
                     <button id="clear-route-btn" onClick={this.clearRoute}>Clear</button>
-                    <button id="save-route-btn" onClick={this.saveRoute}>Save</button>
+                    <button id="save-route-btn" onClick={this.saveRoute}>
+                        Save
+                    </button>
                     {/* <button onClick={this.drawPoly}>POLY</button> */}
                     <select id="mode">
                         <option value="WALKING">Walking</option>

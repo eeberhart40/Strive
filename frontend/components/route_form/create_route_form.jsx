@@ -47,23 +47,28 @@ class CreateRouteForm extends React.Component {
                     {errors}
                 </ul> */}
                 <div className="route-form">
-                    <br/>
-                    <label>
-                        Route Name (required)
-                        <input type="text"
-                        value={this.state.title}
-                        onChange={this.update('title')}
-                        className='route-input'/>
-                    </label>
-                    <label>
-                        Description
-                        <textarea type="text"
-                        value={this.state.description}
-                        onChange={this.update('description')}
-                        className='route-input'></textarea>
-                    </label>
-                    <input type="submit" value="save" className="route-save"/>
-                    <button id="cancel-btn" onClick={this.props.closeModalSave}>Cancel</button>
+                    <div className='name-input'>
+                        <label>
+                            Route Name (required)
+                            <input type="text"
+                            value={this.state.title}
+                            onChange={this.update('title')}
+                            className='route-input'/>
+                        </label>
+                    </div>
+                    <div className="description-input">
+                        <label>
+                            Description
+                            <textarea type="text"
+                            value={this.state.description}
+                            onChange={this.update('description')}
+                            className='route-input'></textarea>
+                        </label>
+                    </div>
+                    <div className="new-route-buttons">
+                        <input type="submit" value="save" className="route-save"/>
+                        <button id="cancel-btn" onClick={this.props.closeModalSave}>Cancel</button>
+                    </div>
                 </div>
                 </form>
             </div>

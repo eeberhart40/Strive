@@ -1,0 +1,49 @@
+.route-form-container {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    color: black;
+    display: flex;
+
+}
+
+.route-form {
+    position: absolute;
+    top: 100px;
+    margin-left: -45px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center;
+}
+
+.route-input{
+    width: 200px;
+
+}
+
+.route-save {
+    width: 100px;
+}
+
+.new-route-buttons{
+
+}
+.name-input {
+    height: 50px;
+}
+.name-input > label {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15%;
+}
+
+.description-input > label {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 50%;
+    width: 80%;
+    height: 100%;
+}
