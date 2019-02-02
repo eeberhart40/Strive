@@ -1255,6 +1255,7 @@ var travelTime = 'travelTime';
 var sport = 'sport';
 var routeData = {}; // let polyPath;
 //refactor and make routeData part of state
+//route is persisting--> need to refactor so that it clears
 
 var NewRoute =
 /*#__PURE__*/
