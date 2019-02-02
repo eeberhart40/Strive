@@ -281,7 +281,7 @@ class NewRoute extends React.Component {
                 {/* <div id='elevation_chart'></div> */}
                 <div className='new-route-stats'>
                     <div id='distance'>Distance: {routeData[distance]}</div>
-                    <div id='duration'>Est. Tavel Time: {routeData[travelTime]} </div>
+                    <div id='duration'>Est. Travel Time: {routeData[travelTime]} </div>
                 </div>
             </div>
         )

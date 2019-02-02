@@ -51,7 +51,7 @@ a {
     font-weight: 900;
     font-size: 22px;
     color: #437fa9;
-
+    display: flex;
 }
 
 #title:hover a {
@@ -60,7 +60,8 @@ a {
 
 
 .stats {
-    margin: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
     font-size: 18px;
 }
 

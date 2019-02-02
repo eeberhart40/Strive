@@ -1537,7 +1537,7 @@ function (_React$Component) {
         id: "distance"
       }, "Distance: ", routeData[distance]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Tavel Time: ", routeData[travelTime], " ")));
+      }, "Est. Travel Time: ", routeData[travelTime], " ")));
     }
   }]);
 
