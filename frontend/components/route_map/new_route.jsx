@@ -153,9 +153,9 @@ class NewRoute extends React.Component {
                 routeData[travelTime] = that.getTravelTime(response.routes[0].legs[0].duration.value)
                 routeData[path] = response.routes[0].overview_path;
                 document.getElementById('distance').innerHTML =
-                    routeData[distance] + " miles";
+                    "Distance: " + routeData[distance] + " mi";
                 document.getElementById('duration').innerHTML =
-                    routeData[travelTime];
+                    "Est. Travel Time: " + routeData[travelTime];
                 // polyPath = routeData[path];
             } else {
                 alert('Could not display directions due to: ' + status);
@@ -280,7 +280,7 @@ class NewRoute extends React.Component {
                 </div>
                 {/* <div id='elevation_chart'></div> */}
                 <div className='new-route-stats'>
-                    <div id='distance'>Distance: {routeData[distance]} </div>
+                    <div id='distance'>Distance: {routeData[distance]}</div>
                     <div id='duration'>Est. Tavel Time: {routeData[travelTime]} </div>
                 </div>
             </div>

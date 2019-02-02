@@ -1401,8 +1401,8 @@ function (_React$Component) {
           routeData[distance] = that.getMiles(response.routes[0].legs[0].distance.value);
           routeData[travelTime] = that.getTravelTime(response.routes[0].legs[0].duration.value);
           routeData[path] = response.routes[0].overview_path;
-          document.getElementById('distance').innerHTML = routeData[distance] + " miles";
-          document.getElementById('duration').innerHTML = routeData[travelTime]; // polyPath = routeData[path];
+          document.getElementById('distance').innerHTML = "Distance: " + routeData[distance] + " mi";
+          document.getElementById('duration').innerHTML = "Est. Travel Time: " + routeData[travelTime]; // polyPath = routeData[path];
         } else {
           alert('Could not display directions due to: ' + status);
         }
@@ -1535,7 +1535,7 @@ function (_React$Component) {
         className: "new-route-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
-      }, "Distance: ", routeData[distance], " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance: ", routeData[distance]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
       }, "Est. Tavel Time: ", routeData[travelTime], " ")));
     }
