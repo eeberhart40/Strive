@@ -20,13 +20,8 @@ class Api::RoutesController < ApplicationController
 
     def destroy
         @route = Route.find(params[:id])
-
-        if @route 
-            @route.destroy
-            render 'api/routes' 
-        else
-            render json: @route.errors.full_messages, status: 422 
-        end
+        @route.destroy
+        render 'api/routes' 
     end
 
     private 
