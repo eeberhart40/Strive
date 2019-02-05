@@ -15,4 +15,6 @@ class Route < ApplicationRecord
     validates :athlete_id, :route_data, :title, presence: true
 
     belongs_to :athlete 
+    has_many :activities
+
 end

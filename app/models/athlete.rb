@@ -20,6 +20,7 @@ class Athlete < ApplicationRecord
     after_initialize :ensure_session_token
 
     has_many :routes
+    has_many :activities
 
     def self.find_by_credentials(username, password)
         user = Athlete.find_by(username: username)
