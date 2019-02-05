@@ -3,22 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { openModalSave } from '../../actions/modal_actions';
 
-//*refactor so that user can save route, close modal, and create another route
-//will require clearing routeData in state upon saving a route
-
-let waypoints = [];
-let markers = [];
-let path = 'path';
-let distance = 'distance';
-let travelTime = 'travelTime';
-let sport = 'sport';
-let routeData = {};
-// let polyPath;
-//refactor and make routeData part of state
-
-
-//route is persisting--> need to refactor so that it clears
-
 
 class NewRoute extends React.Component {
     constructor(props) {
@@ -31,7 +15,6 @@ class NewRoute extends React.Component {
 
         this.saveRoute = this.saveRoute.bind(this);
         this.clearRoute = this.clearRoute.bind(this);
-        // this.drawPoly = this.drawPoly.bind(this);
         this.displayRoute = this.displayRoute.bind(this);
     }
 
@@ -78,12 +61,7 @@ class NewRoute extends React.Component {
             draggable: true,
             map: this.map,
         });
-        // this.polyLine = new google.maps.Polyline({
-        //     strokeColor: '#0000CC',
-        //     strokeOpacity: 1.0,
-        //     map: this.map
-        // })
-        
+
         //sets map to current location if browser location enabled
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {

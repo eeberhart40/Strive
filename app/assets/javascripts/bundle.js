@@ -1244,18 +1244,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 
 
- //*refactor so that user can save route, close modal, and create another route
-//will require clearing routeData in state upon saving a route
 
-var waypoints = [];
-var markers = [];
-var path = 'path';
-var distance = 'distance';
-var travelTime = 'travelTime';
-var sport = 'sport';
-var routeData = {}; // let polyPath;
-//refactor and make routeData part of state
-//route is persisting--> need to refactor so that it clears
 
 var NewRoute =
 /*#__PURE__*/
@@ -1273,8 +1262,7 @@ function (_React$Component) {
     _this.markers = [];
     _this.waypoints = [];
     _this.saveRoute = _this.saveRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.clearRoute = _this.clearRoute.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.drawPoly = this.drawPoly.bind(this);
-
+    _this.clearRoute = _this.clearRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.displayRoute = _this.displayRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -1319,12 +1307,7 @@ function (_React$Component) {
       this.directionsDisplay = new google.maps.DirectionsRenderer({
         draggable: true,
         map: this.map
-      }); // this.polyLine = new google.maps.Polyline({
-      //     strokeColor: '#0000CC',
-      //     strokeOpacity: 1.0,
-      //     map: this.map
-      // })
-      //sets map to current location if browser location enabled
+      }); //sets map to current location if browser location enabled
 
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
