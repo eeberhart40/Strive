@@ -23,8 +23,12 @@ let routeData = {};
 class NewRoute extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {routeSet: false};
+        // this.state = {routeSet: false};
    
+        this.routeData = {};
+        this.markers = [];
+        this.waypoints = [];
+
         this.saveRoute = this.saveRoute.bind(this);
         this.clearRoute = this.clearRoute.bind(this);
         // this.drawPoly = this.drawPoly.bind(this);
@@ -106,34 +110,34 @@ class NewRoute extends React.Component {
             //
             const coords = event.latLng;
             this.handleClick(coords);
-            waypoints.push(coords);
-            if (waypoints.length === 2) {
+            this.waypoints.push(coords);
+            if (this.waypoints.length === 2) {
                 this.removeOriginalMarkers();
-                this.displayRoute(waypoints[0], waypoints[1], this.directionsService, this.directionsDisplay);
+                this.displayRoute(this.waypoints[0], this.waypoints[1], this.directionsService, this.directionsDisplay);
             }
 
         });
 
         document.getElementById('mode').addEventListener('change', function () {
-            that.displayRoute(waypoints[0], waypoints[1], that.directionsService, that.directionsDisplay);
+            that.displayRoute(that.waypoints[0], that.waypoints[1], that.directionsService, that.directionsDisplay);
         });
 
     }
 
 
     handleClick(coords) {
-        if (markers.length > 1) return
+        if (this.markers.length > 1) return
         let marker = new google.maps.Marker({
             position: coords,
             map: this.map
         })
-        markers.push(marker);
+        this.markers.push(marker);
     }
 
 
     removeOriginalMarkers() {
-        for (let i = 0; i < markers.length; i++) {
-            markers[i].setMap(null);
+        for (let i = 0; i < this.markers.length; i++) {
+            this.markers[i].setMap(null);
         }
     }
 
@@ -141,7 +145,7 @@ class NewRoute extends React.Component {
     displayRoute(origin, destination, service, display) {
         let that = this;
         let selectedMode = document.getElementById('mode').value;
-        routeData[sport] = selectedMode;
+        this.routeData['sport'] = selectedMode;
         service.route({
             origin: origin,
             destination: destination,
@@ -149,13 +153,13 @@ class NewRoute extends React.Component {
         },  (response, status) => {
             if (status === 'OK') {
                 display.setDirections(response);
-                routeData[distance] = that.getMiles(response.routes[0].legs[0].distance.value);
-                routeData[travelTime] = that.getTravelTime(response.routes[0].legs[0].duration.value)
-                routeData[path] = response.routes[0].overview_path;
+                this.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
+                this.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value)
+                this.routeData['path'] = response.routes[0].overview_path;
                 document.getElementById('distance').innerHTML =
-                    "Distance: " + routeData[distance] + " mi";
+                    "Distance: " + this.routeData['distance'] + " mi";
                 document.getElementById('duration').innerHTML =
-                    "Est. Travel Time: " + routeData[travelTime];
+                    "Est. Travel Time: " + this.routeData['travelTime'];
                 // polyPath = routeData[path];
             } else {
                 alert('Could not display directions due to: ' + status);
@@ -166,12 +170,12 @@ class NewRoute extends React.Component {
 
     clearRoute() {
         this.directionsDisplay.set('directions', null);
-        // document.getElementById('distance').innerHTML = "";
-        // document.getElementById('duration').innerHTML = "";
-        markers = [];
-        waypoints = [];
-        routeData = {};
-        this.setState({routeSet: false});
+        document.getElementById('distance').innerHTML = "Distance:";
+        document.getElementById('duration').innerHTML = "Est. Travel Time";
+        this.markers = [];
+        this.waypoints = [];
+        this.routeData = {};
+        // this.setState({routeSet: false});
     }
 
     // drawPoly() {
@@ -256,8 +260,8 @@ class NewRoute extends React.Component {
     //     }
 
     saveRoute(){
-        if(Object.keys(routeData).length === 0) return
-        this.props.openModalSave(routeData);
+        if(Object.keys(this.routeData).length === 0) return
+        this.props.openModalSave(this.routeData);
     }
 
     render() {
@@ -280,8 +284,8 @@ class NewRoute extends React.Component {
                 </div>
                 {/* <div id='elevation_chart'></div> */}
                 <div className='new-route-stats'>
-                    <div id='distance'>Distance: {routeData[distance]}</div>
-                    <div id='duration'>Est. Travel Time: {routeData[travelTime]} </div>
+                    <div id='distance'>Distance: {this.routeData['distance']}</div>
+                    <div id='duration'>Est. Travel Time: {this.routeData['travelTime']} </div>
                 </div>
             </div>
         )

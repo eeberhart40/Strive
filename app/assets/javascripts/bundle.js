@@ -1267,10 +1267,11 @@ function (_React$Component) {
 
     _classCallCheck(this, NewRoute);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewRoute).call(this, props));
-    _this.state = {
-      routeSet: false
-    };
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NewRoute).call(this, props)); // this.state = {routeSet: false};
+
+    _this.routeData = {};
+    _this.markers = [];
+    _this.waypoints = [];
     _this.saveRoute = _this.saveRoute.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.clearRoute = _this.clearRoute.bind(_assertThisInitialized(_assertThisInitialized(_this))); // this.drawPoly = this.drawPoly.bind(this);
 
@@ -1355,42 +1356,44 @@ function (_React$Component) {
 
         _this2.handleClick(coords);
 
-        waypoints.push(coords);
+        _this2.waypoints.push(coords);
 
-        if (waypoints.length === 2) {
+        if (_this2.waypoints.length === 2) {
           _this2.removeOriginalMarkers();
 
-          _this2.displayRoute(waypoints[0], waypoints[1], _this2.directionsService, _this2.directionsDisplay);
+          _this2.displayRoute(_this2.waypoints[0], _this2.waypoints[1], _this2.directionsService, _this2.directionsDisplay);
         }
       });
       document.getElementById('mode').addEventListener('change', function () {
-        that.displayRoute(waypoints[0], waypoints[1], that.directionsService, that.directionsDisplay);
+        that.displayRoute(that.waypoints[0], that.waypoints[1], that.directionsService, that.directionsDisplay);
       });
     }
   }, {
     key: "handleClick",
     value: function handleClick(coords) {
-      if (markers.length > 1) return;
+      if (this.markers.length > 1) return;
       var marker = new google.maps.Marker({
         position: coords,
         map: this.map
       });
-      markers.push(marker);
+      this.markers.push(marker);
     }
   }, {
     key: "removeOriginalMarkers",
     value: function removeOriginalMarkers() {
-      for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
+      for (var i = 0; i < this.markers.length; i++) {
+        this.markers[i].setMap(null);
       }
     } //displays the route and length in miles
 
   }, {
     key: "displayRoute",
     value: function displayRoute(origin, destination, service, display) {
+      var _this3 = this;
+
       var that = this;
       var selectedMode = document.getElementById('mode').value;
-      routeData[sport] = selectedMode;
+      this.routeData['sport'] = selectedMode;
       service.route({
         origin: origin,
         destination: destination,
@@ -1398,11 +1401,11 @@ function (_React$Component) {
       }, function (response, status) {
         if (status === 'OK') {
           display.setDirections(response);
-          routeData[distance] = that.getMiles(response.routes[0].legs[0].distance.value);
-          routeData[travelTime] = that.getTravelTime(response.routes[0].legs[0].duration.value);
-          routeData[path] = response.routes[0].overview_path;
-          document.getElementById('distance').innerHTML = "Distance: " + routeData[distance] + " mi";
-          document.getElementById('duration').innerHTML = "Est. Travel Time: " + routeData[travelTime]; // polyPath = routeData[path];
+          _this3.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
+          _this3.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
+          _this3.routeData['path'] = response.routes[0].overview_path;
+          document.getElementById('distance').innerHTML = "Distance: " + _this3.routeData['distance'] + " mi";
+          document.getElementById('duration').innerHTML = "Est. Travel Time: " + _this3.routeData['travelTime']; // polyPath = routeData[path];
         } else {
           alert('Could not display directions due to: ' + status);
         }
@@ -1411,15 +1414,12 @@ function (_React$Component) {
   }, {
     key: "clearRoute",
     value: function clearRoute() {
-      this.directionsDisplay.set('directions', null); // document.getElementById('distance').innerHTML = "";
-      // document.getElementById('duration').innerHTML = "";
-
-      markers = [];
-      waypoints = [];
-      routeData = {};
-      this.setState({
-        routeSet: false
-      });
+      this.directionsDisplay.set('directions', null);
+      document.getElementById('distance').innerHTML = "Distance:";
+      document.getElementById('duration').innerHTML = "Est. Travel Time";
+      this.markers = [];
+      this.waypoints = [];
+      this.routeData = {}; // this.setState({routeSet: false});
     } // drawPoly() {
     //     let marker1 = new google.maps.Marker({
     //         position: polyPath[0],
@@ -1496,13 +1496,13 @@ function (_React$Component) {
   }, {
     key: "saveRoute",
     value: function saveRoute() {
-      if (Object.keys(routeData).length === 0) return;
-      this.props.openModalSave(routeData);
+      if (Object.keys(this.routeData).length === 0) return;
+      this.props.openModalSave(this.routeData);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       // const disableButton = Object.keys(routeData).length === 0  ?'disabled': '';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1510,7 +1510,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-new",
         ref: function ref(map) {
-          return _this3.mapNode = map;
+          return _this4.mapNode = map;
         }
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "bar"
@@ -1535,9 +1535,9 @@ function (_React$Component) {
         className: "new-route-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
-      }, "Distance: ", routeData[distance]), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance: ", this.routeData['distance']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Travel Time: ", routeData[travelTime], " ")));
+      }, "Est. Travel Time: ", this.routeData['travelTime'], " ")));
     }
   }]);
 
