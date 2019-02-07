@@ -11,7 +11,9 @@ class Api::ActivitiesController < ApplicationController
     end
 
     def index
-        @activities = current_user.activities
+        @activities = Activity.all
+        # change this to just see the current users activities once done testing
+        # @activities = current_user.activities
     end
 
     def show 
@@ -36,7 +38,7 @@ class Api::ActivitiesController < ApplicationController
     def destroy
         @activity = Activity.find(params[:id])
         @activity.destroy
-        render 'api/activities'
+        render json: ["Activity successfully removed"], status: 200
     end
     
     private

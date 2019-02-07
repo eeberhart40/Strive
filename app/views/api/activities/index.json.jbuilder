@@ -1,5 +1,6 @@
+
 @activities.each do |activity|
         json.set! activity.id do 
-        json.partial! activity: activity
+        json.partial! 'api/activities/activities', activity: activity
         end
 end

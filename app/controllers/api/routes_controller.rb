@@ -21,7 +21,7 @@ class Api::RoutesController < ApplicationController
     def destroy
         @route = Route.find(params[:id])
         @route.destroy
-        render 'api/routes' 
+        render json: ["route successfully removed"], status: 200
     end
 
     private 
