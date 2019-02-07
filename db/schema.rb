@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_05_155430) do
+ActiveRecord::Schema.define(version: 2019_02_07_144754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_155430) do
     t.integer "route_id", null: false
     t.string "sport", null: false
     t.string "title", null: false
-    t.date "time", null: false
+    t.string "time", null: false
     t.float "distance", null: false
     t.integer "elevation"
     t.integer "description"

@@ -20,6 +20,7 @@ class Api::ActivitiesController < ApplicationController
 
     def edit
         @activity = Activity.find(params[:id]) 
+        render 'api/activities/show'
     end
     
     def update

@@ -1,1 +1,1 @@
-json.extract! @activity, :id, :athlete_id, :route_id, :created_at, :title, :description, :time, :distance, :elevation 
+json.partial! 'api/activities/activity', activity: @activity

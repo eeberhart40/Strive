@@ -16,7 +16,7 @@
 #
 
 class Activity < ApplicationRecord
-    validates :athlete_id, :route_id, :sport, :title, :time, :distance presence: true
+    validates :athlete_id, :route_id, :sport, :title, :time, :distance, presence: true
 
     belongs_to :athlete 
     belongs_to :route 
