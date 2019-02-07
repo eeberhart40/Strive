@@ -26,7 +26,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                 </li>
                 <li className="drop-down-menu">Training v
                     <ul className="options">
-                        <li className="list-option">My Activites</li>
+                        <li className="list-option">
+                            <Link to="/activities">My Activites</Link> 
+                        </li>
                         <div className="gray-menu"></div>
                     </ul>
                 </li>

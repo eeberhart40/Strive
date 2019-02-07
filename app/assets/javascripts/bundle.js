@@ -377,11 +377,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _route_index_route_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./route_index/route_index_container */ "./frontend/components/route_index/route_index_container.jsx");
 /* harmony import */ var _route_show_route_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./route_show/route_show_container */ "./frontend/components/route_show/route_show_container.js");
 /* harmony import */ var _route_map_new_route__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./route_map/new_route */ "./frontend/components/route_map/new_route.jsx");
+/* harmony import */ var _activity_index_activity_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./activity_index/activity_index_container */ "./frontend/components/activity_index/activity_index_container.jsx");
 
 
 
 
 ;
+
 
 
 
@@ -409,10 +411,208 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/routes",
     component: _route_index_route_index_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
+    path: "/activities",
+    component: _activity_index_activity_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   })));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./frontend/components/activity_index/activity_index_container.jsx":
+/*!*************************************************************************!*\
+  !*** ./frontend/components/activity_index/activity_index_container.jsx ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/activity_actions */ "./frontend/actions/activity_actions.js");
+/* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
+/* harmony import */ var _activty_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./activty_index */ "./frontend/components/activity_index/activty_index.jsx");
+
+
+
+
+
+var msp = function msp(state) {
+  var activities = state.entities.activities;
+  return {
+    activities: activities
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchActivities: function fetchActivities() {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["fetchActivities"])());
+    },
+    deleteActivity: function deleteActivity(id) {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["deleteActivity"])(id));
+    },
+    updateActivity: function updateActivity(id) {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["updateActivity"])(id));
+    },
+    fetchRoute: function fetchRoute(id) {
+      return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRoute"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_activty_index__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/activity_index/activity_index_item.jsx":
+/*!********************************************************************!*\
+  !*** ./frontend/components/activity_index/activity_index_item.jsx ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
+
+
+var ActivityIndexItem = function ActivityIndexItem(props) {
+  var activity = props.activity; // let routeId = activity.route_id;
+  // let route = props.fetchRoute(routeId);
+  // debugger
+  // let routeData = JSON.parse(route.route_data);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+    className: "activity-index-item-row"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-sport"
+  }, activity.sport), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-date"
+  }, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-title"
+  }, activity.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-time"
+  }, activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-distance"
+  }, activity.distance), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-elevation"
+  }, activity.elevation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+    className: "view-col col-actions"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "activity-action-list"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    id: "delete-activity-btn",
+    onClick: function onClick() {
+      return props.deleteActivity(activity.id);
+    }
+  }, "Delete")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ActivityIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/activity_index/activty_index.jsx":
+/*!**************************************************************!*\
+  !*** ./frontend/components/activity_index/activty_index.jsx ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _activity_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activity_index_item */ "./frontend/components/activity_index/activity_index_item.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ActivityIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ActivityIndex, _React$Component);
+
+  function ActivityIndex() {
+    _classCallCheck(this, ActivityIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ActivityIndex).apply(this, arguments));
+  }
+
+  _createClass(ActivityIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchActivities();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      var activities = Object.values(this.props.activities).map(function (activity) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activity_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: activity.id,
+          activity: activity,
+          updateActivity: _this.props.updateActivity,
+          deleteActivity: _this.props.deleteActivity,
+          fetchRoute: _this.props.fetchRoute
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-index-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activities-table-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "activitites-table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-sport"
+      }, "Sport"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-date"
+      }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-title"
+      }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-time"
+      }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-distance"
+      }, "Distance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "col-elevation"
+      }, "Elevation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+        className: "actvity-index-list"
+      }, activities))));
+    }
+  }]);
+
+  return ActivityIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ActivityIndex);
 
 /***/ }),
 
@@ -521,7 +721,9 @@ var Greeting = function Greeting(_ref) {
       className: "options"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-option"
-    }, "My Activites"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "/activities"
+    }, "My Activites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "gray-menu"
     }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu"
