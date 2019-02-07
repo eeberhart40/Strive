@@ -2133,6 +2133,50 @@ var Splash = function Splash() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/activities_reducer.js":
+/*!*************************************************!*\
+  !*** ./frontend/reducers/activities_reducer.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/activity_actions */ "./frontend/actions/activity_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var activitiesReducer = function activitiesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var newState;
+
+  switch (action.type) {
+    case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ALL_ACTIVITIES"]:
+      return action.activities;
+
+    case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_ACTIVITY"]:
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, _defineProperty({}, action.activity.id, action.activity));
+      return newState;
+
+    case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__["REMOVE_ACTIVITY"]:
+      newState = lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state);
+      delete newState[action.activityId];
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (activitiesReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/athletes_reducer.js":
 /*!***********************************************!*\
   !*** ./frontend/reducers/athletes_reducer.js ***!
@@ -2180,12 +2224,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _map_routes_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./map_routes_reducer */ "./frontend/reducers/map_routes_reducer.js");
 /* harmony import */ var _athletes_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./athletes_reducer */ "./frontend/reducers/athletes_reducer.js");
+/* harmony import */ var _activities_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./activities_reducer */ "./frontend/reducers/activities_reducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   athletes: _athletes_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  routes: _map_routes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  routes: _map_routes_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  activities: _activities_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
