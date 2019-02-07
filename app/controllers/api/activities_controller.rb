@@ -20,18 +20,12 @@ class Api::ActivitiesController < ApplicationController
         @activity = Activity.find(params[:id])
     end
 
-    def edit
-        @activity = Activity.find(params[:id]) 
-        render 'api/activities/show'
-    end
-    
     def update
         @activity = current_user.activities.find(params[:id])
         if @activity.update_attributes(activity_params)
             render 'api/activities/show'
         else
-            render json: @activity.errors.full_messages
-            render 'api/activities/show'
+            render json: @activity.errors.full_messages, status: 422
         end
     end
 

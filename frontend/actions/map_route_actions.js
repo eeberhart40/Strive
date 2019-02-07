@@ -14,7 +14,7 @@ const receiveRoute = (route) => {
     return({
         type: RECEIVE_ROUTE,
         route: route,
-        // routeId: route.id
+
     });
 };
 

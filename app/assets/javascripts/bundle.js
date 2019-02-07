@@ -86,6 +86,88 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/actions/activity_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/activity_actions.js ***!
+  \**********************************************/
+/*! exports provided: RECEIVE_ALL_ACTIVITIES, RECEIVE_ACTIVITY, REMOVE_ACTIVITY, fetchActivities, fetchActivity, createActivity, deleteActivity, updateActivity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_ACTIVITIES", function() { return RECEIVE_ALL_ACTIVITIES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ACTIVITY", function() { return RECEIVE_ACTIVITY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ACTIVITY", function() { return REMOVE_ACTIVITY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchActivities", function() { return fetchActivities; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchActivity", function() { return fetchActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createActivity", function() { return createActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteActivity", function() { return deleteActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateActivity", function() { return updateActivity; });
+/* harmony import */ var _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/activity_api_util */ "./frontend/util/activity_api_util.js");
+
+var RECEIVE_ALL_ACTIVITIES = "RECEIVE_ALL_ACTIVITIES";
+var RECEIVE_ACTIVITY = "RECEIVE_ACTIVITY";
+var REMOVE_ACTIVITY = "REMOVE_ACTIVITY";
+
+var receiveAllActivities = function receiveAllActivities(activities) {
+  return {
+    type: RECEIVE_ALL_ACTIVITIES,
+    activities: activities
+  };
+};
+
+var receiveActivity = function receiveActivity(activity) {
+  return {
+    type: RECEIVE_ACTIVITY,
+    activity: activity
+  };
+};
+
+var removeActivity = function removeActivity(activityId) {
+  return {
+    type: REMOVE_ACTIVITY,
+    activityId: activityId
+  };
+};
+
+var fetchActivities = function fetchActivities() {
+  return function (dispatch) {
+    return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchActivities"]().then(function (activities) {
+      return dispatch(receiveAllActivities(activities));
+    });
+  };
+};
+var fetchActivity = function fetchActivity(id) {
+  return function (dispatch) {
+    return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchActivity"](id).then(function (activity) {
+      return dispatch(receiveActivity(activity));
+    });
+  };
+};
+var createActivity = function createActivity(activity) {
+  return function (dispatch) {
+    return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["createActivity"](activity).then(function (activity) {
+      return dispatch(receiveActivity(activity));
+    });
+  };
+};
+var deleteActivity = function deleteActivity(id) {
+  return function (dispatch) {
+    return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["deleteActivity"](id).then(function () {
+      return dispatch(removeActivity(id));
+    });
+  };
+};
+var updateActivity = function updateActivity(activity) {
+  return function (dispatch) {
+    return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["updateActivity"](activity).then(function (activity) {
+      return dispatch(recieveActivity(activity));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/map_route_actions.js":
 /*!***********************************************!*\
   !*** ./frontend/actions/map_route_actions.js ***!
@@ -118,8 +200,7 @@ var receiveAllRoutes = function receiveAllRoutes(routes) {
 var receiveRoute = function receiveRoute(route) {
   return {
     type: RECEIVE_ROUTE,
-    route: route // routeId: route.id
-
+    route: route
   };
 };
 
@@ -2418,12 +2499,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/store */ "./frontend/store/store.js");
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
-/* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
+/* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/activity_actions */ "./frontend/actions/activity_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
 
+ // import { fetchActivities, fetchActivity, deleteActivity, createActivity, updateActivity } from './util/activity_api_util';
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -2446,16 +2528,71 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var root = document.getElementById('root'); //testing
 
-  window.createRoute = _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_4__["createRoute"];
-  window.deleteRoute = _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_4__["deleteRoute"];
-  window.fetchRoute = _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_4__["fetchRoute"];
-  window.fetchRoutes = _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_4__["fetchRoutes"];
-  window.getState = store.getState;
+  window.fetchActivities = _actions_activity_actions__WEBPACK_IMPORTED_MODULE_4__["fetchActivities"]; // window.fetchActivity = fetchActivity;
+  // window.deleteActivity = deleteActivity;
+  // window.createActivity = createActivity;
+  // window.updateActivity = updateActivity;
+
   window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.fetchActivities = _actions_activity_actions__WEBPACK_IMPORTED_MODULE_4__["fetchActivities"];
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
   }), root);
 });
+
+/***/ }),
+
+/***/ "./frontend/util/activity_api_util.js":
+/*!********************************************!*\
+  !*** ./frontend/util/activity_api_util.js ***!
+  \********************************************/
+/*! exports provided: fetchActivities, fetchActivity, deleteActivity, createActivity, updateActivity */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchActivities", function() { return fetchActivities; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchActivity", function() { return fetchActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteActivity", function() { return deleteActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createActivity", function() { return createActivity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateActivity", function() { return updateActivity; });
+var fetchActivities = function fetchActivities() {
+  return $.ajax({
+    method: "GET",
+    url: "api/activities"
+  });
+};
+var fetchActivity = function fetchActivity(id) {
+  return $.ajax({
+    method: "GET",
+    url: "api/activities/".concat(id)
+  });
+};
+var deleteActivity = function deleteActivity(id) {
+  return $.ajax({
+    method: "DELETE",
+    url: "api/activities/".concat(id)
+  });
+};
+var createActivity = function createActivity(activity) {
+  return $.ajax({
+    method: "POST",
+    url: "api/activities",
+    data: {
+      activity: activity
+    }
+  });
+};
+var updateActivity = function updateActivity(activity) {
+  return $.ajax({
+    method: "PATCH",
+    url: "api/activities/".concat(activity.id),
+    data: {
+      activity: activity
+    }
+  });
+};
 
 /***/ }),
 

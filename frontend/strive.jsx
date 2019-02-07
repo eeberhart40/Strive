@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
-import { createRoute, deleteRoute, fetchRoute, fetchRoutes } from './actions/map_route_actions';
+// import { fetchActivities, fetchActivity, deleteActivity, createActivity, updateActivity } from './util/activity_api_util';
+import { fetchActivities } from './actions/activity_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -22,12 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
 
     //testing
-    window.createRoute = createRoute;
-    window.deleteRoute = deleteRoute;
-    window.fetchRoute = fetchRoute;
-    window.fetchRoutes = fetchRoutes;
-    window.getState = store.getState;
+    window.fetchActivities = fetchActivities;
+    // window.fetchActivity = fetchActivity;
+    // window.deleteActivity = deleteActivity;
+    // window.createActivity = createActivity;
+    // window.updateActivity = updateActivity;
+
     window.dispatch = store.dispatch;
+    window.getState = store.getState;
+    window.fetchActivities = fetchActivities;
+
+
 
     ReactDOM.render(<Root store={store} />, root);
 });
