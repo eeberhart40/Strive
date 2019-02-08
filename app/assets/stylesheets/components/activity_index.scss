@@ -1,0 +1,75 @@
+.activity-index-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 66px;
+    padding-right: 66px;
+}
+
+.activity-index-bar, h2 {
+    font-size: 18;
+
+}
+
+.activities-table {
+    table-layout: fixed;
+    font-size: 12px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.activity-table-head {
+    font-weight: 900;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.activites-index-list {
+    display: table-row-group;
+}
+
+.act-col {
+    background-color: #e6e6ec;
+    width: 90px;
+    height: 36px;
+}
+
+.view-col {
+    display: table-cell;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    height: 110px;
+    word-wrap: break-word;
+    vertical-align: top;
+    border-bottom: 1px solid #e6e6eb;
+}
+
+.col-sport {
+    text-align: left;
+}
+
+.col-time, .col-distance, .col-elevation {
+    text-align: right;
+}
+
+.col-date, .col-title {
+    text-align: center;
+}
+
+.col-actions {
+    text-align: right;
+}
+
+.activity-action-list {
+    list-style: none;
+
+}
+
+#delete-activity-btn {
+    border: none;
+    background: inherit;
+    color: #007fb6;
+}
+
+tr:nth-child(even) {
+  background-color:#f5f5fa
+}

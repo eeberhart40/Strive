@@ -38,3 +38,7 @@
 .route-index-item {
   padding: 0px;
 }
+
+h1, h2, h3, p, table, button, link, a {
+  font-family: 'Montserrat', sans-serif;
+}

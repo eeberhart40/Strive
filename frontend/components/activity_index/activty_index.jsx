@@ -21,22 +21,27 @@ class ActivityIndex extends React.Component {
                 />
             );
         });
+        let count = Object.keys(this.props.activities).length;
+        let countDisp;
+        count === 1  ? countDisp = `1 Activity` : countDisp = `${count} Activities`
         return (
             <div className="activity-index-container">
-                <div className='index-bar'>
+                <div className='activity-index-bar'>
                     <h1>My Activities</h1>
+                    <h2>{countDisp}</h2>
                     {/* <button id='create-activity-btn'><Link to={'activities/new'}>Create New Activity</Link></button> */}
                 </div>
                 <div className="activities-table-container">
-                    <table className="activitites-table">
-                        <thead>
+                    <table className="activities-table">
+                        <thead className="activity-table-head">
                             <tr>
-                                <th className="col-sport">Sport</th>
-                                <th className="col-date">Date</th>
-                                <th className="col-title">Title</th>
-                                <th className="col-time">Time</th>
-                                <th className="col-distance">Distance</th>
-                                <th className="col-elevation">Elevation</th>
+                                <th className="act-col col-sport">Sport</th>
+                                <th className="act-col col-date">Date</th>
+                                <th className="act-col col-title">Title</th>
+                                <th className="act-col col-time">Time</th>
+                                <th className="act-col col-distance">Distance</th>
+                                <th className="act-col col-elevation">Elevation</th>
+                                <th className="act-col"></th>
                             </tr>
                         </thead>
                         <tbody className="actvity-index-list">

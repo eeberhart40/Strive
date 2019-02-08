@@ -1,13 +1,19 @@
+.show-route-container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 66px;
+    padding-left: 66px;
+}
 .show-route-stats{
-    // width: 500px;
-    // height: 30px;
+
     position: absolute;
     top: 435px;
     display: flex;
-     justify-content: space-between;
+    justify-content: space-between;
     font-size: 20px;
     background-color: #f1f1f1;
     font-family: 'Montserrat', sans-serif; 
+    width: 650px;
 }
 
 .show-route-stats > div {
@@ -23,7 +29,7 @@
     cursor: pointer;
     color: black;
     position: absolute;
-    left: 0px;
+    left: 66px;
     top: 490px;
     font-size:16px;
 }

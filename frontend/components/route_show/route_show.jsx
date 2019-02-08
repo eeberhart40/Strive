@@ -17,7 +17,7 @@ class RouteShow extends React.Component {
     render() {
         let route = this.props.route;
         return (
-            <div>
+            <div className="show-route-container">
                 <h1>{route.title}</h1>
                 { route.route_data ? (<div className="map-show">
                     <ShowRoute

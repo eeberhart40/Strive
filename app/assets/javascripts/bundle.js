@@ -583,27 +583,34 @@ function (_React$Component) {
           fetchRoute: _this.props.fetchRoute
         });
       });
+      var count = Object.keys(this.props.activities).length;
+      var countDisp;
+      count === 1 ? countDisp = "1 Activity" : countDisp = "".concat(count, " Activities");
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-index-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activities-table-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
-        className: "activitites-table"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-sport"
+        className: "activities-table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", {
+        className: "activity-table-head"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "act-col col-sport"
       }, "Sport"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-date"
+        className: "act-col col-date"
       }, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-title"
+        className: "act-col col-title"
       }, "Title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-time"
+        className: "act-col col-time"
       }, "Time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-distance"
+        className: "act-col col-distance"
       }, "Distance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        className: "col-elevation"
-      }, "Elevation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
+        className: "act-col col-elevation"
+      }, "Elevation"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        className: "act-col"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
         className: "actvity-index-list"
       }, activities))));
     }
@@ -2016,7 +2023,9 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var route = this.props.route;
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, route.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-route-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, route.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
