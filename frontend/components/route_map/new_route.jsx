@@ -133,7 +133,6 @@ class NewRoute extends React.Component {
                 display.setDirections(response);
                 this.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
                 if(this.routeData.sport === 'WALKING') {
-                    debugger
                     this.routeData['travelTime'] = that.getTravelTime(
                         Math.floor(response.routes[0].legs[0].duration.value / 2.1));
                 } else {

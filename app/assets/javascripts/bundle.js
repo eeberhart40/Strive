@@ -2007,7 +2007,6 @@ function (_React$Component) {
           _this3.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
 
           if (_this3.routeData.sport === 'WALKING') {
-            debugger;
             _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 2.1));
           } else {
             _this3.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
