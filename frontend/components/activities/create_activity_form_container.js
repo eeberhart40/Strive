@@ -14,18 +14,21 @@ const msp = state => {
     }
     const formType = 'Record Activity';
     const currentUserId = state.session.id;
-    const routes = state.entitiies.routes;
+    const routes = state.entities.routes;
+    const errors = state.errors.activities;
     return({
         athleteId: currentUserId,
         activity,
         routes,
-        formType
+        formType,
+        errors
     });
 };
 
 const mdp = dispatch => {
     return ({
         action: (activity) => dispatch(createActivity(activity)),
+        fetchRoutes: () => dispatch(fetchRoutes())
     });
 };
 

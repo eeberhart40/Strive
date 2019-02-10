@@ -29,7 +29,7 @@ class ActivityIndex extends React.Component {
                 <div className='activity-index-bar'>
                     <h1>My Activities</h1>
                     <h2>{countDisp}</h2>
-                    <h3></h3>
+                    <Link to={'activities/new'}>Record a new activity</Link>
                     {/* <button id='create-activity-btn'><Link to={'activities/new'}>Create New Activity</Link></button> */}
                 </div>
                 <div className="activities-table-container">

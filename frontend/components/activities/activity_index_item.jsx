@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 const ActivityIndexItem = (props) => {
     
     let activity = props.activity;
-    // let routeId = activity.route_id;
-    // let route = props.fetchRoute(routeId);
-    // debugger
-    // let routeData = JSON.parse(route.route_data);
-
     return(
         <tr className="activity-index-item-row">
             <td className="view-col col-sport">{activity.sport}</td>

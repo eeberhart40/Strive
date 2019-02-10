@@ -3,6 +3,7 @@ import * as ActivityApiUtil from  '../util/activity_api_util';
 export const RECEIVE_ALL_ACTIVITIES = "RECEIVE_ALL_ACTIVITIES";
 export const RECEIVE_ACTIVITY = "RECEIVE_ACTIVITY";
 export const REMOVE_ACTIVITY = "REMOVE_ACTIVITY";
+export const RECEIVE_ACTIVITIES_ERRORS = "RECEIVE_ACTIVITIES_ERRORS";
 
 const receiveAllActivities = (activities) => {
     return({
@@ -25,6 +26,12 @@ const removeActivity = activityId => {
     });
 };
 
+export const receiveErrors = errors => ({
+    type: RECEIVE_ACTIVITIES_ERRORS,
+    errors
+});
+
+
 export const fetchActivities = () => dispatch => {
     return (
         ActivityApiUtil.fetchActivities().then(
@@ -42,21 +49,25 @@ export const fetchActivity = id => dispatch => {
 export const createActivity = activity => dispatch => {
     return (
         ActivityApiUtil.createActivity(activity).then(
-            activity => dispatch(receiveActivity(activity)))
-        )
+            activity => dispatch(receiveActivity(activity)),
+            err => (dispatch(receiveErrors(err.responseJSON))
+        ))
+        );
 }
 
 export const deleteActivity = id => dispatch => {
     return (
         ActivityApiUtil.deleteActivity(id).then(
             () => dispatch(removeActivity(id)))
-        );
+    );
 };
 
 export const updateActivity = activity => dispatch => {
     return (
         ActivityApiUtil.updateActivity(activity).then(
-            activity => dispatch(recieveActivity(activity)))
-        );
+            activity => dispatch(recieveActivity(activity))),
+            err => (dispatch(receiveErrors(err.responseJSON))
+            )
+    );
 };
 

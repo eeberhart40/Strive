@@ -6,10 +6,11 @@ import { fetchActivity, updateActivity } from '../../actions/activity_actions';
 const msp = (state, ownProps) => {
     const activity = state.entities.activites[ownProps.match.params.activityId];
     const formType = "Edit Activity"
-
+    const errors = state.errors.activities;
     return({
         activity,
-        formType
+        formType,
+        errors
     })
 }
 
