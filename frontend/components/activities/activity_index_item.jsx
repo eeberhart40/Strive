@@ -16,7 +16,7 @@ const ActivityIndexItem = (props) => {
             <td className="view-col col-date">{Date(activity.created_at).slice(0,15)}</td>
             <td className="view-col col-title">{activity.title}</td>
             <td className="view-col col-time">{activity.time}</td>
-            <td className="view-col col-distance">{activity.distance}</td>
+            <td className="view-col col-distance">{activity.distance} mi</td>
             <td className="view-col col-elevation">{activity.elevation}</td>
             <td className="view-col col-actions">
                 <ul className="activity-action-list">

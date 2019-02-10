@@ -377,7 +377,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _route_index_route_index_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./route_index/route_index_container */ "./frontend/components/route_index/route_index_container.jsx");
 /* harmony import */ var _route_show_route_show_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./route_show/route_show_container */ "./frontend/components/route_show/route_show_container.js");
 /* harmony import */ var _route_map_new_route__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./route_map/new_route */ "./frontend/components/route_map/new_route.jsx");
-/* harmony import */ var _activity_index_activity_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./activity_index/activity_index_container */ "./frontend/components/activity_index/activity_index_container.jsx");
+/* harmony import */ var _activities_activity_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./activities/activity_index_container */ "./frontend/components/activities/activity_index_container.jsx");
 
 
 
@@ -413,7 +413,7 @@ var App = function App() {
     component: _route_index_route_index_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/activities",
-    component: _activity_index_activity_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
+    component: _activities_activity_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
   })));
 };
 
@@ -421,10 +421,10 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./frontend/components/activity_index/activity_index_container.jsx":
-/*!*************************************************************************!*\
-  !*** ./frontend/components/activity_index/activity_index_container.jsx ***!
-  \*************************************************************************/
+/***/ "./frontend/components/activities/activity_index_container.jsx":
+/*!*********************************************************************!*\
+  !*** ./frontend/components/activities/activity_index_container.jsx ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -433,7 +433,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/activity_actions */ "./frontend/actions/activity_actions.js");
 /* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
-/* harmony import */ var _activty_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./activty_index */ "./frontend/components/activity_index/activty_index.jsx");
+/* harmony import */ var _activty_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./activty_index */ "./frontend/components/activities/activty_index.jsx");
 
 
 
@@ -467,10 +467,10 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/activity_index/activity_index_item.jsx":
-/*!********************************************************************!*\
-  !*** ./frontend/components/activity_index/activity_index_item.jsx ***!
-  \********************************************************************/
+/***/ "./frontend/components/activities/activity_index_item.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/activities/activity_index_item.jsx ***!
+  \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -500,7 +500,7 @@ var ActivityIndexItem = function ActivityIndexItem(props) {
     className: "view-col col-time"
   }, activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-distance"
-  }, activity.distance), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, activity.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-elevation"
   }, activity.elevation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-actions"
@@ -518,10 +518,10 @@ var ActivityIndexItem = function ActivityIndexItem(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/activity_index/activty_index.jsx":
-/*!**************************************************************!*\
-  !*** ./frontend/components/activity_index/activty_index.jsx ***!
-  \**************************************************************/
+/***/ "./frontend/components/activities/activty_index.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/activities/activty_index.jsx ***!
+  \**********************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -529,7 +529,7 @@ var ActivityIndexItem = function ActivityIndexItem(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _activity_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activity_index_item */ "./frontend/components/activity_index/activity_index_item.jsx");
+/* harmony import */ var _activity_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./activity_index_item */ "./frontend/components/activities/activity_index_item.jsx");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -590,7 +590,7 @@ function (_React$Component) {
         className: "activity-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activities-table-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "activities-table"
