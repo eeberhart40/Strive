@@ -42,3 +42,7 @@
 h1, h2, h3, p, table, button, link, a {
   font-family: 'Montserrat', sans-serif;
 }
+
+#logo{
+  color:  #ff5900;
+}

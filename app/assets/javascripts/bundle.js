@@ -411,7 +411,10 @@ __webpack_require__.r(__webpack_exports__);
 var App = function App() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "container login-header"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "STRIVE"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    id: "logo",
+    to: '/dashboard'
+  }, "STRIVE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     exact: true,
     path: "/",
     component: _splash_splash__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -520,16 +523,13 @@ function (_React$Component) {
 
       // if (this.state.routeTitle === '') return
       e.preventDefault();
-      debugger;
       Object.values(this.props.routes).some(function (route) {
         if (route.title === _this3.state.routeTitle) {
-          debugger;
           _this3.state.route_id = route.id;
           _this3.state.sport = JSON.parse(route.route_data).sport;
           return true;
         }
       });
-      debugger;
       delete this.state.routeTitle;
       this.props.action(this.state); // .then(() => this.props.history.push('/'));
     }
@@ -1060,7 +1060,7 @@ var Greeting = function Greeting(_ref) {
       to: "/routes"
     }, "My Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "gray-menu"
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    }, "STRIVE"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu"
     }, "Training v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "options"
@@ -1070,15 +1070,7 @@ var Greeting = function Greeting(_ref) {
       to: "/activities"
     }, "My Activites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "gray-menu"
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "drop-down-menu"
-    }, "Explore v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "options"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-option"
-    }, "Cool Stuff"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "gray-menu"
-    }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    }, "STRIVE")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "user-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu"

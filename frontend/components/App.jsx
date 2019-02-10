@@ -23,7 +23,7 @@ const App = () => (
     <div>
         <Modal />
         <header className="container login-header">
-            <h1>STRIVE</h1>
+            <h1><Link id="logo" to={'/dashboard'}>STRIVE</Link></h1>
             <GreetingContainer />
         </header>
         <Switch>

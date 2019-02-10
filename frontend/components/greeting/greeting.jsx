@@ -21,7 +21,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                         <li className="list-option">
                             <Link to="/routes">My Routes</Link>
                         </li>
-                        <div className="gray-menu"></div>
+                        <div className="gray-menu">
+                            STRIVE
+                        </div>
                     </ul>
                 </li>
                 <li className="drop-down-menu">Training v
@@ -29,16 +31,18 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                         <li className="list-option">
                             <Link to="/activities">My Activites</Link> 
                         </li>
-                        <div className="gray-menu"></div>
+                        <div className="gray-menu">
+                            STRIVE
+                        </div>
                     </ul>
                 </li>
-                <li className="drop-down-menu">Explore v
+                {/* <li className="drop-down-menu">Explore v
                     <ul className="options">
                         <li className="list-option">Cool Stuff</li>
                         <div className="gray-menu"></div>
                     </ul>
                 </li>
-                <li>Challenges</li>
+                <li>Challenges</li> */}
             </ul>
             <ul className="user-nav nav-group">
                 {/* <li className="upgrade">Upgrade</li>

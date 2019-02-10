@@ -27,16 +27,13 @@ class ActivityForm extends React.Component {
     handleSubmit(e) {
         // if (this.state.routeTitle === '') return
         e.preventDefault();
-        debugger
         Object.values(this.props.routes).some(route => {
             if(route.title === this.state.routeTitle) {
-                debugger
                 this.state.route_id = route.id;
                 this.state.sport = JSON.parse(route.route_data).sport;
                 return true;
             }
         })
-        debugger
         delete this.state.routeTitle;
         this.props.action(this.state);
         // .then(() => this.props.history.push('/'));

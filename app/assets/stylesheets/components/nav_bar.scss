@@ -16,8 +16,8 @@
     line-height: 1;
     list-style: none;
     display: flex;
-    min-width: 400px;
-    justify-content: space-between;
+    min-width: 200px;
+    justify-content: flex-start;
 }
 
 .nav-group {
@@ -35,12 +35,13 @@
 }
 .drop-down-menu {
     position: relative;
+    margin-right: 20px;
 }
 
 .options {
     display: none;
     position: absolute;
-    height: 250px;
+    height: 100px;
     width: 150px;
     border: 1px solid gray;
     list-style: none;
@@ -71,9 +72,11 @@
 .gray-menu {
     position: absolute;
     bottom: 0px;
-    height: 40%;
+    height: 35px;
     width: 100%;
     background-color:  #464545;
+    color: white;
+    
 }
 
 .list-option > a {
