@@ -132,7 +132,13 @@ class NewRoute extends React.Component {
             if (status === 'OK') {
                 display.setDirections(response);
                 this.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
-                this.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value)
+                if(this.routeData.sport === 'WALKING') {
+                    debugger
+                    this.routeData['travelTime'] = that.getTravelTime(
+                        Math.floor(response.routes[0].legs[0].duration.value / 2.1));
+                } else {
+                    this.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value)
+                }
                 this.routeData['path'] = response.routes[0].overview_path;
                 document.getElementById('distance').innerHTML =
                     "Distance: " + this.routeData['distance'] + " mi";
@@ -256,8 +262,8 @@ class NewRoute extends React.Component {
                     </button>
                     {/* <button onClick={this.drawPoly}>POLY</button> */}
                     <select id="mode">
-                        <option value="WALKING">Walking</option>
-                        <option value="BICYCLING">Bicycling</option>
+                        <option value="WALKING">Run</option>
+                        <option value="BICYCLING">Bike</option>
                     </select>
                 </div>
                 {/* <div id='elevation_chart'></div> */}

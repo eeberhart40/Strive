@@ -2013,7 +2013,14 @@ function (_React$Component) {
         if (status === 'OK') {
           display.setDirections(response);
           _this3.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
-          _this3.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
+
+          if (_this3.routeData.sport === 'WALKING') {
+            debugger;
+            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 2.1));
+          } else {
+            _this3.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
+          }
+
           _this3.routeData['path'] = response.routes[0].overview_path;
           document.getElementById('distance').innerHTML = "Distance: " + _this3.routeData['distance'] + " mi";
           document.getElementById('duration').innerHTML = "Est. Travel Time: " + _this3.routeData['travelTime']; // polyPath = routeData[path];
@@ -2140,9 +2147,9 @@ function (_React$Component) {
         id: "mode"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "WALKING"
-      }, "Walking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      }, "Run"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         value: "BICYCLING"
-      }, "Bicycling"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Bike"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-route-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "distance"
