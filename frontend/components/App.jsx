@@ -17,6 +17,7 @@ import NewRoute from './route_map/new_route';
 import ActivityIndexContainer from './activities/activity_index_container';
 import EditActivityContainer from './activities/edit_activity_form_container';
 import CreateActivityContainer from './activities/create_activity_form_container'
+import ActivityShowContainer from './activities/activity_show_container';
 
 
 const App = () => (
@@ -33,7 +34,8 @@ const App = () => (
         <ProtectedRoute path="/routes/:routeId" component={RouteShowContainer} />
         <ProtectedRoute path="/routes" component={RouteIndexContainer}/>
         <ProtectedRoute exact path="/activities/new" component={CreateActivityContainer} />
-        <ProtectedRoute exact path="/activities/:activityId/edit" component={EditActivityContainer} />
+            <ProtectedRoute exact path="/activities/:activityId" component={ActivityShowContainer} />
+        {/* <ProtectedRoute exact path="/activities/:activityId/edit" component={EditActivityContainer} /> */}
         <ProtectedRoute path="/activities" component={ActivityIndexContainer} />
         </Switch>
     </div>

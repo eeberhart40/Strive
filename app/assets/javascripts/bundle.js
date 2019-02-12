@@ -393,11 +393,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _activities_activity_index_container__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./activities/activity_index_container */ "./frontend/components/activities/activity_index_container.jsx");
 /* harmony import */ var _activities_edit_activity_form_container__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./activities/edit_activity_form_container */ "./frontend/components/activities/edit_activity_form_container.jsx");
 /* harmony import */ var _activities_create_activity_form_container__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./activities/create_activity_form_container */ "./frontend/components/activities/create_activity_form_container.js");
+/* harmony import */ var _activities_activity_show_container__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./activities/activity_show_container */ "./frontend/components/activities/activity_show_container.js");
 
 
 
 
 ;
+
 
 
 
@@ -437,8 +439,8 @@ var App = function App() {
     component: _activities_create_activity_form_container__WEBPACK_IMPORTED_MODULE_12__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     exact: true,
-    path: "/activities/:activityId/edit",
-    component: _activities_edit_activity_form_container__WEBPACK_IMPORTED_MODULE_11__["default"]
+    path: "/activities/:activityId",
+    component: _activities_activity_show_container__WEBPACK_IMPORTED_MODULE_13__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["ProtectedRoute"], {
     path: "/activities",
     component: _activities_activity_index_container__WEBPACK_IMPORTED_MODULE_10__["default"]
@@ -531,7 +533,12 @@ function (_React$Component) {
         }
       });
       delete this.state.routeTitle;
-      this.props.action(this.state); // .then(() => this.props.history.push('/'));
+      var activity = Object.assign({}, this.state);
+      this.props.action(activity).then(function (_ref) {
+        var activity = _ref.activity;
+
+        _this3.props.history.replace("/activities/".concat(activity.id));
+      }); // .then(() => this.props.history.push('/'));
     }
   }, {
     key: "render",
@@ -692,6 +699,128 @@ var ActivityIndexItem = function ActivityIndexItem(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ActivityIndexItem);
+
+/***/ }),
+
+/***/ "./frontend/components/activities/activity_show.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/activities/activity_show.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _route_map_show_route__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../route_map/show_route */ "./frontend/components/route_map/show_route.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ActivityShow =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ActivityShow, _React$Component);
+
+  function ActivityShow() {
+    _classCallCheck(this, ActivityShow);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ActivityShow).apply(this, arguments));
+  }
+
+  _createClass(ActivityShow, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchActivity(this.props.activityId);
+      this.props.fetchRoute(this.props.routeId);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var route = this.props.route;
+      var activity = this.props.activity;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "show-activity-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "map-show"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        route: route
+      })) : null);
+    }
+  }]);
+
+  return ActivityShow;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (ActivityShow);
+
+/***/ }),
+
+/***/ "./frontend/components/activities/activity_show_container.js":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/activities/activity_show_container.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _reducers_selectors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../reducers/selectors */ "./frontend/reducers/selectors.js");
+/* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/activity_actions */ "./frontend/actions/activity_actions.js");
+/* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
+/* harmony import */ var _activity_show__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./activity_show */ "./frontend/components/activities/activity_show.jsx");
+
+
+
+
+
+
+var msp = function msp(state, _ref) {
+  var match = _ref.match;
+  var activityId = parseInt(match.params.activityId);
+  var activity = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectActivity"])(state.entities.activities, activityId);
+  var routeId = activity.route_id;
+  var route = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectRoute"])(state.entities.routes, routeId);
+  debugger;
+  return {
+    activityId: activityId,
+    activity: activity,
+    routeId: routeId,
+    route: route
+  };
+};
+
+var mdp = function mdp(dispatch) {
+  return {
+    fetchRoute: function fetchRoute(id) {
+      return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_3__["fetchRoute"])(id));
+    },
+    fetchActivity: function fetchActivity(id) {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_2__["fetchActivity"])(id));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_activity_show__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 
@@ -2975,14 +3104,18 @@ function routeDataReducer() {
 /*!****************************************!*\
   !*** ./frontend/reducers/selectors.js ***!
   \****************************************/
-/*! exports provided: selectRoute */
+/*! exports provided: selectRoute, selectActivity */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectRoute", function() { return selectRoute; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectActivity", function() { return selectActivity; });
 var selectRoute = function selectRoute(routes, routeId) {
   return routes[routeId] || {};
+};
+var selectActivity = function selectActivity(activities, activityId) {
+  return activities[activityId] || {};
 };
 
 /***/ }),
