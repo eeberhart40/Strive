@@ -10,7 +10,7 @@ const msp = (state, {match} ) => {
     const activity = selectActivity(state.entities.activities, activityId);
     const routeId = activity.route_id;
     const route = selectRoute(state.entities.routes, routeId)
-    debugger
+
     return({
         activityId,
         activity,

@@ -11,6 +11,7 @@ const routesReducer = (state = {}, action) => {
         case RECEIVE_ALL_ROUTES:
             return action.routes;
         case RECEIVE_ROUTE:
+
             newState = merge({}, state, { [action.route.id]: action.route });
             return newState;
         case REMOVE_ROUTE:

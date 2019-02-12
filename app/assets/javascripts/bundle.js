@@ -680,7 +680,9 @@ var ActivityIndexItem = function ActivityIndexItem(props) {
     className: "view-col col-date"
   }, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-title"
-  }, activity.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "activities/".concat(activity.id)
+  }, activity.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-time"
   }, activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", {
     className: "view-col col-distance"
@@ -750,7 +752,15 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchActivity(this.props.activityId);
-      this.props.fetchRoute(this.props.routeId);
+
+      if (this.props.routeId) {
+        this.props.fetchRoute(this.props.routeId);
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!prevProps.route.id) this.props.fetchRoute(this.props.activity.route_id);
     }
   }, {
     key: "render",
@@ -759,7 +769,10 @@ function (_React$Component) {
       var activity = this.props.activity;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-activity-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "with-border",
+        id: "activity-heading"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title, " - ", activity.sport))), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
@@ -800,7 +813,6 @@ var msp = function msp(state, _ref) {
   var activity = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectActivity"])(state.entities.activities, activityId);
   var routeId = activity.route_id;
   var route = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectRoute"])(state.entities.routes, routeId);
-  debugger;
   return {
     activityId: activityId,
     activity: activity,
