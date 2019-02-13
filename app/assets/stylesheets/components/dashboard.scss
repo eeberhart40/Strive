@@ -1,28 +1,38 @@
-
- .dashboard-container {
-    height: 100%;
-    background-color: #f5f5fa;
+.dash-bg{
     width: 100%;
     height: 100%;
     display: flex;
-    position: absolute;
+    justify-content: center;
+    background: #f5f5fa;
+}
+ 
+ .dashboard-container {
+    height: 100%;
+    // background-color: #f5f5fa;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    // position: absolute;
     justify-content: space-between;
+    // display: inline-block;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .col {
      width: 25%;
     background-color: #f5f5fa;
     // padding: 40px;
-    padding-left: 66px;
-    margin-top: 50px;
-    
+    padding:16px;
+    margin-top: 64px;
+    min-width: 275px;
 }
 
 .dashboard-feed {
 
-    width: 35%;
+    width: 50%;
     background-color:#f5f5fa;
-    margin: 50px;
+    padding: 16px;
 
 }
 
@@ -39,6 +49,7 @@
 .profile {
     height: 250px;
     background-color: white;
+    border-radius: 5px;
 }
 
 .card-body {
@@ -46,7 +57,7 @@
     background: blue;
     display: flex;
     justify-content: center;
-
+    border-radius: 3px; 
 }
 
 .avatar-img{
@@ -54,9 +65,8 @@
     width: 70px;
     border-radius: 50%;
     background: red;
-    vertical-align: center;
     position: absolute;
-    top: 20px;
+    top: 100px;
     text-align: center;
     margin: auto;
     background-image: url("https://benmounsey.files.wordpress.com/2017/03/0n1a3599-edit.jpg?w=764");

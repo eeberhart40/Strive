@@ -1144,6 +1144,8 @@ var msp = function msp(_ref) {
 var Dashboard = function Dashboard(_ref2) {
   var currentUser = _ref2.currentUser;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    classname: "dash-bg"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "left col"
@@ -1165,7 +1167,7 @@ var Dashboard = function Dashboard(_ref2) {
     className: "col-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Clubs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-div"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone"))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone")))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp)(Dashboard));
