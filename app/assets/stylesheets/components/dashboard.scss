@@ -12,8 +12,9 @@
 .col {
      width: 25%;
     background-color: #f5f5fa;
-    padding: 40px;
-    margin: 50px;
+    // padding: 40px;
+    padding-left: 66px;
+    margin-top: 50px;
     
 }
 
@@ -38,4 +39,25 @@
 .profile {
     height: 250px;
     background-color: white;
+}
+
+.card-body {
+    height: 150px;
+    background: blue;
+    display: flex;
+    justify-content: center;
+
+}
+
+.avatar-img{
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: red;
+    vertical-align: center;
+    position: absolute;
+    top: 20px;
+    text-align: center;
+    margin: auto;
+    background-image: url("https://benmounsey.files.wordpress.com/2017/03/0n1a3599-edit.jpg?w=764");
 }

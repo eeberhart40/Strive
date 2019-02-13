@@ -22,7 +22,22 @@ class ActivityShow extends React.Component {
         return(
             <div className="show-activity-container">
             <section className="with-border" id="activity-heading">
-                <header><h1>{activity.title} - {activity.sport}</h1></header>
+                <header><h1>{this.props.currentUser.username} - {activity.sport}</h1></header>
+                <div className="activity-summary-container">
+                    <div className="activity-summary">
+                        <div className="details-container">
+                        </div>
+                    </div>
+                    <div className="details-container">
+                        <ul className="inline-stats">
+                            <li><strong>{activity.distance} mi</strong></li>
+                            <li><strong>{activity.time}</strong></li>
+                            <li><strong>{activity.elevation} ft</strong></li>
+                        </ul>
+                        <div className="more-stats"></div>
+                        <div className="link-section"></div>
+                    </div>
+                </div>
             </section>
                 {route.route_data ? (<div className="map-show">
                     <ShowRoute

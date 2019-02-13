@@ -772,7 +772,21 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "with-border",
         id: "activity-heading"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title, " - ", activity.sport))), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.currentUser.username, " - ", activity.sport)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-summary-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-summary"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "details-container"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "details-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "inline-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.distance, " mi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.time)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.elevation, " ft"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "more-stats"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "link-section"
+      })))), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
@@ -813,11 +827,13 @@ var msp = function msp(state, _ref) {
   var activity = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectActivity"])(state.entities.activities, activityId);
   var routeId = activity.route_id;
   var route = Object(_reducers_selectors__WEBPACK_IMPORTED_MODULE_1__["selectRoute"])(state.entities.routes, routeId);
+  var currentUser = state.entities.athletes[state.session.id];
   return {
     activityId: activityId,
     activity: activity,
     routeId: routeId,
-    route: route
+    route: route,
+    currentUser: currentUser
   };
 };
 
@@ -1133,7 +1149,13 @@ var Dashboard = function Dashboard(_ref2) {
     className: "left col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "hello, ", currentUser.username))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-body"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "avatar-img"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "card-footer"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-feed"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "no recent activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right col"
