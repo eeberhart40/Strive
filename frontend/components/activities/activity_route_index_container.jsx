@@ -1,7 +1,8 @@
 import React from 'react';
 import RouteIndexItem from '../route_index/route_index_item';
-
-
+import { fetchRoutes } from '../../actions/map_route_actions';
+import { openModalAct } from '../../actions/modal_actions';
+import { connect } from 'react-redux';
 
 class ActivityRouteIndex extends React.Component {
     constructor(props) {
@@ -38,4 +39,19 @@ class ActivityRouteIndex extends React.Component {
     };
 };
 
-export default ActivityRouteIndex;
+
+const msp = state => {
+    const routes = state.entities.routes;
+    return({
+        routes
+    });
+};
+
+const mdp = dispatch => {
+    return({
+        fetchRoutes: () => dispatch(fetchRoutes()),
+        openModalAct: (dataString) => dispatch(openModalAct('activity', dataString))
+    });
+};
+
+export default connect(msp, mdp)(ActivityRouteIndex);

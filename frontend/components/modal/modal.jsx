@@ -5,6 +5,7 @@ import LoginFormContainer from '../session_form/login_form_container';
 import SignupFormContainer from '../session_form/signup_form_container';
 import CreateRouteFormContainer from '../route_form/create_route_form_container';
 import NavContainer from '../nav/nav';
+import CreateActivityFormContainer from '../activities/create_activity_form_container';
 
 function Modal({ modal, closeModal, routeData }) {
     if (!modal) {
@@ -21,6 +22,8 @@ function Modal({ modal, closeModal, routeData }) {
         case 'save':
             component = <CreateRouteFormContainer routeData={routeData}/>
             break;
+        case 'activity':
+            component = <CreateActivityFormContainer routeData={routeData}/>
         case 'navigate':
             component = <NavContainer />
             break;

@@ -2,6 +2,9 @@ export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const OPEN_MODAL_SAVE = 'OPEN_MODAL_SAVE';
 export const CLOSE_MODAL_SAVE = 'CLOSE_MODAL_SAVE';
+export const OPEN_MODAL_ACT = 'OPEN_MODAL_ACT';
+export const CLOSE_MODAL_ACT = 'CLOSE_MODAL_ACT';
+
 
 
 export const openModal = modal => {
@@ -29,3 +32,17 @@ export const closeModalSave = () => {
         type: CLOSE_MODAL_SAVE
     };
 };
+export const openModalAct = () => {
+    return {
+        type: OPEN_MODAL_ACT,
+        modal,
+        dataString
+    };
+};
+export const closeModalAct = () => {
+    return {
+        type: CLOSE_MODAL_ACT
+    
+    };
+};
+
