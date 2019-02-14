@@ -7,8 +7,15 @@ import { connect } from 'react-redux';
 class ActivityRouteIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this);
 
     }
+
+    handleClick(routeData, routeId) {
+        debugger
+        this.props.openModalAct(routeData, routeId);
+    }
+
 
     componentDidMount() {
 
@@ -16,13 +23,19 @@ class ActivityRouteIndex extends React.Component {
     }
 
     render() {
-        debugger
+        // debugger
         let routes = Object.values(this.props.routes).map(route => {
+            debugger
             return (
-                <RouteIndexItem
-                    key={route.id}
-                    route={route}
-                />
+                <div 
+                key={route.id}
+                className="activity-index-route-map"
+                onClick={ () => this.handleClick(route.route_data, route.id)}>
+                    <RouteIndexItem
+                        key={route.id}
+                        route={route}
+                    />
+                </div>
             );
         });
         return (
@@ -50,7 +63,7 @@ const msp = state => {
 const mdp = dispatch => {
     return({
         fetchRoutes: () => dispatch(fetchRoutes()),
-        openModalAct: (dataString) => dispatch(openModalAct('activity', dataString))
+        openModalAct: (dataString, routeId) => dispatch(openModalAct('activity', dataString, routeId))
     });
 };
 

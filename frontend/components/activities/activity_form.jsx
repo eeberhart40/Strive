@@ -8,8 +8,11 @@ class ActivityForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = this.props.activity;
-        this.state.routeTitle = '';
         this.state.athlete_id = this.props.athleteId;
+        this.state.routeId = this.props.routeId;
+        this.state.sport = this.props.sport;
+        this.state.distance = this.props.distance;
+        this.state.elevation = this.props.elevation;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -28,7 +31,7 @@ class ActivityForm extends React.Component {
         // if (this.state.routeTitle === '') return
         e.preventDefault();
         Object.values(this.props.routes).some(route => {
-            if(route.title === this.state.routeTitle) {
+            if(route.id === this.state.routeTitle) {
                 this.state.route_id = route.id;
                 this.state.sport = JSON.parse(route.route_data).sport;
                 return true;
@@ -50,7 +53,6 @@ class ActivityForm extends React.Component {
         });
 
         const routes = Object.values(this.props.routes);
-        debugger
         return (
             <div className='activity-form-container'>
                 <form onSubmit={this.handleSubmit}>

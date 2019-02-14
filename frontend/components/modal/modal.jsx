@@ -7,7 +7,7 @@ import CreateRouteFormContainer from '../route_form/create_route_form_container'
 import NavContainer from '../nav/nav';
 import CreateActivityFormContainer from '../activities/create_activity_form_container';
 
-function Modal({ modal, closeModal, routeData }) {
+function Modal({ modal, closeModal, routeData, routeId }) {
     if (!modal) {
         return null;
     }
@@ -23,7 +23,12 @@ function Modal({ modal, closeModal, routeData }) {
             component = <CreateRouteFormContainer routeData={routeData}/>
             break;
         case 'activity':
-            component = <CreateActivityFormContainer routeData={routeData}/>
+            component = 
+            <CreateActivityFormContainer 
+            routeData={routeData}
+            routeId={routeId}
+            />
+            break;
         case 'navigate':
             component = <NavContainer />
             break;
@@ -40,11 +45,14 @@ function Modal({ modal, closeModal, routeData }) {
 }
 
 const mapStateToProps = state => {
-    let routeData = state.ui.routeData
+    debugger
+    const routeData = state.ui.routeData;
+    const routeId = state.ui.routeId;
     if(routeData){
         return {
             modal: state.ui.modal,
-            routeData
+            routeData,
+            routeId
         }
     } else {
         return{

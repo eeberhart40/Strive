@@ -305,11 +305,13 @@ var closeModalSave = function closeModalSave() {
     type: CLOSE_MODAL_SAVE
   };
 };
-var openModalAct = function openModalAct() {
+var openModalAct = function openModalAct(modal, dataString, routeId) {
+  debugger;
   return {
     type: OPEN_MODAL_ACT,
     modal: modal,
-    dataString: dataString
+    dataString: dataString,
+    routeId: routeId
   };
 };
 var closeModalAct = function closeModalAct() {
@@ -521,8 +523,11 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivityForm).call(this, props));
     _this.state = _this.props.activity;
-    _this.state.routeTitle = '';
     _this.state.athlete_id = _this.props.athleteId;
+    _this.state.routeId = _this.props.routeId;
+    _this.state.sport = _this.props.sport;
+    _this.state.distance = _this.props.distance;
+    _this.state.elevation = _this.props.elevation;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -549,7 +554,7 @@ function (_React$Component) {
       // if (this.state.routeTitle === '') return
       e.preventDefault();
       Object.values(this.props.routes).some(function (route) {
-        if (route.title === _this3.state.routeTitle) {
+        if (route.id === _this3.state.routeTitle) {
           _this3.state.route_id = route.id;
           _this3.state.sport = JSON.parse(route.route_data).sport;
           return true;
@@ -572,7 +577,6 @@ function (_React$Component) {
         }, error);
       });
       var routes = Object.values(this.props.routes);
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -744,13 +748,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -764,12 +768,22 @@ function (_React$Component) {
   _inherits(ActivityRouteIndex, _React$Component);
 
   function ActivityRouteIndex(props) {
+    var _this;
+
     _classCallCheck(this, ActivityRouteIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ActivityRouteIndex).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivityRouteIndex).call(this, props));
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(ActivityRouteIndex, [{
+    key: "handleClick",
+    value: function handleClick(routeData, routeId) {
+      debugger;
+      this.props.openModalAct(routeData, routeId);
+    }
+  }, {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchRoutes();
@@ -777,12 +791,21 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
+      var _this2 = this;
+
+      // debugger
       var routes = Object.values(this.props.routes).map(function (route) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        debugger;
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          key: route.id,
+          className: "activity-index-route-map",
+          onClick: function onClick() {
+            return _this2.handleClick(route.route_data, route.id);
+          }
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: route.id,
           route: route
-        });
+        }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-container"
@@ -813,8 +836,8 @@ var mdp = function mdp(dispatch) {
     fetchRoutes: function fetchRoutes() {
       return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRoutes"])());
     },
-    openModalAct: function openModalAct(dataString) {
-      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModalAct"])('activity', dataString));
+    openModalAct: function openModalAct(dataString, routeId) {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["openModalAct"])('activity', dataString, routeId));
     }
   };
 };
@@ -1098,21 +1121,27 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   var activity = {
-    sport: '',
     title: '',
     time: '',
-    distance: '',
-    elevation: '',
     description: ''
   };
   var formType = 'Record Activity';
   var currentUserId = state.session.id;
   var routes = state.entities.routes;
+  var routeId = state.ui.routeData.routeId;
+  var routeData = JSON.parse(state.ui.routeData.dataString);
+  var sport = routeData.sport;
+  var distance = routeData.distance;
+  var elevation = routeData.elevation;
   var errors = state.errors.activities;
   return {
     athleteId: currentUserId,
     activity: activity,
     routes: routes,
+    routeId: routeId,
+    sport: sport,
+    distance: distance,
+    elevation: elevation,
     formType: formType,
     errors: errors
   };
@@ -1450,7 +1479,8 @@ __webpack_require__.r(__webpack_exports__);
 function Modal(_ref) {
   var modal = _ref.modal,
       closeModal = _ref.closeModal,
-      routeData = _ref.routeData;
+      routeData = _ref.routeData,
+      routeId = _ref.routeId;
 
   if (!modal) {
     return null;
@@ -1475,8 +1505,10 @@ function Modal(_ref) {
 
     case 'activity':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activities_create_activity_form_container__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        routeData: routeData
+        routeData: routeData,
+        routeId: routeId
       });
+      break;
 
     case 'navigate':
       component = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_nav__WEBPACK_IMPORTED_MODULE_6__["default"], null);
@@ -1498,12 +1530,15 @@ function Modal(_ref) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
+  debugger;
   var routeData = state.ui.routeData;
+  var routeId = state.ui.routeId;
 
   if (routeData) {
     return {
       modal: state.ui.modal,
-      routeData: routeData
+      routeData: routeData,
+      routeId: routeId
     };
   } else {
     return {
@@ -2033,7 +2068,7 @@ function (_React$Component) {
 
     _classCallCheck(this, IndexRoute);
 
-    debugger;
+    // debugger
     _this = _possibleConstructorReturn(this, _getPrototypeOf(IndexRoute).call(this, props));
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;
@@ -3255,8 +3290,14 @@ function routeDataReducer() {
 
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL_SAVE"]:
-    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL_ACT"]:
       return action.dataString;
+
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL_ACT"]:
+      debugger;
+      return {
+        dataString: action.dataString,
+        routeId: action.routeId
+      };
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL_SAVE"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["CLOSE_MODAL_ACT"]:
