@@ -9,16 +9,17 @@ class ActivityForm extends React.Component {
         super(props);
         this.state = this.props.activity;
         this.state.athlete_id = this.props.athleteId;
-        this.state.routeId = this.props.routeId;
+        this.state.routeTitle = this.props.routeTitle;
+        this.state.route_id = this.props.routeId;
         this.state.sport = this.props.sport;
         this.state.distance = this.props.distance;
         this.state.elevation = this.props.elevation;
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount() {
-        this.props.fetchRoutes();
-    }
+    // componentDidMount() {
+    //     this.props.fetchRoutes();
+    // }
 
 
     update(field) {
@@ -30,15 +31,16 @@ class ActivityForm extends React.Component {
     handleSubmit(e) {
         // if (this.state.routeTitle === '') return
         e.preventDefault();
-        Object.values(this.props.routes).some(route => {
-            if(route.id === this.state.routeTitle) {
-                this.state.route_id = route.id;
-                this.state.sport = JSON.parse(route.route_data).sport;
-                return true;
-            }
-        })
+        // Object.values(this.props.routes).some(route => {
+        //     if(route.id === this.state.routeId) {
+        //         this.state.route_id = route.id;
+        //         this.state.sport = JSON.parse(route.route_data).sport;
+        //         return true;
+        //     }
+        // })
         delete this.state.routeTitle;
         const activity = Object.assign({}, this.state);
+        debugger
         this.props.action(activity).then(({activity}) => {
             this.props.history.replace(`/activities/${activity.id}`)});
         // .then(() => this.props.history.push('/'));
@@ -55,7 +57,7 @@ class ActivityForm extends React.Component {
         const routes = Object.values(this.props.routes);
         return (
             <div className='activity-form-container'>
-                <form onSubmit={this.handleSubmit}>
+                <form className='activity-form' onSubmit={this.handleSubmit}>
                     <h3>{this.props.formType}</h3>
                     <ul className="activities-errors">
                         {errors}
@@ -70,6 +72,9 @@ class ActivityForm extends React.Component {
                             onChange={this.update('title')}
                             />
                         </label>
+                        {/* <label className='activity-route'>
+                            Route: {this.state.routeTitle}
+                        </label> */}
                         <label className= 'activity-input time'>
                             Duration (hh:mm:ss)
                             <input type="text"
@@ -78,18 +83,14 @@ class ActivityForm extends React.Component {
                             />
                         </label>
                         <label className= 'activity-input distance'>
-                            Distance
-                            <input type="text"
-                            value={this.state.distance}
-                            onChange={this.update('distance')}
-                            />
+                            Distance: {this.state.distance}
                         </label>
                         <label className='activity-input elevation'>
-                            Elevation
-                            <input type="text"
+                            Elevation: {this.state.elevation}
+                            {/* <input type="text"
                             value={this.state.elevation}
                             onChange={this.update('elevation')}
-                            />
+                            /> */}
                         </label>
                         <label className= 'activity-input elevation'>
                             Description 

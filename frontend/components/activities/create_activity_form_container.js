@@ -17,7 +17,6 @@ const msp = state => {
     const sport = routeData.sport;
     const distance = routeData.distance;
     const elevation = routeData.elevation;
-
     const errors = state.errors.activities;
     return({
         athleteId: currentUserId,

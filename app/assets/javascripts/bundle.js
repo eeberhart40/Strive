@@ -524,20 +524,19 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivityForm).call(this, props));
     _this.state = _this.props.activity;
     _this.state.athlete_id = _this.props.athleteId;
-    _this.state.routeId = _this.props.routeId;
+    _this.state.routeTitle = _this.props.routeTitle;
+    _this.state.route_id = _this.props.routeId;
     _this.state.sport = _this.props.sport;
     _this.state.distance = _this.props.distance;
     _this.state.elevation = _this.props.elevation;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  }
+  } // componentDidMount() {
+  //     this.props.fetchRoutes();
+  // }
+
 
   _createClass(ActivityForm, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.props.fetchRoutes();
-    }
-  }, {
     key: "update",
     value: function update(field) {
       var _this2 = this;
@@ -552,16 +551,17 @@ function (_React$Component) {
       var _this3 = this;
 
       // if (this.state.routeTitle === '') return
-      e.preventDefault();
-      Object.values(this.props.routes).some(function (route) {
-        if (route.id === _this3.state.routeTitle) {
-          _this3.state.route_id = route.id;
-          _this3.state.sport = JSON.parse(route.route_data).sport;
-          return true;
-        }
-      });
+      e.preventDefault(); // Object.values(this.props.routes).some(route => {
+      //     if(route.id === this.state.routeId) {
+      //         this.state.route_id = route.id;
+      //         this.state.sport = JSON.parse(route.route_data).sport;
+      //         return true;
+      //     }
+      // })
+
       delete this.state.routeTitle;
       var activity = Object.assign({}, this.state);
+      debugger;
       this.props.action(activity).then(function (_ref) {
         var activity = _ref.activity;
 
@@ -580,6 +580,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "activity-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "activities-errors"
@@ -599,17 +600,9 @@ function (_React$Component) {
         onChange: this.update('time')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "activity-input distance"
-      }, "Distance", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.distance,
-        onChange: this.update('distance')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Distance: ", this.state.distance), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "activity-input elevation"
-      }, "Elevation", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.elevation,
-        onChange: this.update('elevation')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+      }, "Elevation: ", this.state.elevation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "activity-input elevation"
       }, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.description,

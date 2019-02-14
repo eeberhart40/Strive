@@ -1,0 +1,21 @@
+.activity-form-container {
+    width: 100%;
+    background-color:#f5f5fa;
+    color: black;
+    border-radius: 3px;
+}
+
+.activity-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.activity-input{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15%;
+
+}
