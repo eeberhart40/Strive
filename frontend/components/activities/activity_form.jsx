@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import ActivityRouteIndex from './create_activity_route_index';
 
 //figure out how to display errors
 
@@ -49,12 +49,8 @@ class ActivityForm extends React.Component {
             )
         });
 
-        const routes = Object.values(this.props.routes).map(route => {
-            return(
-                <option key={route.id}>{route.title}</option>
-            );
-        });
-
+        const routes = Object.values(this.props.routes);
+        debugger
         return (
             <div className='activity-form-container'>
                 <form onSubmit={this.handleSubmit}>
@@ -64,13 +60,13 @@ class ActivityForm extends React.Component {
                     </ul>
                     <br/>
                     <div className="activity-form">
-                        <label className= 'activity-input route'>
+                        {/* <label className= 'activity-input route'>
                             Choose a Route 
                             <select id="select-route" onChange={this.update('routeTitle')}>
                                 <option></option>
                                 {routes}
                             </select>
-                        </label>
+                        </label> */}
                         <label className= 'activity-input title'>
                             Title
                             <input
@@ -110,6 +106,13 @@ class ActivityForm extends React.Component {
                         <input type="submit" value={this.props.formType} />
                     </div>
                 </form>
+                {routes ? (<div className="map-index">
+                    <ActivityRouteIndex
+                        fetchRoutes={this.props.fetchRoutes}
+                        routes={routes}
+                    />
+                </div>) : null}
+           
             </div>
         );
     }

@@ -23,10 +23,12 @@ import ActivityShowContainer from './activities/activity_show_container';
 const App = () => (
     <div>
         <Modal />
-        <header className="container login-header">
-            <h1><Link id="logo" to={'/dashboard'}>STRIVE</Link></h1>
-            <GreetingContainer />
-        </header>
+        <div className="header-container">
+            <header className="container login-header">
+                <h1><Link id="logo" to={'/dashboard'}>STRIVE</Link></h1>
+                <GreetingContainer />
+            </header>
+        </div>
         <Switch>
         <AuthRoute exact path="/" component={Splash} />
         <ProtectedRoute path="/dashboard" component={Dashboard}/>
@@ -34,7 +36,7 @@ const App = () => (
         <ProtectedRoute path="/routes/:routeId" component={RouteShowContainer} />
         <ProtectedRoute path="/routes" component={RouteIndexContainer}/>
         <ProtectedRoute exact path="/activities/new" component={CreateActivityContainer} />
-            <ProtectedRoute exact path="/activities/:activityId" component={ActivityShowContainer} />
+        <ProtectedRoute exact path="/activities/:activityId" component={ActivityShowContainer} />
         {/* <ProtectedRoute exact path="/activities/:activityId/edit" component={EditActivityContainer} /> */}
         <ProtectedRoute path="/activities" component={ActivityIndexContainer} />
         </Switch>

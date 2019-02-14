@@ -1,12 +1,12 @@
 import React from 'react';
-import RouteIndexItem from './route_index_item';
-import { Link } from 'react-router-dom';
+import RouteIndexItem from '../route_index/route_index_item';
 
 
-class RouteIndex extends React.Component {
+
+class ActivityRouteIndex extends React.Component {
     constructor(props) {
         super(props);
-        
+
     }
 
     componentDidMount() {
@@ -15,21 +15,19 @@ class RouteIndex extends React.Component {
     }
 
     render() {
-     
+        debugger
         let routes = Object.values(this.props.routes).map(route => {
-            return(
-                <RouteIndexItem 
-                key={route.id}
-                route={route}
-                deleteRoute={this.props.deleteRoute}
+            return (
+                <RouteIndexItem
+                    key={route.id}
+                    route={route}
                 />
             );
         });
         return (
             <div className="index-container">
                 <div className='index-bar'>
-                    <h1>My Routes</h1>
-                    <button id='create-route-btn'><Link to={'routes/new'}>Create New Route</Link></button>
+                    <h1>Choose a Route</h1>
                 </div>
                 <div className="bottom-border"></div>
                 <ul className="index-list">
@@ -40,4 +38,4 @@ class RouteIndex extends React.Component {
     };
 };
 
-export default RouteIndex;
+export default ActivityRouteIndex;

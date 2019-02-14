@@ -17,7 +17,6 @@ h1{
 }
 .login-header {
     background: #fff;
-    border-bottom: solid 1px #e6e6eb;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,6 +31,10 @@ h1{
     max-width:1200px;
 }
 
+// .container {
+//     width: 100%;
+//     border-bottom: 1px solid gray;
+// }
 
 
 .modal-child h1 {

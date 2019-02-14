@@ -411,12 +411,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_modal_modal__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
     className: "container login-header"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
     id: "logo",
     to: '/dashboard'
-  }, "STRIVE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
+  }, "STRIVE")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_2__["AuthRoute"], {
     exact: true,
     path: "/",
     component: _splash_splash__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -463,6 +465,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _create_activity_route_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./create_activity_route_index */ "./frontend/components/activities/create_activity_route_index.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -482,6 +485,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
 
 
  //figure out how to display errors
@@ -548,11 +552,8 @@ function (_React$Component) {
           key: "error-".concat(i)
         }, error);
       });
-      var routes = Object.values(this.props.routes).map(function (route) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-          key: route.id
-        }, route.title);
-      });
+      var routes = Object.values(this.props.routes);
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -562,11 +563,6 @@ function (_React$Component) {
       }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "activity-input route"
-      }, "Choose a Route", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-        id: "select-route",
-        onChange: this.update('routeTitle')
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", null), routes)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "activity-input title"
       }, "Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
@@ -598,7 +594,12 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "submit",
         value: this.props.formType
-      }))));
+      }))), routes ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "map-index"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_create_activity_route_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        fetchRoutes: this.props.fetchRoutes,
+        routes: routes
+      })) : null);
     }
   }]);
 
@@ -1014,6 +1015,85 @@ var mdp = function mdp(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/activities/create_activity_route_index.jsx":
+/*!************************************************************************!*\
+  !*** ./frontend/components/activities/create_activity_route_index.jsx ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _route_index_route_index_item__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../route_index/route_index_item */ "./frontend/components/route_index/route_index_item.jsx");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var ActivityRouteIndex =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ActivityRouteIndex, _React$Component);
+
+  function ActivityRouteIndex(props) {
+    _classCallCheck(this, ActivityRouteIndex);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(ActivityRouteIndex).call(this, props));
+  }
+
+  _createClass(ActivityRouteIndex, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchRoutes();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      var routes = Object.values(this.props.routes).map(function (route) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
+          key: route.id,
+          route: route
+        });
+      });
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "index-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Choose a Route")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "bottom-border"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "index-list"
+      }, routes));
+    }
+  }]);
+
+  return ActivityRouteIndex;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (ActivityRouteIndex);
+
+/***/ }),
+
 /***/ "./frontend/components/activities/edit_activity_form_container.jsx":
 /*!*************************************************************************!*\
   !*** ./frontend/components/activities/edit_activity_form_container.jsx ***!
@@ -1144,7 +1224,7 @@ var msp = function msp(_ref) {
 var Dashboard = function Dashboard(_ref2) {
   var currentUser = _ref2.currentUser;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    classname: "dash-bg"
+    className: "dash-bg"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1153,13 +1233,15 @@ var Dashboard = function Dashboard(_ref2) {
     className: "profile"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    id: "username"
+  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "avatar-img"
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-footer"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-feed"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "no recent activities")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "your activities v")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "right col"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "col-div"
@@ -1743,10 +1825,10 @@ var RouteIndex =
 function (_React$Component) {
   _inherits(RouteIndex, _React$Component);
 
-  function RouteIndex() {
+  function RouteIndex(props) {
     _classCallCheck(this, RouteIndex);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(RouteIndex).apply(this, arguments));
+    return _possibleConstructorReturn(this, _getPrototypeOf(RouteIndex).call(this, props));
   }
 
   _createClass(RouteIndex, [{
@@ -1905,6 +1987,7 @@ function (_React$Component) {
 
     _classCallCheck(this, IndexRoute);
 
+    debugger;
     _this = _possibleConstructorReturn(this, _getPrototypeOf(IndexRoute).call(this, props));
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;

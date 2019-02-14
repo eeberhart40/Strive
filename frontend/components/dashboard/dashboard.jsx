@@ -10,11 +10,12 @@ const msp = ({ session, entities: { athletes } }) => {
 
 const Dashboard = ({currentUser}) => {
     return (
-        <div classname="dash-bg">
+        <div className="dash-bg">
             <div className="dashboard-container">
                 <div className="left col">
                     <div className="profile">
                         <div className="card-body">
+                            <h3 id="username">{currentUser.username}</h3>
                             <div className="avatar-img">
                             </div>
                         </div>
@@ -23,7 +24,7 @@ const Dashboard = ({currentUser}) => {
                         
                 </div>
                 <div className="dashboard-feed">
-                    <h1>no recent activities</h1>
+                    <h3>your activities v</h3>
                 </div>
                 <div className="right col">
                     <div className="col-div">
