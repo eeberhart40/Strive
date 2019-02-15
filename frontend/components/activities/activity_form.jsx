@@ -29,7 +29,7 @@ class ActivityForm extends React.Component {
     }
 
     handleSubmit(e) {
-        if(this.props.errors) return;
+        // if(this.props.errors) return;
         e.preventDefault();
         // Object.values(this.props.routes).some(route => {
         //     if(route.id === this.state.routeId) {
@@ -41,9 +41,15 @@ class ActivityForm extends React.Component {
         delete this.state.routeTitle;
         const activity = Object.assign({}, this.state);
         debugger
-        this.props.action(activity).then(this.props.closeModalAct()).then(({activity}) => {
-            this.props.history.replace(`/activities/${activity.id}`)});
-        // .then(() => this.props.history.push('/'));
+        // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
+        //     this.props.history.replace(`/activities/${activity.id}`)});
+        // // .then(() => this.props.history.push('/'));
+        debugger
+        this.props.action(activity).then((activity) => {
+            this.props.closeModalAct();
+            this.props.history.replace(`/activities/${activity.id}`);
+        });
+
     }
 
     render() {

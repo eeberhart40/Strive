@@ -49,10 +49,13 @@ export const fetchActivity = id => dispatch => {
 export const createActivity = activity => dispatch => {
     return (
         ActivityApiUtil.createActivity(activity).then(
-            activity => dispatch(receiveActivity(activity)),
+            activity => {
+                dispatch(receiveActivity(activity));
+                return activity;
+            },
             err => (dispatch(receiveErrors(err.responseJSON))
-        ))
-        );
+            )
+        ));
 }
 
 export const deleteActivity = id => dispatch => {
@@ -65,9 +68,12 @@ export const deleteActivity = id => dispatch => {
 export const updateActivity = activity => dispatch => {
     return (
         ActivityApiUtil.updateActivity(activity).then(
-            activity => dispatch(recieveActivity(activity))),
+            activity => {
+                dispatch(receiveActivity(activity));
+                return activity;
+            },
             err => (dispatch(receiveErrors(err.responseJSON))
             )
-    );
+    ));
 };
 

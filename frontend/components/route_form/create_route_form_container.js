@@ -6,7 +6,7 @@ import { closeModalSave, closeModal } from '../../actions/modal_actions';
 const msp = (state, ownProps) => {
     const currentUserId = state.session.id;
     const routeDataString = JSON.stringify(ownProps.routeData);
-    const erros = state.errors.activities;
+    const errors = state.errors.routes;
     return({
         athleteId: currentUserId,
         routeDataString: routeDataString,

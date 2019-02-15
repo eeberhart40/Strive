@@ -10,7 +10,7 @@ class ActivityIndex extends React.Component {
 
     render(){
         
-        let activities = Object.values(this.props.activities).map(activity => {
+        let activities = Object.values(this.props.activities).reverse().map(activity => {
             return (
                 <ActivityIndexItem 
                 key={activity.id}
@@ -24,12 +24,21 @@ class ActivityIndex extends React.Component {
         let count = Object.keys(this.props.activities).length;
         let countDisp;
         count === 1  ? countDisp = `1 Activity` : countDisp = `${count} Activities`
+
+        if(count === 0) {
+            return( 
+                <div className="empty-index-container">
+                    <h1>You don't have any routes. Create routes to record activities.</h1>
+                    <button id='create-route-btn'><Link to={'routes/new'}>Create New Route</Link></button>
+                </div>
+            )
+        }
         return (
             <div className="activity-index-container">
                 <div className='activity-index-bar'>
                     <h1>My Activities</h1>
                     <h2>{countDisp}</h2>
-                    <Link to={'activities/new'}>Record a new activity</Link>
+                    <button id='create-route-btn'><Link to={'activities/new'}>Record a new activity</Link></button>
                     {/* <button id='create-activity-btn'><Link to={'activities/new'}>Create New Activity</Link></button> */}
                 </div>
                 <div className="activities-table-container">

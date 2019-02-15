@@ -6,7 +6,7 @@ class Api::RoutesController < ApplicationController
         if @route.save
             render 'api/routes/show'
         else
-            render json: @route.errors.full_messages, status: 422 
+            render json: ["Route Name required"], status: 422 
         end
     end
 

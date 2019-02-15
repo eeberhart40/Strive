@@ -12,6 +12,7 @@ export default (state = [], action) => {
         case RECEIVE_ACTIVITY:
         case CLOSE_MODAL:
         case CLOSE_MODAL_ACT:
+            debugger
             return [];
         default:
             return state;

@@ -156,7 +156,8 @@ var fetchActivity = function fetchActivity(id) {
 var createActivity = function createActivity(activity) {
   return function (dispatch) {
     return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["createActivity"](activity).then(function (activity) {
-      return dispatch(receiveActivity(activity));
+      dispatch(receiveActivity(activity));
+      return activity;
     }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
     });
@@ -172,10 +173,11 @@ var deleteActivity = function deleteActivity(id) {
 var updateActivity = function updateActivity(activity) {
   return function (dispatch) {
     return _util_activity_api_util__WEBPACK_IMPORTED_MODULE_0__["updateActivity"](activity).then(function (activity) {
-      return dispatch(recieveActivity(activity));
-    }), function (err) {
+      dispatch(receiveActivity(activity));
+      return activity;
+    }, function (err) {
       return dispatch(receiveErrors(err.responseJSON));
-    };
+    });
   };
 };
 
@@ -256,8 +258,14 @@ var deleteRoute = function deleteRoute(id) {
 };
 var createRoute = function createRoute(route) {
   return function (dispatch) {
+    debugger;
     return _util_map_routes_util__WEBPACK_IMPORTED_MODULE_0__["createRoute"](route).then(function (route) {
-      return dispatch(receiveRoute(route));
+      debugger;
+      dispatch(receiveRoute(route));
+      return route;
+    }, function (err) {
+      debugger;
+      dispatch(receiveErrors(err.responseJSON));
     });
   };
 };
@@ -559,7 +567,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      if (this.props.errors) return;
+      // if(this.props.errors) return;
       e.preventDefault(); // Object.values(this.props.routes).some(route => {
       //     if(route.id === this.state.routeId) {
       //         this.state.route_id = route.id;
@@ -570,12 +578,16 @@ function (_React$Component) {
 
       delete this.state.routeTitle;
       var activity = Object.assign({}, this.state);
+      debugger; // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
+      //     this.props.history.replace(`/activities/${activity.id}`)});
+      // // .then(() => this.props.history.push('/'));
+
       debugger;
-      this.props.action(activity).then(this.props.closeModalAct()).then(function (_ref) {
-        var activity = _ref.activity;
+      this.props.action(activity).then(function (activity) {
+        _this3.props.closeModalAct();
 
         _this3.props.history.replace("/activities/".concat(activity.id));
-      }); // .then(() => this.props.history.push('/'));
+      });
     }
   }, {
     key: "render",
@@ -1058,7 +1070,7 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      var activities = Object.values(this.props.activities).map(function (activity) {
+      var activities = Object.values(this.props.activities).reverse().map(function (activity) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_activity_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: activity.id,
           activity: activity,
@@ -1070,13 +1082,26 @@ function (_React$Component) {
       var count = Object.keys(this.props.activities).length;
       var countDisp;
       count === 1 ? countDisp = "1 Activity" : countDisp = "".concat(count, " Activities");
+
+      if (count === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "empty-index-container"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You don't have any routes. Create routes to record activities."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          id: "create-route-btn"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+          to: 'routes/new'
+        }, "Create New Route")));
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "create-route-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: 'activities/new'
-      }, "Record a new activity")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Record a new activity"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activities-table-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "activities-table"
@@ -1769,9 +1794,11 @@ function (_React$Component) {
 
       e.preventDefault();
       var route = Object.assign({}, this.state); //trying to send to routes showpage once route is created
+      // this.props.createRoute(route).then(this.props.closeModalSave).then(({route}) => {
+      //     this.props.history.replace(`/routes/${route.id}`)});
 
-      this.props.createRoute(route).then(this.props.closeModalSave()).then(function (_ref) {
-        var route = _ref.route;
+      this.props.createRoute(route).then(function (route) {
+        _this2.props.closeModalSave();
 
         _this2.props.history.replace("/routes/".concat(route.id));
       });
@@ -1857,7 +1884,7 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   var currentUserId = state.session.id;
   var routeDataString = JSON.stringify(ownProps.routeData);
-  var erros = state.errors.activities;
+  var errors = state.errors.routes;
   return {
     athleteId: currentUserId,
     routeDataString: routeDataString,
@@ -3051,6 +3078,7 @@ __webpack_require__.r(__webpack_exports__);
     case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ACTIVITY"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_ACT"]:
+      debugger;
       return [];
 
     default:
@@ -3353,12 +3381,14 @@ __webpack_require__.r(__webpack_exports__);
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTES_ERRORS"]:
+    case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTE_ERRORS"]:
+      debugger;
       return action.errors;
 
     case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTE"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_SAVE"]:
+      debugger;
       return [];
 
     default:
