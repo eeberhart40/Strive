@@ -73,3 +73,14 @@
 tr:nth-child(even) {
   background-color:#f5f5fa
 }
+
+
+#create-activity-button{
+    background-color: #ff5900;
+    height: 35px;
+    width: 200px;
+    border-radius: 5px;
+    font-family: inherit; 
+    cursor: pointer;
+    color: white;
+}

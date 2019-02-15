@@ -1085,7 +1085,7 @@ function (_React$Component) {
 
       if (count === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          className: "empty-index-container"
+          className: "empty-index-container container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You don't have any routes. Create routes to record activities."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "create-route-btn"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -1094,11 +1094,11 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "activity-index-container"
+        className: "activity-index-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "create-route-btn"
+        id: "create-activity-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: 'activities/new'
       }, "Record a new activity"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
