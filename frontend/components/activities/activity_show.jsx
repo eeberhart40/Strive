@@ -22,13 +22,15 @@ class ActivityShow extends React.Component {
         return(
             <div className="show-activity-container">
             <section className="with-border" id="activity-heading">
-                <header><h1>{this.props.currentUser.username} - {activity.sport}</h1></header>
+                <header className="activity-show-header"><h1>{this.props.currentUser.username} - {activity.sport}</h1></header>
                 <div className="activity-summary-container">
                     <div className="activity-summary">
-                        <div className="details-container">
+                        <div className="details-container-personal">
+                                <div id="prof-image" className="avatar-img">
+                                </div>
                         </div>
                     </div>
-                    <div className="details-container">
+                    <div className="details-container-stats">
                         <ul className="inline-stats">
                             <li><strong>{activity.distance} mi</strong></li>
                             <li><strong>{activity.time}</strong></li>

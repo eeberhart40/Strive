@@ -562,7 +562,7 @@ function (_React$Component) {
       delete this.state.routeTitle;
       var activity = Object.assign({}, this.state);
       debugger;
-      this.props.action(activity).then(function (_ref) {
+      this.props.action(activity).then(this.props.closeModalAct()).then(function (_ref) {
         var activity = _ref.activity;
 
         _this3.props.history.replace("/activities/".concat(activity.id));
@@ -582,35 +582,36 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "activity-form",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "activities-errors"
-      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, errors), this.props.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Elevation: ", this.props.elevation, " ft") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Distance: ", this.props.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "activity-input time"
+      }, "Duration:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.time,
+        placeholder: "00:00:00",
+        onChange: this.update('time')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "activity-input title"
       }, "Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         value: this.state.title,
         onChange: this.update('title')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "activity-input time"
-      }, "Duration (hh:mm:ss)", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.time,
-        onChange: this.update('time')
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "activity-input distance"
-      }, "Distance: ", this.state.distance), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "activity-input elevation"
-      }, "Elevation: ", this.state.elevation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        className: "activity-input elevation"
+        className: "activity-input description"
       }, "Description", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
         value: this.state.description,
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        id: "create-activity-btn",
         type: "submit",
         value: this.props.formType
-      }))));
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.props.closeModalAct,
+        id: "cancel-activity-btn"
+      }, "Cancel"))));
     }
   }]);
 
@@ -907,14 +908,19 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "with-border",
         id: "activity-heading"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.currentUser.username, " - ", activity.sport)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+        className: "activity-show-header"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.currentUser.username, " - ", activity.sport)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-summary-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-summary"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "details-container"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "details-container"
+        className: "details-container-personal"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "prof-image",
+        className: "avatar-img"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "details-container-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "inline-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.distance, " mi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.time)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.elevation, " ft"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1106,7 +1112,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/activity_actions */ "./frontend/actions/activity_actions.js");
 /* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
-/* harmony import */ var _activity_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./activity_form */ "./frontend/components/activities/activity_form.jsx");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+/* harmony import */ var _activity_form__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./activity_form */ "./frontend/components/activities/activity_form.jsx");
+
 
 
 
@@ -1147,11 +1155,14 @@ var mdp = function mdp(dispatch) {
     },
     fetchRoutes: function fetchRoutes() {
       return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRoutes"])());
+    },
+    closeModalAct: function closeModalAct() {
+      return dispatch(Object(_actions_modal_actions__WEBPACK_IMPORTED_MODULE_3__["closeModalAct"])());
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_activity_form__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(msp, mdp)(_activity_form__WEBPACK_IMPORTED_MODULE_4__["default"]));
 
 /***/ }),
 

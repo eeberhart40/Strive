@@ -41,7 +41,7 @@ class ActivityForm extends React.Component {
         delete this.state.routeTitle;
         const activity = Object.assign({}, this.state);
         debugger
-        this.props.action(activity).then(({activity}) => {
+        this.props.action(activity).then(this.props.closeModalAct()).then(({activity}) => {
             this.props.history.replace(`/activities/${activity.id}`)});
         // .then(() => this.props.history.push('/'));
     }
@@ -58,12 +58,24 @@ class ActivityForm extends React.Component {
         return (
             <div className='activity-form-container'>
                 <form className='activity-form' onSubmit={this.handleSubmit}>
-                    <h3>{this.props.formType}</h3>
+                    <h2>{this.props.formType}</h2>
                     <ul className="activities-errors">
                         {errors}
                     </ul>
+                    {this.props.elevation ? 
+                    <h3>Elevation: {this.props.elevation} ft</h3> :
+                    null}
+                    <h3>Distance: {this.props.distance} mi</h3>
                     <br/>
                     <div className="activity-form">
+                        <label className= 'activity-input time'>
+                            Duration:
+                            <input 
+                            type="text" 
+                            value={this.state.time}
+                            placeholder="00:00:00"
+                            onChange={this.update('time')}/>
+                        </label>
                         <label className= 'activity-input title'>
                             Title
                             <input
@@ -75,30 +87,14 @@ class ActivityForm extends React.Component {
                         {/* <label className='activity-route'>
                             Route: {this.state.routeTitle}
                         </label> */}
-                        <label className= 'activity-input time'>
-                            Duration (hh:mm:ss)
-                            <input type="text"
-                            value={this.state.time}
-                            onChange={this.update('time')}
-                            />
-                        </label>
-                        <label className= 'activity-input distance'>
-                            Distance: {this.state.distance}
-                        </label>
-                        <label className='activity-input elevation'>
-                            Elevation: {this.state.elevation}
-                            {/* <input type="text"
-                            value={this.state.elevation}
-                            onChange={this.update('elevation')}
-                            /> */}
-                        </label>
-                        <label className= 'activity-input elevation'>
+                        <label className= 'activity-input description'>
                             Description 
                             <textarea
                                 value={this.state.description}
                                 onChange={this.update('description')} />
                         </label>
-                        <input type="submit" value={this.props.formType} />
+                        <input id="create-activity-btn" type="submit" value={this.props.formType}/>
+                        <button onClick={this.props.closeModalAct} id="cancel-activity-btn">Cancel</button>
                     </div>
                 </form>
             </div>

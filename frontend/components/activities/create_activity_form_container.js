@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { createActivity } from '../../actions/activity_actions';
 import { fetchRoutes } from '../../actions/map_route_actions';
+import { closeModalAct } from '../../actions/modal_actions';
 import ActivityForm from './activity_form';
 
 const msp = state => {
@@ -34,7 +35,8 @@ const msp = state => {
 const mdp = dispatch => {
     return ({
         action: (activity) => dispatch(createActivity(activity)),
-        fetchRoutes: () => dispatch(fetchRoutes())
+        fetchRoutes: () => dispatch(fetchRoutes()),
+        closeModalAct: () => dispatch(closeModalAct())
     });
 };
 
