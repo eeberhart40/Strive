@@ -7,7 +7,7 @@
 #activity-heading {
     border: 1px solid #ccccd1;
     margin-bottom: 30px;
-    height: 250px;
+    height: 150px;
 }
 .activity-show-header {
     height: 24px;
@@ -52,17 +52,26 @@
 }
 
 .details-container-personal {
-    padding-left: 120px;
+    padding-left: 70px;
     padding-bottom: 20px;
     /* margin: 0; */
     /* padding: 0; */
     display: block;
     height: 50%;
     width: 100%;
+    flex-wrap: wrap;
 }
 
 #prof-image {
     position: absolute;
     top:0;
     left: 0;
+}
+
+.details-container-personal p {
+    font-size: 10px;
+}
+
+.details-container-personal h1 {
+    margin: 0px;
 }

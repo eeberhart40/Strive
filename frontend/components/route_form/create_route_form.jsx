@@ -33,19 +33,19 @@ class CreateRouteForm extends React.Component {
 
     
     render() {
-        // const errors = this.props.errors.map((error, i) => {
-        //     return (
-        //         <li key={`error-${i}`}>{error}</li>
-        //     )
-        // });
+        const errors = this.props.errors.map((error, i) => {
+            return (
+                <li key={`error-${i}`}>{error}</li>
+            )
+        });
 
         return (
             <div className='route-form-container'>
                 <h1>Save</h1>
                 <form className='route-form-box' onSubmit={this.handleSubmit}>
-                {/* <ul className="route-errors">
+                <ul className="route-errors">
                     {errors}
-                </ul> */}
+                </ul>
                 <div className="route-form">
                     <div className='name-input'>
                         <label>

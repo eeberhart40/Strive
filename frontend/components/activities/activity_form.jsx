@@ -29,7 +29,7 @@ class ActivityForm extends React.Component {
     }
 
     handleSubmit(e) {
-        // if (this.state.routeTitle === '') return
+        if(this.props.errors) return;
         e.preventDefault();
         // Object.values(this.props.routes).some(route => {
         //     if(route.id === this.state.routeId) {

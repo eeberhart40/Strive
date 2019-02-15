@@ -4,11 +4,13 @@ import CreateRouteForm from './create_route_form';
 import { closeModalSave, closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-    let currentUserId = state.session.id;
-    let routeDataString = JSON.stringify(ownProps.routeData);
+    const currentUserId = state.session.id;
+    const routeDataString = JSON.stringify(ownProps.routeData);
+    const erros = state.errors.activities;
     return({
         athleteId: currentUserId,
-        routeDataString: routeDataString
+        routeDataString: routeDataString,
+        errors
     })
 }
 

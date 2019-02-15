@@ -185,7 +185,7 @@ var updateActivity = function updateActivity(activity) {
 /*!***********************************************!*\
   !*** ./frontend/actions/map_route_actions.js ***!
   \***********************************************/
-/*! exports provided: RECEIVE_ALL_ROUTES, RECEIVE_ROUTE, REMOVE_ROUTE, fetchRoutes, fetchRoute, deleteRoute, createRoute */
+/*! exports provided: RECEIVE_ALL_ROUTES, RECEIVE_ROUTE, REMOVE_ROUTE, RECEIVE_ROUTE_ERRORS, receiveErrors, fetchRoutes, fetchRoute, deleteRoute, createRoute */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -193,6 +193,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ALL_ROUTES", function() { return RECEIVE_ALL_ROUTES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ROUTE", function() { return RECEIVE_ROUTE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_ROUTE", function() { return REMOVE_ROUTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ROUTE_ERRORS", function() { return RECEIVE_ROUTE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveErrors", function() { return receiveErrors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRoutes", function() { return fetchRoutes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchRoute", function() { return fetchRoute; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deleteRoute", function() { return deleteRoute; });
@@ -202,6 +204,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_ROUTES = "RECEIVE_ALL_ROUTES";
 var RECEIVE_ROUTE = "RECEIVE_ROUTE";
 var REMOVE_ROUTE = "REMOVE_ROUTE";
+var RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
 
 var receiveAllRoutes = function receiveAllRoutes(routes) {
   return {
@@ -224,6 +227,12 @@ var removeRoute = function removeRoute(id) {
   };
 };
 
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_ROUTE_ERRORS,
+    errors: errors
+  };
+};
 var fetchRoutes = function fetchRoutes() {
   return function (dispatch) {
     return _util_map_routes_util__WEBPACK_IMPORTED_MODULE_0__["fetchRoutes"]().then(function (routes) {
@@ -550,7 +559,7 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      // if (this.state.routeTitle === '') return
+      if (this.props.errors) return;
       e.preventDefault(); // Object.values(this.props.routes).some(route => {
       //     if(route.id === this.state.routeId) {
       //         this.state.route_id = route.id;
@@ -919,7 +928,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "prof-image",
         className: "avatar-img"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "details-container-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "inline-stats"
@@ -1779,17 +1788,19 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // const errors = this.props.errors.map((error, i) => {
-      //     return (
-      //         <li key={`error-${i}`}>{error}</li>
-      //     )
-      // });
+      var errors = this.props.errors.map(function (error, i) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: "error-".concat(i)
+        }, error);
+      });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "route-form-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Save"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "route-form-box",
         onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "route-errors"
+      }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "route-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "name-input"
@@ -1846,9 +1857,11 @@ __webpack_require__.r(__webpack_exports__);
 var msp = function msp(state, ownProps) {
   var currentUserId = state.session.id;
   var routeDataString = JSON.stringify(ownProps.routeData);
+  var erros = state.errors.activities;
   return {
     athleteId: currentUserId,
-    routeDataString: routeDataString
+    routeDataString: routeDataString,
+    errors: errors
   };
 };
 
@@ -3023,6 +3036,8 @@ var Splash = function Splash() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/activity_actions */ "./frontend/actions/activity_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -3034,6 +3049,8 @@ __webpack_require__.r(__webpack_exports__);
       return action.errors;
 
     case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ACTIVITY"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_ACT"]:
       return [];
 
     default:
@@ -3159,12 +3176,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./session_errors_reducer */ "./frontend/reducers/session_errors_reducer.js");
 /* harmony import */ var _activities_errors_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./activities_errors_reducer */ "./frontend/reducers/activities_errors_reducer.js");
+/* harmony import */ var _route_errors_reducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./route_errors_reducers */ "./frontend/reducers/route_errors_reducers.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  activities: _activities_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  activities: _activities_errors_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  routes: _route_errors_reducers__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -3311,6 +3331,40 @@ function routeDataReducer() {
       return state;
   }
 }
+
+/***/ }),
+
+/***/ "./frontend/reducers/route_errors_reducers.js":
+/*!****************************************************!*\
+  !*** ./frontend/reducers/route_errors_reducers.js ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
+/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
+
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTES_ERRORS"]:
+      return action.errors;
+
+    case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTE"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
+    case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_SAVE"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 

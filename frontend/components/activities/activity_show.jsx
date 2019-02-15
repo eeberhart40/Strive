@@ -28,6 +28,8 @@ class ActivityShow extends React.Component {
                         <div className="details-container-personal">
                                 <div id="prof-image" className="avatar-img">
                                 </div>
+                                <p>{Date(activity.created_at).slice(0, 15)}</p>
+                                <h1>{activity.title}</h1>
                         </div>
                     </div>
                     <div className="details-container-stats">

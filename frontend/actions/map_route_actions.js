@@ -2,6 +2,7 @@ import * as ApiUtil from '../util/map_routes_util';
 export const RECEIVE_ALL_ROUTES = "RECEIVE_ALL_ROUTES";
 export const RECEIVE_ROUTE = "RECEIVE_ROUTE";
 export const REMOVE_ROUTE = "REMOVE_ROUTE";
+export const RECEIVE_ROUTE_ERRORS = "RECEIVE_ROUTE_ERRORS";
 
 const receiveAllRoutes = (routes) => {
     return({
@@ -24,6 +25,11 @@ const removeRoute = (id) => {
         routeId: id
     });
 };
+
+export const receiveErrors = errors => ({
+    type: RECEIVE_ROUTE_ERRORS,
+    errors
+});
 
 export const fetchRoutes = () => dispatch => {
     return(
