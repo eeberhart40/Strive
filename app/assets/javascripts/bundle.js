@@ -1348,51 +1348,154 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions_activity_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/activity_actions */ "./frontend/actions/activity_actions.js");
+/* harmony import */ var _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/map_route_actions */ "./frontend/actions/map_route_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
 
 
 
 var msp = function msp(_ref) {
   var session = _ref.session,
-      athletes = _ref.entities.athletes;
+      _ref$entities = _ref.entities,
+      athletes = _ref$entities.athletes,
+      activities = _ref$entities.activities,
+      routes = _ref$entities.routes;
+  var actIds = Object.keys(activities);
+  var latestAct = activities[actIds[0]];
+  var activityCount = actIds.length;
+  var routeCount = Object.keys(routes).length;
   return {
-    currentUser: athletes[session.id]
+    currentUser: athletes[session.id],
+    activities: activities,
+    latestAct: latestAct,
+    activityCount: activityCount,
+    routeCount: routeCount
   };
 };
 
-var Dashboard = function Dashboard(_ref2) {
-  var currentUser = _ref2.currentUser;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dash-bg"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard-container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "left col"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "profile"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "avatar-img"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    id: "username"
-  }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "user-stats"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "card-footer"
-  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboard-feed"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "your activities v")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "right col"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-div"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-div"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Clubs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-div"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone")))));
+var mdp = function mdp(dispatch) {
+  return {
+    fetchActivity: function fetchActivity(id) {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_2__["fetchActivity"])(id));
+    },
+    fetchActivities: function fetchActivities() {
+      return dispatch(Object(_actions_activity_actions__WEBPACK_IMPORTED_MODULE_2__["fetchActivities"])());
+    },
+    fetchRoutes: function fetchRoutes() {
+      return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_3__["fetchRoutes"])());
+    }
+  };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp)(Dashboard));
+var Dashboard =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Dashboard, _React$Component);
+
+  function Dashboard(props) {
+    var _this;
+
+    _classCallCheck(this, Dashboard);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
+    _this.latestActivity = _this.props.latestActivity;
+    return _this;
+  }
+
+  _createClass(Dashboard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.fetchActivities();
+      this.props.fetchRoutes();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      debugger;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dash-bg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "left col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "profile"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "avatar-img"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+        id: "username"
+      }, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "upper-card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "user-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "routes"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dash-stats"
+      }, "Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.routeCount)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activities"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "dash-stats"
+      }, "Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, this.props.activityCount))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "latest-activity"
+      }, this.props.activityCount > 0 ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "lates-act-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dash-stats"
+      }, "Latest Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "act-title"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        to: "activities/".concat(this.props.latestAct.id)
+      }, this.props.latestAct.title, " \u2022")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dash-stats"
+      }, Date(this.props.latestAct.created_at).slice(0, 15))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "no-act-message"
+      }, "No activties yet. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+        to: 'activities/new'
+      }, "Record one!")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "dashboard-feed"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "your activities v")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "right col"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Clubs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone")))));
+    }
+  }]);
+
+  return Dashboard;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+;
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(msp, mdp)(Dashboard));
 
 /***/ }),
 
