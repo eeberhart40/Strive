@@ -5,6 +5,7 @@ const msp = ({ session, entities: { athletes } }) => {
 
     return {
         currentUser: athletes[session.id]
+        
     };
 };
 
@@ -15,8 +16,11 @@ const Dashboard = ({currentUser}) => {
                 <div className="left col">
                     <div className="profile">
                         <div className="card-body">
-                            <h3 id="username">{currentUser.username}</h3>
                             <div className="avatar-img">
+                            </div>
+                            <h3 id="username">{currentUser.username}</h3>
+                            <div className="user-stats">
+                                <h3></h3>
                             </div>
                         </div>
                         <div className="card-footer"></div>

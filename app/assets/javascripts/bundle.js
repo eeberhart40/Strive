@@ -620,7 +620,7 @@ function (_React$Component) {
         value: this.state.description,
         onChange: this.update('description')
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        id: "create-activity-btn",
+        id: "create-activity-btn-2",
         type: "submit",
         value: this.props.formType
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1337,11 +1337,13 @@ var Dashboard = function Dashboard(_ref2) {
     className: "profile"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-body"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "avatar-img"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     id: "username"
   }, currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "avatar-img"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "user-stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card-footer"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "dashboard-feed"
@@ -1971,9 +1973,9 @@ function (_React$Component) {
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-container"
+        className: "route-index-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-bar container"
+        className: "index-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "create-route-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -1981,7 +1983,7 @@ function (_React$Component) {
       }, "Create New Route"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bottom-border"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "index-list container"
+        className: "index-list"
       }, routes));
     }
   }]);

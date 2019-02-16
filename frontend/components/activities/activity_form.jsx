@@ -97,7 +97,7 @@ class ActivityForm extends React.Component {
                                 value={this.state.description}
                                 onChange={this.update('description')} />
                         </label>
-                        <input id="create-activity-btn" type="submit" value={this.props.formType}/>
+                        <input id="create-activity-btn-2" type="submit" value={this.props.formType}/>
                         <button onClick={this.props.closeModalAct} id="cancel-activity-btn">Cancel</button>
                     </div>
                 </form>
