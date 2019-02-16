@@ -7,9 +7,13 @@
     padding-right: 16px;
 }
 
+
+.activity-index-bar {
+    margin-bottom:10px;
+}
+
 .activity-index-bar, h2 {
     font-size: 18;
-
 }
 
 .activities-table {
@@ -93,4 +97,8 @@ tr:nth-child(even) {
 #create-activity-btn a{
     color: white;
     font-size: 14px
+}
+
+.col-title a {
+  color: #437fa9;
 }

@@ -33,11 +33,24 @@ class ActivityShow extends React.Component {
                         </div>
                     </div>
                     <div className="details-container-stats">
-                        <ul className="inline-stats">
-                            <li><strong>{activity.distance} mi</strong></li>
-                            <li><strong>{activity.time}</strong></li>
-                            <li><strong>{activity.elevation} ft</strong></li>
-                        </ul>
+                        <div className="inline-stats-container">
+                            <ul className="inline-stats">
+                                <li>
+                                    <strong>{activity.distance} mi</strong>
+                                    <div className="under-stats">Distance</div>
+                                </li>
+                                <li>
+                                    <strong>{activity.time}</strong>
+                                    <div className="under-stats">Duration</div>
+                                </li>
+                                {activity.elevation ? (
+                                    <li>
+                                        <strong>{activity.elevation} ft</strong>
+                                            <div className="under-stats"></div>
+                                    </li>
+                                ) : null }
+                            </ul>
+                        </div>
                         <div className="more-stats"></div>
                         <div className="link-section"></div>
                     </div>

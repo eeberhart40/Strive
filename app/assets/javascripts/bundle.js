@@ -938,9 +938,17 @@ function (_React$Component) {
         className: "avatar-img"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "details-container-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inline-stats-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "inline-stats"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.distance, " mi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.time)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.elevation, " ft"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Distance")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Duration")), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.elevation, " ft"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      })) : null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "more-stats"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "link-section"
@@ -1965,7 +1973,7 @@ function (_React$Component) {
     value: function render() {
       var _this = this;
 
-      var routes = Object.values(this.props.routes).map(function (route) {
+      var routes = Object.values(this.props.routes).reverse().map(function (route) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: route.id,
           route: route,
@@ -2738,10 +2746,7 @@ function (_React$Component) {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
-      })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        id: "delete-route-btn",
-        onClick: this.deleteRoute
-      }, "Remove"));
+      })) : null);
     }
   }]);
 

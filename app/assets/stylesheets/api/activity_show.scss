@@ -32,10 +32,8 @@
     padding-left: 15px;
     padding-right: 15px;
     box-sizing: border-box;
-    // display: block;
-    // width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: inline-block;
+    width: 100%;
 }
 
 .activity-summary {
@@ -45,7 +43,7 @@
     padding-right: 15px;
     margin-top: 10px;
     position: relative;
-    width: 100%;
+    width: 50%;
     flex-direction: column;
     // height: 250px;
     height: 100%;
@@ -74,4 +72,21 @@
 
 .details-container-personal h1 {
     margin: 0px;
+}
+
+.inline-stats-container {
+    height: 33%;
+    display: flex;
+}
+
+.details-container-stats {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    box-sizing: border-box;
+    height: 100%;
+    overflow: none;
+}
+
+.inline-stats{
+    display: inline;
 }
