@@ -879,13 +879,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -895,10 +895,15 @@ var ActivityShow =
 function (_React$Component) {
   _inherits(ActivityShow, _React$Component);
 
-  function ActivityShow() {
+  function ActivityShow(props) {
+    var _this;
+
     _classCallCheck(this, ActivityShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(ActivityShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivityShow).call(this, props));
+    _this.avgSpeed = "";
+    _this.avg = _this.avg.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(ActivityShow, [{
@@ -913,7 +918,23 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      if (!prevProps.route.id) this.props.fetchRoute(this.props.activity.route_id);
+      if (!prevProps.route.id) {
+        this.props.fetchRoute(this.props.activity.route_id);
+        this.avgSpeed = this.avg(this.props.activity.distance, this.props.activity.time);
+      }
+    }
+  }, {
+    key: "avg",
+    value: function avg(distance, timeStr) {
+      var timeArr = timeStr.split(":");
+      var hours = parseInt(timeArr[0]) + parseInt(timeArr[1]) / 60 + parseInt(timeArr[2]) / 3600;
+      var avg = distance / hours;
+
+      if (avg > 0) {
+        return "".concat(avg.toFixed(2), " mi/h");
+      }
+
+      return "n/a";
     }
   }, {
     key: "render",
@@ -938,8 +959,6 @@ function (_React$Component) {
         className: "avatar-img"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "details-container-stats"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "inline-stats-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "inline-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -948,9 +967,16 @@ function (_React$Component) {
         className: "under-stats"
       }, "Duration")), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, activity.elevation, " ft"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      })) : null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      })) : null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "more-stats"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats",
+        id: "speed"
+      }, "Speed"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "avg"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Avg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.avgSpeed))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "link-section"
       })))), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
