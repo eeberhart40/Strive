@@ -6,6 +6,7 @@ class ActivityIndex extends React.Component {
     componentDidMount() {
 
         this.props.fetchActivities();
+        this.props.fetchRoutes();
     }
 
     render(){
@@ -21,11 +22,14 @@ class ActivityIndex extends React.Component {
                 />
             );
         });
-        let count = Object.keys(this.props.activities).length;
-        let countDisp;
-        count === 1  ? countDisp = `1 Activity` : countDisp = `${count} Activities`
 
-        if(count === 0) {
+        let actCount = Object.keys(this.props.activities).length;
+        let actCountDisp;
+        actCount === 1  ? actCountDisp = `1 Activity` : actCountDisp = `${actCount} Activities`
+        
+        
+        let routeCount = Object.keys(this.props.routes).length;
+        if(routeCount === 0) {
             return( 
                 <div className="empty-index-container container">
                     <h1>You don't have any routes. Create routes to record activities.</h1>
@@ -37,9 +41,8 @@ class ActivityIndex extends React.Component {
             <div className="activity-index-container container">
                 <div className='activity-index-bar'>
                     <h1>My Activities</h1>
-                    <h2>{countDisp}</h2>
-                    <button id='create-activity-btn'><Link to={'activities/new'}>Record a new activity</Link></button>
-                    {/* <button id='create-activity-btn'><Link to={'activities/new'}>Create New Activity</Link></button> */}
+                    <h2>{actCountDisp}</h2>
+                    <button id="create-activity-btn"><Link to={'activities/new'}>Record a new activity</Link></button>
                 </div>
                 <div className="activities-table-container">
                     <table className="activities-table">

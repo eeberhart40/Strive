@@ -663,8 +663,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var msp = function msp(state) {
   var activities = state.entities.activities;
+  var routes = state.entities.routes;
   return {
-    activities: activities
+    activities: activities,
+    routes: routes
   };
 };
 
@@ -681,6 +683,9 @@ var mdp = function mdp(dispatch) {
     },
     fetchRoute: function fetchRoute(id) {
       return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRoute"])(id));
+    },
+    fetchRoutes: function fetchRoutes() {
+      return dispatch(Object(_actions_map_route_actions__WEBPACK_IMPORTED_MODULE_2__["fetchRoutes"])());
     }
   };
 };
@@ -823,7 +828,7 @@ function (_React$Component) {
         }));
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-container"
+        className: "activity-route-index-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Choose a Route")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1064,6 +1069,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchActivities();
+      this.props.fetchRoutes();
     }
   }, {
     key: "render",
@@ -1079,11 +1085,12 @@ function (_React$Component) {
           fetchRoute: _this.props.fetchRoute
         });
       });
-      var count = Object.keys(this.props.activities).length;
-      var countDisp;
-      count === 1 ? countDisp = "1 Activity" : countDisp = "".concat(count, " Activities");
+      var actCount = Object.keys(this.props.activities).length;
+      var actCountDisp;
+      actCount === 1 ? actCountDisp = "1 Activity" : actCountDisp = "".concat(actCount, " Activities");
+      var routeCount = Object.keys(this.props.routes).length;
 
-      if (count === 0) {
+      if (routeCount === 0) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "empty-index-container container"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You don't have any routes. Create routes to record activities."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1097,7 +1104,7 @@ function (_React$Component) {
         className: "activity-index-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-bar"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, countDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, actCountDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "create-activity-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         to: 'activities/new'
@@ -1976,7 +1983,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "index-bar"
+        className: "index-bar container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         id: "create-route-btn"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
@@ -1984,7 +1991,7 @@ function (_React$Component) {
       }, "Create New Route"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bottom-border"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "index-list"
+        className: "index-list container"
       }, routes));
     }
   }]);

@@ -39,7 +39,7 @@ class ActivityRouteIndex extends React.Component {
             );
         });
         return (
-            <div className="index-container">
+            <div className="activity-route-index-container container">
                 <div className='index-bar'>
                     <h1>Choose a Route</h1>
                 </div>
