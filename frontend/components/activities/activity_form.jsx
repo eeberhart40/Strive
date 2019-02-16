@@ -63,7 +63,7 @@ class ActivityForm extends React.Component {
             <div className='activity-form-container'>
                 <form className='activity-form' onSubmit={this.handleSubmit}>
                     <h2>{this.props.formType}</h2>
-                    <ul className="activities-errors">
+                    <ul className="errors">
                         {errors}
                     </ul>
                     {this.props.elevation ? 

@@ -134,9 +134,10 @@ class NewRoute extends React.Component {
                 this.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
                 if(this.routeData.sport === 'WALKING') {
                     this.routeData['travelTime'] = that.getTravelTime(
-                        Math.floor(response.routes[0].legs[0].duration.value / 2.1));
+                        Math.floor(response.routes[0].legs[0].duration.value / 2));
                 } else {
-                    this.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value)
+                    this.routeData['travelTime'] = that.getTravelTime(
+                        Math.floor(response.routes[0].legs[0].duration.value / 1.5));
                 }
                 this.routeData['path'] = response.routes[0].overview_path;
                 document.getElementById('distance').innerHTML =

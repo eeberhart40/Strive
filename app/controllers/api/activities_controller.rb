@@ -6,7 +6,7 @@ class Api::ActivitiesController < ApplicationController
         if @activity.save
             render 'api/activities/show'
         else 
-            render json: ["Route, Title, and, Distance required"], status: 422
+            render json: ["title and duration required"], status: 422
         end
     end
 

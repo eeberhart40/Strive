@@ -598,7 +598,7 @@ function (_React$Component) {
         className: "activity-form",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.formType), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "activities-errors"
+        className: "errors"
       }, errors), this.props.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Elevation: ", this.props.elevation, " ft") : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Distance: ", this.props.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -1825,7 +1825,7 @@ function (_React$Component) {
         className: "route-form-box",
         onSubmit: this.handleSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "route-errors"
+        className: "errors route-errors"
       }, errors), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "route-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2380,9 +2380,9 @@ function (_React$Component) {
           _this3.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
 
           if (_this3.routeData.sport === 'WALKING') {
-            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 2.1));
+            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 2));
           } else {
-            _this3.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
+            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 1.5));
           }
 
           _this3.routeData['path'] = response.routes[0].overview_path;

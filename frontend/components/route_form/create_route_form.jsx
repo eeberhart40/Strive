@@ -48,7 +48,7 @@ class CreateRouteForm extends React.Component {
             <div className='route-form-container'>
                 <h1>Save</h1>
                 <form className='route-form-box' onSubmit={this.handleSubmit}>
-                <ul className="route-errors">
+                <ul className="errors route-errors">
                     {errors}
                 </ul>
                 <div className="route-form">
