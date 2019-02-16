@@ -2380,9 +2380,9 @@ function (_React$Component) {
           _this3.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
 
           if (_this3.routeData.sport === 'WALKING') {
-            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 2));
+            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 1.8));
           } else {
-            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 1.5));
+            _this3.routeData['travelTime'] = that.getTravelTime(Math.floor(response.routes[0].legs[0].duration.value / 1.3));
           }
 
           _this3.routeData['path'] = response.routes[0].overview_path;
