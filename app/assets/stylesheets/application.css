@@ -58,3 +58,6 @@ h1, h2, h3, p, table, button, link, a {
         padding-left: 16px;
     }
 }
+h1, h2, h3, p, div, a, button {
+  font-family: 'Montserrat', sans-serif;
+}

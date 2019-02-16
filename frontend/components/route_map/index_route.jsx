@@ -57,7 +57,7 @@ class IndexRoute extends React.Component {
     //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
     render() {
         return (
-            <div>
+            <div className="route-index-map-container">
                 <div id="map-index" ref={map => this.mapNode = map}>
                 </div>
                 <div id='title'>
