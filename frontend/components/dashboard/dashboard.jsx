@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 const msp = ({ session, entities: { athletes, activities, routes } }) => {
 
     const actIds = Object.keys(activities);
-    const latestAct = activities[actIds[0]];
+    const latestActivity = activities[actIds[actIds.length - 1]];
     const activityCount = actIds.length;
     const routeCount = Object.keys(routes).length;
     return {
         currentUser: athletes[session.id],
         activities,
-        latestAct,
+        latestActivity,
         activityCount,
         routeCount 
     };
@@ -41,7 +41,6 @@ class Dashboard extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <div className="dash-bg">
                 <div className="dashboard-container">
@@ -69,8 +68,8 @@ class Dashboard extends React.Component {
                                     {this.props.activityCount > 0 ? (
                                         <div className="lates-act-container">
                                             <div className="dash-stats">Latest Activity</div>
-                                            <div className="act-title"><Link to={`activities/${this.props.latestAct.id}`}>{this.props.latestAct.title} •</Link></div>
-                                            <div className="dash-stats">{Date(this.props.latestAct.created_at).slice(0, 15)}</div>
+                                            <div className="act-title"><Link to={`activities/${this.props.latestActivity.id}`}>{this.props.latestActivity.title} •</Link></div>
+                                            <div className="dash-stats">{Date(this.props.latestActivity.created_at).slice(0, 15)}</div>
                                         </div>
                                     ) : 
                                     <div id="no-act-message">No activties yet. <Link to={'activities/new'}>Record one!</Link></div> }

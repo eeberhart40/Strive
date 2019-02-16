@@ -901,7 +901,6 @@ function (_React$Component) {
     _classCallCheck(this, ActivityShow);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(ActivityShow).call(this, props));
-    _this.avgSpeed = "";
     _this.avg = _this.avg.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
@@ -920,7 +919,6 @@ function (_React$Component) {
     value: function componentDidUpdate(prevProps) {
       if (!prevProps.route.id) {
         this.props.fetchRoute(this.props.activity.route_id);
-        this.avgSpeed = this.avg(this.props.activity.distance, this.props.activity.time);
       }
     }
   }, {
@@ -942,7 +940,7 @@ function (_React$Component) {
       var route = this.props.route;
       var activity = this.props.activity;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "show-activity-container"
+        className: "show-activity-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "with-border",
         id: "activity-heading"
@@ -976,7 +974,7 @@ function (_React$Component) {
         id: "avg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Avg"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.avgSpeed))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Avg"), activity.distance ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.avg(activity.distance, activity.time)) : "")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "link-section"
       })))), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
@@ -1382,13 +1380,13 @@ var msp = function msp(_ref) {
       activities = _ref$entities.activities,
       routes = _ref$entities.routes;
   var actIds = Object.keys(activities);
-  var latestAct = activities[actIds[0]];
+  var latestActivity = activities[actIds[actIds.length - 1]];
   var activityCount = actIds.length;
   var routeCount = Object.keys(routes).length;
   return {
     currentUser: athletes[session.id],
     activities: activities,
-    latestAct: latestAct,
+    latestActivity: latestActivity,
     activityCount: activityCount,
     routeCount: routeCount
   };
@@ -1432,7 +1430,6 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dash-bg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1470,10 +1467,10 @@ function (_React$Component) {
       }, "Latest Activity"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "act-title"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
-        to: "activities/".concat(this.props.latestAct.id)
-      }, this.props.latestAct.title, " \u2022")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        to: "activities/".concat(this.props.latestActivity.id)
+      }, this.props.latestActivity.title, " \u2022")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dash-stats"
-      }, Date(this.props.latestAct.created_at).slice(0, 15))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, Date(this.props.latestActivity.created_at).slice(0, 15))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "no-act-message"
       }, "No activties yet. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
         to: 'activities/new'
