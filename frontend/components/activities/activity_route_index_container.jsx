@@ -12,7 +12,6 @@ class ActivityRouteIndex extends React.Component {
     }
 
     handleClick(routeData, routeId) {
-        debugger
         this.props.openModalAct(routeData, routeId);
     }
 
@@ -23,9 +22,7 @@ class ActivityRouteIndex extends React.Component {
     }
 
     render() {
-        // debugger
         let routes = Object.values(this.props.routes).map(route => {
-            debugger
             return (
                 <div 
                 key={route.id}

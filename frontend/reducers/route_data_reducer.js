@@ -10,7 +10,6 @@ export default function routeDataReducer(state = null, action) {
         case OPEN_MODAL_SAVE:
             return action.dataString;
         case OPEN_MODAL_ACT:
-            debugger
             return { dataString: action.dataString, routeId: action.routeId};
         case CLOSE_MODAL_SAVE:
         case CLOSE_MODAL_ACT:

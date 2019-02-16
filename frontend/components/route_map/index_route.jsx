@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 class IndexRoute extends React.Component {
     constructor(props) {
-        // debugger
         super(props);
         this.routeData = JSON.parse(props.route.route_data);
     }

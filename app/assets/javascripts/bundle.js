@@ -258,13 +258,10 @@ var deleteRoute = function deleteRoute(id) {
 };
 var createRoute = function createRoute(route) {
   return function (dispatch) {
-    debugger;
     return _util_map_routes_util__WEBPACK_IMPORTED_MODULE_0__["createRoute"](route).then(function (route) {
-      debugger;
       dispatch(receiveRoute(route));
       return route;
     }, function (err) {
-      debugger;
       dispatch(receiveErrors(err.responseJSON));
     });
   };
@@ -323,7 +320,6 @@ var closeModalSave = function closeModalSave() {
   };
 };
 var openModalAct = function openModalAct(modal, dataString, routeId) {
-  debugger;
   return {
     type: OPEN_MODAL_ACT,
     modal: modal,
@@ -577,12 +573,10 @@ function (_React$Component) {
       // })
 
       delete this.state.routeTitle;
-      var activity = Object.assign({}, this.state);
-      debugger; // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
+      var activity = Object.assign({}, this.state); // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
       //     this.props.history.replace(`/activities/${activity.id}`)});
       // // .then(() => this.props.history.push('/'));
 
-      debugger;
       this.props.action(activity).then(function (activity) {
         _this3.props.closeModalAct();
 
@@ -800,7 +794,6 @@ function (_React$Component) {
   _createClass(ActivityRouteIndex, [{
     key: "handleClick",
     value: function handleClick(routeData, routeId) {
-      debugger;
       this.props.openModalAct(routeData, routeId);
     }
   }, {
@@ -813,9 +806,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      // debugger
       var routes = Object.values(this.props.routes).map(function (route) {
-        debugger;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: route.id,
           className: "activity-index-route-map",
@@ -1575,7 +1566,6 @@ function Modal(_ref) {
 }
 
 var mapStateToProps = function mapStateToProps(state) {
-  debugger;
   var routeData = state.ui.routeData;
   var routeId = state.ui.routeId;
 
@@ -2119,7 +2109,6 @@ function (_React$Component) {
 
     _classCallCheck(this, IndexRoute);
 
-    // debugger
     _this = _possibleConstructorReturn(this, _getPrototypeOf(IndexRoute).call(this, props));
     _this.routeData = JSON.parse(props.route.route_data);
     return _this;
@@ -3085,7 +3074,6 @@ __webpack_require__.r(__webpack_exports__);
     case _actions_activity_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ACTIVITY"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_ACT"]:
-      debugger;
       return [];
 
     default:
@@ -3352,7 +3340,6 @@ function routeDataReducer() {
       return action.dataString;
 
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__["OPEN_MODAL_ACT"]:
-      debugger;
       return {
         dataString: action.dataString,
         routeId: action.routeId
@@ -3389,13 +3376,11 @@ __webpack_require__.r(__webpack_exports__);
 
   switch (action.type) {
     case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTE_ERRORS"]:
-      debugger;
       return action.errors;
 
     case _actions_map_route_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ROUTE"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL"]:
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_1__["CLOSE_MODAL_SAVE"]:
-      debugger;
       return [];
 
     default:

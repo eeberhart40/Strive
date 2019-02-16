@@ -33,7 +33,6 @@ export const closeModalSave = () => {
     };
 };
 export const openModalAct = (modal, dataString, routeId) => {
-    debugger
     return {
         type: OPEN_MODAL_ACT,
         modal,

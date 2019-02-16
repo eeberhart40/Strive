@@ -40,11 +40,9 @@ class ActivityForm extends React.Component {
         // })
         delete this.state.routeTitle;
         const activity = Object.assign({}, this.state);
-        debugger
         // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
         //     this.props.history.replace(`/activities/${activity.id}`)});
         // // .then(() => this.props.history.push('/'));
-        debugger
         this.props.action(activity).then((activity) => {
             this.props.closeModalAct();
             this.props.history.replace(`/activities/${activity.id}`);

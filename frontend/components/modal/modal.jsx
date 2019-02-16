@@ -45,7 +45,6 @@ function Modal({ modal, closeModal, routeData, routeId }) {
 }
 
 const mapStateToProps = state => {
-    debugger
     const routeData = state.ui.routeData;
     const routeId = state.ui.routeId;
     if(routeData){

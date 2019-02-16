@@ -49,16 +49,13 @@ export const deleteRoute = (id) => dispatch => {
 };
 
 export const createRoute = (route) => dispatch => {
-    debugger
     return(
         ApiUtil.createRoute(route).then(
             route =>  {
-                debugger
                 dispatch(receiveRoute(route));
                 return route;
             },
             err => {
-                debugger
                 (dispatch(receiveErrors(err.responseJSON)));
             }
         )
