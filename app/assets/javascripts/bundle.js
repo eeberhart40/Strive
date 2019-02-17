@@ -2864,7 +2864,7 @@ function (_React$Component) {
 
       var that = this;
       var selectedMode = document.getElementById('mode').value;
-      selectMode === 'WALKING' ? this.routeData['sport'] = 'run' : this.routeData['sport'] = 'bike';
+      selectedMode === 'WALKING' ? this.routeData['sport'] = 'run' : this.routeData['sport'] = 'bike';
       service.route({
         origin: origin,
         destination: destination,
