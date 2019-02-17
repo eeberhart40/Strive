@@ -123,7 +123,7 @@ class NewRoute extends React.Component {
     displayRoute(origin, destination, service, display) {
         let that = this;
         let selectedMode = document.getElementById('mode').value;
-        this.routeData['sport'] = selectedMode;
+        selectMode === 'WALKING' ? this.routeData['sport'] = 'run' : this.routeData['sport'] = 'bike'; 
         service.route({
             origin: origin,
             destination: destination,
