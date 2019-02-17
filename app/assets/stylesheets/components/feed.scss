@@ -1,5 +1,5 @@
 .activity-feed-entry {
-    height: 400px;
+    height: 335px;
     width: 600px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -38,7 +38,7 @@
 }
 
 .feed-entry-body {
-    height: 150px;
+    height: 80px;
     margin: 8px 0px 16px 0px;
     padding: 0px 88px 0px 24px;
     position: relative;
@@ -81,4 +81,11 @@
 
 .feed-title:hover a {
     color:   #007fb6;
+}
+
+.list-stats {
+    padding-left: 0px;
+    margin-top: 3px;
+    display: flex;
+    justify-content: space-between;
 }
