@@ -45,7 +45,7 @@ class ActivityShow extends React.Component {
                 <div className="activity-summary-container">
                     <div className="activity-summary">
                         <div className="details-container-personal">
-                                <div id="prof-image" className="avatar-img">
+                                <div className="avatar-img activity-av">
                                 </div>
                                 <p>{Date(activity.created_at).slice(0, 15)}</p>
                                 <h1>{activity.title}</h1>

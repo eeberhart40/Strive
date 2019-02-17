@@ -57,10 +57,13 @@
     flex-wrap: wrap;
 }
 
-#prof-image {
+.activity-av {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: red;
     position: absolute;
-    top:0;
-    left: 0;
+    left: 0px;
 }
 
 .details-container-personal p {

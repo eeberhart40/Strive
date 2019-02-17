@@ -22,7 +22,7 @@ class ActivityRouteIndex extends React.Component {
     }
 
     render() {
-        let routes = Object.values(this.props.routes).map(route => {
+        let routes = Object.values(this.props.routes).reverse().map(route => {
             return (
                 <div 
                 key={route.id}

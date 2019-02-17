@@ -806,7 +806,7 @@ function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var routes = Object.values(this.props.routes).map(function (route) {
+      var routes = Object.values(this.props.routes).reverse().map(function (route) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: route.id,
           className: "activity-index-route-map",
@@ -953,8 +953,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "details-container-personal"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        id: "prof-image",
-        className: "avatar-img"
+        className: "avatar-img activity-av"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, Date(activity.created_at).slice(0, 15)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "details-container-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -2686,7 +2685,7 @@ function (_React$Component) {
         className: "stats"
       }, "Est. Moving Time: ", this.routeData.travelTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "stats"
-      }, "Sport:", this.routeData.sport === 'WALKING' ? ' run' : ' bike'));
+      }, "Sport: ", this.routeData.sport));
     }
   }]);
 
