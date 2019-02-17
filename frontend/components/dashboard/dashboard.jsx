@@ -79,8 +79,10 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                     <div className="dashboard-feed">
-                        <h3>your activities v</h3>
-                        <UserFeedIndexContainer />
+                        <h3>Your Activities v</h3>
+                        <div className="feed-container">
+                            <UserFeedIndexContainer />
+                        </div>
                     </div>
                     <div className="right col">
                         <div className="col-div">

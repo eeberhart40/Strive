@@ -6,6 +6,10 @@
     background-color: #f5f5fa;
 }
  
+.col {
+    height: 100vw;
+}
+
  .dashboard-container {
     height: 100%;
     width: 100%;
@@ -32,9 +36,13 @@
     background-color:#f5f5fa;
     padding: 16px;
     min-width: 600px;
+    height: 100vw;
+    overflow: scroll;
 }
 
-
+// .feed-container {
+//     overflow: scroll;
+// }
 
 .col-div {
     background-color: white;
@@ -42,6 +50,7 @@
     width: 100%;
     margin-bottom: 20px;
     font-family: 'Montserrat', sans-serif; 
+   
 }
 
 .profile {

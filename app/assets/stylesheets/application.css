@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
  #map-show {
    width: 800px;
    height: 350px;
@@ -36,7 +37,7 @@
  }
 
  #map-feed {
-   width: 600px;
+   width: 550px;
    height: 180px;
    float: left;
    position: relative;

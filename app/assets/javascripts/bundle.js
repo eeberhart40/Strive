@@ -1477,7 +1477,9 @@ function (_React$Component) {
         to: 'activities/new'
       }, "Record one!")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard-feed"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "your activities v"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_feed_user_feed_index_container__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Activities v"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feed-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_feed_user_feed_index_container__WEBPACK_IMPORTED_MODULE_5__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-div"
@@ -1738,9 +1740,9 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-icon"
       }, activity.sport === "bike" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "bike-img"
+        className: "bike icon"
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "run-img"
+        className: "run icon"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-info-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1749,13 +1751,13 @@ function (_React$Component) {
         to: "activities/".concat(activity.id)
       }, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-stats"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, activity.distance, " mi", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Distance")), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, activity.elevation, " ft", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance"), activity.distance, " mi"), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Elevation")) : null, activity.time ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.timeStr(activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Elevation"), activity.elevation, " ft") : null, activity.time ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Time")) : ""))), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Time"), this.timeStr(activity.time)) : ""))), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-map-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_feed_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route

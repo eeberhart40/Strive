@@ -50,27 +50,27 @@ class UserFeedIndexItem extends React.Component {
                 <div className="feed-entry-body">
                 <div className="feed-icon">
                     {activity.sport === "bike" ? (
-                        <span className="bike-img"></span>) :
-                        <span className="run-img"></span>}
+                        <span className="bike icon"></span>) :
+                        <span className="run icon"></span>}
                 </div>
                     <div className="activity-info-container">
                         <div className="feed-title">
                             <strong><Link to={`activities/${activity.id}`}>{activity.title}</Link></strong></div>
                         <ul className="list-stats">
                             <li>
-                                {activity.distance} mi
                                 <div className="under-stats">Distance</div>
+                                {activity.distance} mi
                                 </li>
                             {activity.elevation ? (
                                 <li>
-                                {activity.elevation} ft
                                     <div className="under-stats">Elevation</div>
+                                    {activity.elevation} ft
                                 </li> ) : null}
                             
                             {activity.time ? (
                             <li>
-                                {this.timeStr(activity.time)}
                                 <div className="under-stats">Time</div>
+                                {this.timeStr(activity.time)}
                             </li>
                             ) : "" }
                         </ul>
