@@ -67,7 +67,7 @@ class IndexRoute extends React.Component {
                     <div className='stats'>Distance: {this.routeData.distance} mi</div>
                     <div className='stats'>Est. Moving Time: {this.routeData.travelTime}</div>
                     <div className='stats'>Sport: 
-                        {this.routeData.sport === 'WALKING' ? ' walk' : ' bike'}
+                        {this.routeData.sport === 'WALKING' ? ' run' : ' bike'}
                     </div>
             </div>
 

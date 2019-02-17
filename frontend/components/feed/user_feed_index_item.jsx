@@ -25,10 +25,15 @@ class UserFeedIndexItem extends React.Component {
     render() {
         const route = this.props.route;
         const activity = this.props.activity;
+        debugger
         return(
             <div className="activity-feed-entry">
                 <div className="feed-entry-header">
-                    <div>{this.props.user.username}</div>
+                    <div className="avatar-img wrapper"></div>
+                    <div className="media-body">
+                        <div className="username"><strong>{this.props.user.username}</strong></div>
+                        <div className="under-stats feed-date">{Date(activity.created_at).slice(0, 15)}</div>
+                    </div>
                 </div>
                 <div className="feed-entry-body">
                     <div className="feed-title">{activity.title}</div>

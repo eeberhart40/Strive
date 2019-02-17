@@ -81,3 +81,10 @@ h1, h2, h3, p, div, ul, li, a, button {
 ul {
   list-style: none;
 }
+
+.avatar-img {
+    border-radius: 50%;
+    box-shadow: 0px 8px 24px rgba(13,13,18,0.16);
+    background-image: url("https://benmounsey.files.wordpress.com/2017/03/0n1a3599-edit.jpg?w=764");
+    background-size: cover;
+}

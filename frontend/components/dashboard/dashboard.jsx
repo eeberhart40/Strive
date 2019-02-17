@@ -48,7 +48,7 @@ class Dashboard extends React.Component {
                     <div className="left col">
                         <div className="profile">
                             <div className="card-body">
-                                <div className="avatar-img">
+                                <div className="avatar-img prof-img">
                                 </div>
                                 <h3 id="username">{this.props.currentUser.username}</h3>
                                 <div className="upper-card">

@@ -1443,7 +1443,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "avatar-img"
+        className: "avatar-img prof-img"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
         id: "username"
       }, this.props.currentUser.username), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1704,11 +1704,20 @@ function (_React$Component) {
     value: function render() {
       var route = this.props.route;
       var activity = this.props.activity;
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-feed-entry"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-entry-header"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.props.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "avatar-img wrapper"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "username"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, this.props.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats feed-date"
+      }, Date(activity.created_at).slice(0, 15)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-entry-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-title"
@@ -2677,7 +2686,7 @@ function (_React$Component) {
         className: "stats"
       }, "Est. Moving Time: ", this.routeData.travelTime), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "stats"
-      }, "Sport:", this.routeData.sport === 'WALKING' ? ' walk' : ' bike'));
+      }, "Sport:", this.routeData.sport === 'WALKING' ? ' run' : ' bike'));
     }
   }]);
 
