@@ -1659,13 +1659,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -1677,9 +1677,13 @@ function (_React$Component) {
   _inherits(UserFeedIndexItem, _React$Component);
 
   function UserFeedIndexItem(props) {
+    var _this;
+
     _classCallCheck(this, UserFeedIndexItem);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(UserFeedIndexItem).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(UserFeedIndexItem).call(this, props));
+    _this.timeStr = _this.timeStr.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
   }
 
   _createClass(UserFeedIndexItem, [{
@@ -1697,6 +1701,20 @@ function (_React$Component) {
       if (!prevProps.route) {
         this.props.fetchRoute(this.props.activity.route_id);
       }
+    }
+  }, {
+    key: "timeStr",
+    value: function timeStr(_timeStr) {
+      var timeArr = _timeStr.split(":");
+
+      var hours = parseInt(timeArr[0]);
+      var mins = parseInt(timeArr[1]);
+
+      if (hours >= 0 && mins >= 0) {
+        return "".concat(hours, "h ").concat(mins, "m");
+      }
+
+      return "n/a";
     }
   }, {
     key: "render",
@@ -1724,8 +1742,20 @@ function (_React$Component) {
       }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "run-img"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-info-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-title"
-      }, activity.title)), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        to: "activities/".concat(activity.id)
+      }, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, activity.distance, " mi", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Distance")), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, activity.elevation, " ft", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Elevation")) : null, activity.time ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, this.timeStr(activity.time), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "under-stats"
+      }, "Time")) : ""))), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-map-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_feed_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route

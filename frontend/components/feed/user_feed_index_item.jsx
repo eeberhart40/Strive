@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class UserFeedIndexItem extends React.Component {
     constructor(props) {
         super(props);
-        
+        this.timeStr = this.timeStr.bind(this);
     }
 
     componentDidMount() {
@@ -20,6 +20,19 @@ class UserFeedIndexItem extends React.Component {
         if(!prevProps.route) {
             this.props.fetchRoute(this.props.activity.route_id);
         }
+    }
+
+    timeStr(timeStr) {
+        let timeArr = timeStr.split(":");
+        let hours = parseInt(timeArr[0]);
+        let mins = parseInt(timeArr[1]);
+
+        if ( hours >= 0 && mins >= 0) {
+            return `${hours}h ${mins}m`
+        }
+
+        return "n/a";
+
     }
 
     render() {
@@ -40,7 +53,28 @@ class UserFeedIndexItem extends React.Component {
                         <span className="bike-img"></span>) :
                         <span className="run-img"></span>}
                 </div>
-                    <div className="feed-title">{activity.title}</div>
+                    <div className="activity-info-container">
+                        <div className="feed-title">
+                            <strong><Link to={`activities/${activity.id}`}>{activity.title}</Link></strong></div>
+                        <ul className="list-stats">
+                            <li>
+                                {activity.distance} mi
+                                <div className="under-stats">Distance</div>
+                                </li>
+                            {activity.elevation ? (
+                                <li>
+                                {activity.elevation} ft
+                                    <div className="under-stats">Elevation</div>
+                                </li> ) : null}
+                            
+                            {activity.time ? (
+                            <li>
+                                {this.timeStr(activity.time)}
+                                <div className="under-stats">Time</div>
+                            </li>
+                            ) : "" }
+                        </ul>
+                    </div>
                 </div>
                 {route ? (
                 <div className="feed-map-container">
