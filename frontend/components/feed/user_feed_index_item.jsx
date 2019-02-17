@@ -35,7 +35,7 @@ class UserFeedIndexItem extends React.Component {
                     <div className="feed-title">{activity.title}</div>
                 </div>
                 {route ? (
-                <div>
+                <div className="feed-map-container">
                     <FeedRoute
                         route={route}
                     />

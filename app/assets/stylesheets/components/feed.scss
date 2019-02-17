@@ -1,0 +1,19 @@
+.activity-feed-entry {
+    height: 400px;
+    width: 600px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    position: relative;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.feed-map-container {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+}

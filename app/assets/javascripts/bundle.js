@@ -1714,7 +1714,9 @@ function (_React$Component) {
         className: "feed-entry-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-title"
-      }, activity.title)), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_feed_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      }, activity.title)), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feed-map-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_feed_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
       })) : null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-entry-header"
