@@ -4,6 +4,7 @@ class FeedRoute extends React.Component {
     constructor(props) {
         super(props);
         this.routeData = JSON.parse(props.route.route_data);
+        debugger
     }
 
 
@@ -53,7 +54,7 @@ class FeedRoute extends React.Component {
 
     render() {
         return (
-            <div className="user-feed-index-map-container">
+            <div className="user-feed-map-container">
                 <div id="map-feed" ref={map => this.mapNode = map}>
                 </div>
             </div>

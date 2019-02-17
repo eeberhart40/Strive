@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchActivity, fetchActivities } from '../../actions/activity_actions';
 import { fetchRoutes } from '../../actions/map_route_actions';
 import { Link } from 'react-router-dom';
+import UserFeedIndexContainer from '../feed/user_feed_index_container';
 
 const msp = ({ session, entities: { athletes, activities, routes } }) => {
 
@@ -79,6 +80,7 @@ class Dashboard extends React.Component {
                     </div>
                     <div className="dashboard-feed">
                         <h3>your activities v</h3>
+                        <UserFeedIndexContainer />
                     </div>
                     <div className="right col">
                         <div className="col-div">

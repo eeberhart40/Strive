@@ -16,8 +16,9 @@ class UserFeedIndexItem extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        if(!prevProps.route.id) {
+    componentDidUpdate(prevProps) {
+        // debugger
+        if(!prevProps.route) {
             this.props.fetchRoute(this.props.activity.route_id);
         }
     }
@@ -33,9 +34,13 @@ class UserFeedIndexItem extends React.Component {
                 <div className="feed-entry-body">
                     <div className="feed-title">{activity.title}</div>
                 </div>
-                <FeedRoute 
-                route = {route}
-                />
+                {route ? (
+                <div>
+                    <FeedRoute
+                        route={route}
+                    />
+                </div>
+                ) : null}
                 <div className="feed-entry-header"></div>
             </div>
         )

@@ -10,6 +10,7 @@ class UserFeedIndex extends React.Component {
 
     render() {
         let activities = Object.values(this.props.activities).reverse().map(activity => {
+            // debugger
             return (
                 <UserFeedIndexItem
                     key={activity.id}
@@ -18,7 +19,8 @@ class UserFeedIndex extends React.Component {
                     activity={activity}
                     route={this.props.routes[activity.route_id]}
                     user = {this.props.currentUser}
-                    // fetchRoute={this.props.fetchRoute}
+                    fetchActivity = {this.props.fetchActivity}
+                    fetchRoute={this.props.fetchRoute}
                     // fetchRoutes={this.props.fetchRoutes}
                 />
             );
