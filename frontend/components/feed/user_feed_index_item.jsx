@@ -17,7 +17,6 @@ class UserFeedIndexItem extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        // debugger
         if(!prevProps.route) {
             this.props.fetchRoute(this.props.activity.route_id);
         }

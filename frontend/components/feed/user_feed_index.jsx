@@ -10,7 +10,6 @@ class UserFeedIndex extends React.Component {
 
     render() {
         let activities = Object.values(this.props.activities).reverse().map(activity => {
-            // debugger
             return (
                 <UserFeedIndexItem
                     key={activity.id}

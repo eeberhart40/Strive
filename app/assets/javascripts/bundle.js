@@ -1554,7 +1554,6 @@ function (_React$Component) {
       var _this = this;
 
       var activities = Object.values(this.props.activities).reverse().map(function (activity) {
-        // debugger
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_user_feed_index_item__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: activity.id,
           activityId: activity.id,
@@ -1696,7 +1695,6 @@ function (_React$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
-      // debugger
       if (!prevProps.route) {
         this.props.fetchRoute(this.props.activity.route_id);
       }
@@ -2480,7 +2478,6 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(FeedRoute).call(this, props));
     _this.routeData = JSON.parse(props.route.route_data);
-    debugger;
     return _this;
   }
 

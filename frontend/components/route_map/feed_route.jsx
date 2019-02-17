@@ -4,7 +4,6 @@ class FeedRoute extends React.Component {
     constructor(props) {
         super(props);
         this.routeData = JSON.parse(props.route.route_data);
-        debugger
     }
 
 
