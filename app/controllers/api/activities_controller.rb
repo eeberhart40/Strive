@@ -11,9 +11,7 @@ class Api::ActivitiesController < ApplicationController
     end
 
     def index
-        @activities = Activity.all
-        # change this to just see the current users activities once done testing
-        # @activities = current_user.activities
+        @activities = current_user.activities
     end
 
     def show 
