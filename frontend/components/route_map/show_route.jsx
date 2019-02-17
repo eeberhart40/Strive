@@ -71,8 +71,8 @@ class ShowRoute extends React.Component {
                 <div id='elevation_chart'></div>
                 <br />
                 <div className='show-route-stats'>
-                    <div id='ride-type'>Ride Type: {this.routeData.sport} </div>
-                    <div>Distance: {this.routeData.distance} </div>
+                    <div id='ride-type'>Sport: {this.routeData.sport} </div>
+                    <div>Distance: {this.routeData.distance} mi</div>
                     <div>Est. Travel Time: {this.routeData.travelTime}</div>
                 </div>
             </div>

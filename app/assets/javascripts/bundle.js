@@ -3154,7 +3154,7 @@ function (_React$Component) {
         className: "show-route-stats"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "ride-type"
-      }, "Ride Type: ", this.routeData.sport, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Distance: ", this.routeData.distance, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Est. Travel Time: ", this.routeData.travelTime)));
+      }, "Sport: ", this.routeData.sport, " "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Distance: ", this.routeData.distance, " mi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Est. Travel Time: ", this.routeData.travelTime)));
     }
   }]);
 
