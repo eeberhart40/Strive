@@ -25,7 +25,6 @@ class UserFeedIndexItem extends React.Component {
     render() {
         const route = this.props.route;
         const activity = this.props.activity;
-        debugger
         return(
             <div className="activity-feed-entry">
                 <div className="feed-entry-header">
@@ -36,6 +35,11 @@ class UserFeedIndexItem extends React.Component {
                     </div>
                 </div>
                 <div className="feed-entry-body">
+                <div className="feed-icon">
+                    {activity.sport === "bike" ? (
+                        <span className="bike-img"></span>) :
+                        <span className="run-img"></span>}
+                </div>
                     <div className="feed-title">{activity.title}</div>
                 </div>
                 {route ? (

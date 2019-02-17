@@ -1703,7 +1703,6 @@ function (_React$Component) {
     value: function render() {
       var route = this.props.route;
       var activity = this.props.activity;
-      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-feed-entry"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1719,6 +1718,12 @@ function (_React$Component) {
       }, Date(activity.created_at).slice(0, 15)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-entry-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "feed-icon"
+      }, activity.sport === "bike" ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "bike-img"
+      }) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "run-img"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-title"
       }, activity.title)), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-map-container"

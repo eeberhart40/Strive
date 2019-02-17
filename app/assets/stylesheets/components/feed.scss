@@ -36,3 +36,34 @@
 .username {
     padding-top: 6px;
 }
+
+.feed-entry-body {
+    height: 150px;
+    margin: 8px 0px 16px 0px;
+    padding: 0px 88px 0px 24px;
+    position: relative;
+    display: flex;
+}
+
+.feed-icon {
+
+    padding-top: 2px;
+    margin-right: 24px;
+    width: 40px;
+    height: 100%;
+    position: relative;
+}
+
+.bike-img {
+    background-image: url("https://cdn4.iconfinder.com/data/icons/real-estate-line-1-1/256/Bikecycle_512x512-512.png");
+    background-size: cover;
+    // background: blue;
+    height: 24px;
+    width: 24px;
+    position: relative;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    text-align: left;
+}
