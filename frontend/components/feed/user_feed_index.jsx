@@ -5,6 +5,7 @@ class UserFeedIndex extends React.Component {
 
     componentDidMount() {
         this.props.fetchActivities();
+        this.props.fetchRoutes();
     }
 
     render() {
@@ -12,9 +13,13 @@ class UserFeedIndex extends React.Component {
             return (
                 <UserFeedIndexItem
                     key={activity.id}
+                    activityId = {activity.id}
+                    routeId = {activity.route_id}
                     activity={activity}
-                    fetchRoute={this.props.fetchRoute}
-                    fetchRoutes={this.props.fetchRoutes}
+                    route={this.props.routes[activity.route_id]}
+                    user = {this.props.currentUser}
+                    // fetchRoute={this.props.fetchRoute}
+                    // fetchRoutes={this.props.fetchRoutes}
                 />
             );
         });

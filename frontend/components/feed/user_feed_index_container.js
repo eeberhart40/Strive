@@ -6,9 +6,11 @@ import UserFeedIndex from './user_feed_index';
 const msp = state => {
     let activities = state.entities.activities;
     let routes = state.entities.routes;
+    const currentUser = state.entities.athletes[state.session.id]
     return {
         activities,
-        routes
+        routes,
+        currentUser
     };
 };
 
