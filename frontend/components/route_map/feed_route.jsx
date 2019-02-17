@@ -8,9 +8,7 @@ class FeedRoute extends React.Component {
 
 
     componentDidMount() {
-        //map centered on manhattan
         let map = new google.maps.Map(this.mapNode, {
-            // center: { lat: 40.771, lng: -73.974 }, // this is Manhattan
             center: this.routeData.path[Math.floor(this.routeData.path.length / 2)],
             zoom: 11,
             mapTypeId: 'terrain',
@@ -53,20 +51,10 @@ class FeedRoute extends React.Component {
         })
     }
 
-    //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
     render() {
         return (
-            <div className="route-index-map-container">
-                <div id="map-index" ref={map => this.mapNode = map}>
-                </div>
-                <div id='title'>
-                    <Link to={`/routes/${this.props.route.id}`}>{this.props.route.title}</Link></div>
-                <div id='elevation_chart'></div>
-                <br />
-                <div className='stats'>Distance: {this.routeData.distance} mi</div>
-                <div className='stats'>Est. Moving Time: {this.routeData.travelTime}</div>
-                <div className='stats'>Sport:
-                        {this.routeData.sport === 'WALKING' ? ' walk' : ' bike'}
+            <div className="user-feed-index-map-container">
+                <div id="map-feed" ref={map => this.mapNode = map}>
                 </div>
             </div>
 
