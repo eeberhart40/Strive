@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     background-color: #f5f5fa;
+    height: 100%;
 }
  
 .col {
@@ -36,8 +37,8 @@
     background-color:#f5f5fa;
     padding: 16px;
     min-width: 600px;
-    height: 100vw;
-    overflow: scroll;
+    height: 100%;
+    // overflow: scroll;
 }
 
 // .feed-container {
