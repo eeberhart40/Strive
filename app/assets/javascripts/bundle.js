@@ -1854,8 +1854,8 @@ var Greeting = function Greeting(_ref) {
       className: "personal-site"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
       className: "hire-btn"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: "https://eeberhart40.github.io"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      href: "https://eeberhart40.github.io"
     }, "Hire Me"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu nav"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
