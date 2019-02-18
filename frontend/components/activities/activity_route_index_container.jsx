@@ -3,6 +3,7 @@ import RouteIndexItem from '../route_index/route_index_item';
 import { fetchRoutes } from '../../actions/map_route_actions';
 import { openModalAct } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class ActivityRouteIndex extends React.Component {
     constructor(props) {
@@ -35,6 +36,16 @@ class ActivityRouteIndex extends React.Component {
                 </div>
             );
         });
+
+        if (routes.length === 0) {
+            return (
+                <div className="empty-index-container container">
+                    <h1>You don't have any routes. Create routes to record activities.</h1>
+                    <button id='create-route-btn'><Link to={'routes/new'}>Create New Route</Link></button>
+                </div>
+            )
+        }
+
         return (
             <div className="activity-route-index-container container">
                 <div className='index-bar'>
