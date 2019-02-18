@@ -73,7 +73,7 @@ class Dashboard extends React.Component {
                                             <div className="dash-stats">{Date(this.props.latestActivity.created_at).slice(0, 15)}</div>
                                         </div>
                                     ) : 
-                                    <div id="no-act-message">No activties yet. <Link to={'activities/new'}>Record one!</Link></div> }
+                                    <div className="no-acts" id="no-act-message">No activties yet. <Link to={'activities/new'}>Record one!</Link></div> }
                                 </div>
                             </div>
                         </div>
@@ -85,14 +85,66 @@ class Dashboard extends React.Component {
                         </div>
                     </div>
                     <div className="right col">
-                        <div className="col-div">
-                            <h3>Challenges</h3>
+                        <div className="section" id="linked-in">
+                            <div className="media">
+                                <div className="media-object">
+                                    <img 
+                                    className="media-img" 
+                                        src="https://image.flaticon.com/icons/svg/56/56591.svg" 
+                                    alt="linked-in Icon"/>
+                                </div>
+                                <div className="media-body">
+                                    <h4 className="media-title">My LinkedIn</h4>
+                                    <p className="media-text">
+                                        Check out my LinkedIn. It's got all the info
+                                        you could ever need to hire me, Eric Eberhart.
+                                    </p>
+                                    <a className="media-link" href="https://www.linkedin.com/in/eric-eberhart-0148a8175/">
+                                        View All the LinkedIn Stuff
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-div">
-                            <h3>Clubs</h3>
+                        <div className="section" id="github">
+                            <div className="media">
+                                <div className="media-object">
+                                    <img
+                                        className="media-img"
+                                        src="https://cdn3.iconfinder.com/data/icons/social-icons-24/24/Github-512.png"
+                                        alt="github Icon" />
+                                </div>
+                                <div className="media-body">
+                                    <h4 className="media-title">My Github</h4>
+                                    <p className="media-text">
+                                        Take a look at my Github. There's a decent chance that I'm tinkering 
+                                        with code and committing at this very moment.
+                                    </p>
+                                    <a className="media-link" href="https://github.com/eeberhart40">
+                                        View All the Github Stuff
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <div className="col-div">
-                            <h3>Try a Privacy Zone</h3>
+                        <div className="section" id="pig">
+                            <div className="media">
+                                <div className="media-object">
+                                    <img
+                                        className="media-img"
+                                        src="https://image.flaticon.com/icons/svg/26/26144.svg"
+                                        alt="pig Icon" />
+                                </div>
+                                <div className="media-body">
+                                    <h4 className="media-title">When Pigs Fly</h4>
+                                    <p className="media-text">
+                                        Play my game! It's super fun and simple:
+                                        avoid the other animals. Built with vanilla JavaScript
+                                        and HTML.
+                                    </p>
+                                    <a className="media-link" href="https://eeberhart40.github.io/when-pigs-fly/">
+                                        View All the Fun Piggy Stuff
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

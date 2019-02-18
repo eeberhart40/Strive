@@ -47,7 +47,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
             <ul className="user-nav nav-group">
                 <li className="personal-site">
                     <button className="hire-btn">
-                        <a href="https://eeberhart40.github.io">Hire Me</a>
+                        <a href="https://eeberhart40.github.io">Eric Eberhart</a>
                     </button>
                 </li>
                 <li className="drop-down-menu nav">

@@ -1485,6 +1485,7 @@ function (_React$Component) {
       }, this.props.latestActivity.title, " \u2022")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dash-stats"
       }, Date(this.props.latestActivity.created_at).slice(0, 15))) : react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "no-acts",
         id: "no-act-message"
       }, "No activties yet. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
         to: 'activities/new'
@@ -1495,12 +1496,66 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_feed_user_feed_index_container__WEBPACK_IMPORTED_MODULE_5__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "right col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Challenges")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Clubs")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "col-div"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Try a Privacy Zone")))));
+        className: "section",
+        id: "linked-in"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-object"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "media-img",
+        src: "https://image.flaticon.com/icons/svg/56/56591.svg",
+        alt: "linked-in Icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "media-title"
+      }, "My LinkedIn"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "media-text"
+      }, "Check out my LinkedIn. It's got all the info you could ever need to hire me, Eric Eberhart."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "media-link",
+        href: "https://www.linkedin.com/in/eric-eberhart-0148a8175/"
+      }, "View All the LinkedIn Stuff")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section",
+        id: "github"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-object"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "media-img",
+        src: "https://cdn3.iconfinder.com/data/icons/social-icons-24/24/Github-512.png",
+        alt: "github Icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "media-title"
+      }, "My Github"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "media-text"
+      }, "Take a look at my Github. There's a decent chance that I'm tinkering with code and committing at this very moment."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "media-link",
+        href: "https://github.com/eeberhart40"
+      }, "View All the Github Stuff")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "section",
+        id: "pig"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-object"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "media-img",
+        src: "https://image.flaticon.com/icons/svg/26/26144.svg",
+        alt: "pig Icon"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "media-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "media-title"
+      }, "When Pigs Fly"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "media-text"
+      }, "Play my game! It's super fun and simple: avoid the other animals. Built with vanilla JavaScript and HTML."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        className: "media-link",
+        href: "https://eeberhart40.github.io/when-pigs-fly/"
+      }, "View All the Fun Piggy Stuff")))))));
     }
   }]);
 
@@ -1856,7 +1911,7 @@ var Greeting = function Greeting(_ref) {
       className: "hire-btn"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
       href: "https://eeberhart40.github.io"
-    }, "Hire Me"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    }, "Eric Eberhart"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu nav"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "avatar-wrapper"
