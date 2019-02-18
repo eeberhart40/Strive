@@ -1432,6 +1432,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
     _this.latestActivity = _this.props.latestActivity;
+    _this.icon = "bike";
     return _this;
   }
 

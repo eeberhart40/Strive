@@ -34,6 +34,7 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props)
         this.latestActivity = this.props.latestActivity;
+        this.icon = "bike"
     }
 
     componentDidMount(){
