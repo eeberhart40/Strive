@@ -1829,7 +1829,7 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "global-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "drop-down-menu"
+      className: "drop-down-menu dash"
     }, "Dashboard v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "options"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -1851,9 +1851,19 @@ var Greeting = function Greeting(_ref) {
     }, "STRIVE")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "user-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "drop-down-menu"
-    }, "Account v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "options"
+      className: "personal-site"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "hire-btn"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: "https://eeberhart40.github.io"
+    }, "Hire Me"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu nav"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "avatar-wrapper"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "avatar-img nav-av"
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+      className: "options prof-nav"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {

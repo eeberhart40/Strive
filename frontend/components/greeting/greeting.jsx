@@ -16,7 +16,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     const dashBoardHeader = () => (
         <hgroup className="header-group">
             <ul className="global-nav nav-group">
-                <li className="drop-down-menu">Dashboard v
+                <li className="drop-down-menu dash">Dashboard v
                     <ul className="options">
                         <li className="list-option">
                             <Link to="/routes">My Routes</Link>
@@ -45,10 +45,15 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                 <li>Challenges</li> */}
             </ul>
             <ul className="user-nav nav-group">
-                {/* <li className="upgrade">Upgrade</li>
-                <li className="notifications">notifications</li> */}
-                <li className="drop-down-menu">Account v
-                    <ul className="options">
+                <li className="personal-site">
+                    <button className="hire-btn">
+                        <Link to={"https://eeberhart40.github.io"}>Hire Me</Link>
+                    </button>
+                </li>
+                <li className="drop-down-menu nav">
+                    <div className="avatar-wrapper"><div className="avatar-img nav-av"></div></div>
+                    {/* <div className="drop-chev av">v</div> */}
+                    <ul className="options prof-nav">
                         <li className="list-option">
                             <Link to='/dashboard'>My Profile</Link>
                         </li>

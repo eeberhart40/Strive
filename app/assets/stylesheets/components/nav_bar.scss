@@ -6,9 +6,10 @@
     justify-content: space-between;
     font-size: 14px;
     color: black;
-    padding-top: 26px;
+    // padding-top: 26px;
     font-family: 'Montserrat', sans-serif; 
     font-weight: 200;
+    height: 50px;
 }
 
 .global-nav {
@@ -16,18 +17,19 @@
     line-height: 1;
     list-style: none;
     display: flex;
-    min-width: 200px;
+    min-width: 2px;
     justify-content: flex-start;
 }
 
 .nav-group {
-    position: relative;
     z-index: 11;
+    margin: 0px;
+    min-width: 240px;
 }
 
 .user-nav {
     display: flex;
-    height: 10px;
+    height: 50px;
     list-style: none;
     justify-content: flex-end;
     min-width: 100px;
@@ -36,14 +38,20 @@
 .drop-down-menu {
     position: relative;
     margin-right: 20px;
+    padding: 28px 2px 5px 0px;
 }
 
 .options {
     display: none;
     position: absolute;
+    bottom: -102px;
+    left: -1px;
     height: 100px;
     width: 150px;
-    border: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+    border-top: 1px solid gray;
     list-style: none;
     margin: 0;
     padding-left: 0;
@@ -61,6 +69,8 @@
 .drop-down-menu:hover {
     cursor: pointer;
     color: #ff5300;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
 }
 
 .list-option:hover {
@@ -82,4 +92,53 @@
 .list-option > a {
     text-decoration: none;
     color: black;
+}
+
+.nav{
+    position: relative;
+}
+
+.nav-av {
+    position: absolute;
+    bottom: 2px;
+    height: 35px;
+    width: 35px;
+    margin: 0px;
+}
+
+
+.dash {
+    border-bottom: 2px solid  #ff5900;
+}
+
+.dash:hover {
+    border-bottom: none;
+}
+
+.av {
+    position: absolute;
+    bottom: 0px;
+}
+
+.avatar-wrapper {
+     margin-top: -26px;
+     display: flex;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+}
+
+.prof-nav {
+    left: -99px;
+}
+
+.hire-btn {
+    width: 81px;
+    height: 28px;
+    border-radius: 3px;
+    background-color: #ff5900;
+    color: white;
+    cursor: pointer;
+    margin-top: 16px;
+    margin-right: 7px;
 }
