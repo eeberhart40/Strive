@@ -1397,12 +1397,29 @@ var msp = function msp(_ref) {
   var latestActivity = activities[actIds[actIds.length - 1]];
   var activityCount = actIds.length;
   var routeCount = Object.keys(routes).length;
+  var numRides = 0;
+  var rideMiles = 0;
+  var runMiles = 0;
+  var numRuns = 0;
+  actIds.forEach(function (id) {
+    if (activities[id].sport === "bike") {
+      numRides += 1;
+      rideMiles += activities[id].distance;
+    } else {
+      numRuns += 1;
+      runMiles += activities[id].distance;
+    }
+  });
   return {
     currentUser: athletes[session.id],
     activities: activities,
     latestActivity: latestActivity,
     activityCount: activityCount,
-    routeCount: routeCount
+    routeCount: routeCount,
+    numRides: numRides,
+    numRuns: numRuns,
+    rideMiles: rideMiles,
+    runMiles: runMiles
   };
 };
 
@@ -1432,8 +1449,14 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
     _this.latestActivity = _this.props.latestActivity;
-    _this.icon = "bike";
+    _this.state = {
+      icon: "bike",
+      miles: _this.props.rideMiles,
+      num: _this.props.numRides
+    };
     _this.switchSport = _this.switchSport.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.dispRides = _this.dispRides.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.dispRuns = _this.dispRuns.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1447,6 +1470,24 @@ function (_React$Component) {
     key: "switchSport",
     value: function switchSport() {
       this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
+    }
+  }, {
+    key: "dispRides",
+    value: function dispRides() {
+      this.setState({
+        icon: "bike",
+        miles: this.props.rideMiles,
+        num: this.props.numRides
+      });
+    }
+  }, {
+    key: "dispRuns",
+    value: function dispRuns() {
+      this.setState({
+        icon: "run",
+        miles: this.props.runMiles,
+        num: this.props.numRuns
+      });
     }
   }, {
     key: "render",
@@ -1505,6 +1546,7 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tab tab1"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.dispRides,
         id: "bike-btn",
         className: "icon-btn"
       }, "bike"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -1512,9 +1554,10 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "tab"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        onClick: this.dispRuns,
         id: "run-btn",
         className: "icon-btn"
-      }, "run")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "run")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.num), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.miles))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard-feed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Activities v"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-container"

@@ -230,21 +230,19 @@
     width: 100%;
     height:100%;
     background-color: #f5f5fa;
-    // outline: none;
+    cursor: pointer;
 }
 
 .icon-btn:active {
     background-color: white;
-    // outline: none;
+
 }
 
 .icon-btn:focus {
     background-color: white;
     outline: none;
 }
-// .icon-btn:focus {
-//     outline: 0;
-// }
+
 
 .icon-btn:hover {
     background: white;

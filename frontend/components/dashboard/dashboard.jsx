@@ -11,12 +11,32 @@ const msp = ({ session, entities: { athletes, activities, routes } }) => {
     const latestActivity = activities[actIds[actIds.length - 1]];
     const activityCount = actIds.length;
     const routeCount = Object.keys(routes).length;
+
+    let numRides = 0;
+    let rideMiles = 0;
+    let runMiles = 0;
+    let numRuns = 0;
+    actIds.forEach(id => {
+        if(activities[id].sport === "bike") {
+            numRides += 1;
+            rideMiles += activities[id].distance;
+        } else {
+            numRuns += 1;
+            runMiles += activities[id].distance;
+        }
+    })
+
+
     return {
         currentUser: athletes[session.id],
         activities,
         latestActivity,
         activityCount,
-        routeCount 
+        routeCount,
+        numRides,
+        numRuns,
+        rideMiles,
+        runMiles 
     };
 };
 
@@ -34,9 +54,11 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props)
         this.latestActivity = this.props.latestActivity;
-        this.icon = "bike"
+        this.state = {icon: "bike", miles: this.props.rideMiles, num: this.props.numRides};
 
         this.switchSport = this.switchSport.bind(this);
+        this.dispRides = this.dispRides.bind(this);
+        this.dispRuns = this.dispRuns.bind(this);
     }
 
     componentDidMount(){
@@ -48,7 +70,17 @@ class Dashboard extends React.Component {
         this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
     }
 
+    dispRides() {
+        this.setState({ icon: "bike", miles: this.props.rideMiles, num: this.props.numRides});
+
+    }
+
+    dispRuns() {
+        this.setState({ icon: "run", miles: this.props.runMiles, num: this.props.numRuns});
+    }
+
     render() {
+
         return (
             <div className="dash-bg">
                 <div className="dashboard-container">
@@ -88,15 +120,28 @@ class Dashboard extends React.Component {
                             <ul className="tabs">
                                 <li id="rides">
                                     <div className="tab tab1">
-                                        <button id="bike-btn" className="icon-btn">bike</button>
+                                        <button
+                                        onClick={this.dispRides} 
+                                        id="bike-btn" 
+                                        className="icon-btn">
+                                        bike
+                                        </button>
                                     </div>
                                 </li>
                                 <li id="runs">
                                     <div className="tab">
-                                        <button id="run-btn" className="icon-btn">run</button>
+                                        <button
+                                        onClick={this.dispRuns} 
+                                        id="run-btn"
+                                        className="icon-btn">
+                                        run
+                                        </button>
                                     </div>
                                 </li>
                             </ul>
+                            <div>{this.state.icon}</div>
+                            <div>{this.state.num}</div>
+                            <div>{this.state.miles}</div>
                         </div>
                     </div>
                     <div className="dashboard-feed">
