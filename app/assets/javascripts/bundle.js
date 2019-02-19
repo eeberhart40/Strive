@@ -3430,7 +3430,7 @@ function (_React$Component) {
     value: function render() {
       var route = this.props.route;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "show-route-container"
+        className: "show-route-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, route.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
