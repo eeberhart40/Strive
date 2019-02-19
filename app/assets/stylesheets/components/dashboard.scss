@@ -199,3 +199,69 @@
 .no-acts a {
     color: #437fa9;
 }
+
+.tabbed-card {
+    width: 100%;
+    height: 200px;
+    background: white;
+    border-radius: 3px;
+    margin-top: 3px;    
+}
+
+.tabs {
+    margin: 0;
+    display: table;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    position: relative;
+    padding: 0px;
+}
+
+.tabs > li {
+    float: none;
+    display: table-cell;
+    text-align: center;
+    transition: border-color 0.1s ease;
+}
+
+.icon-btn {
+    border: none;
+    width: 100%;
+    height:100%;
+    background-color: #f5f5fa;
+    // outline: none;
+}
+
+.icon-btn:active {
+    background-color: white;
+    // outline: none;
+}
+
+.icon-btn:focus {
+    background-color: white;
+    outline: none;
+}
+// .icon-btn:focus {
+//     outline: 0;
+// }
+
+.icon-btn:hover {
+    background: white;
+}
+
+.rides {
+    border: none;
+}
+
+.tab {
+    height: 50px;
+
+}
+.tab1 {
+    border-right: 2px solid #f5f5fa;
+}
+
+.tab:hover {
+    border-radius: 5px;
+}

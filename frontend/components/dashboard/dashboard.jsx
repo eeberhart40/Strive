@@ -35,11 +35,17 @@ class Dashboard extends React.Component {
         super(props)
         this.latestActivity = this.props.latestActivity;
         this.icon = "bike"
+
+        this.switchSport = this.switchSport.bind(this);
     }
 
     componentDidMount(){
         this.props.fetchActivities();
         this.props.fetchRoutes();
+    }
+
+    switchSport() {
+        this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
     }
 
     render() {
@@ -77,6 +83,20 @@ class Dashboard extends React.Component {
                                     <div className="no-acts" id="no-act-message">No activties yet. <Link to={'activities/new'}>Record one!</Link></div> }
                                 </div>
                             </div>
+                        </div>
+                        <div className="tabbed-card">
+                            <ul className="tabs">
+                                <li id="rides">
+                                    <div className="tab tab1">
+                                        <button id="bike-btn" className="icon-btn">bike</button>
+                                    </div>
+                                </li>
+                                <li id="runs">
+                                    <div className="tab">
+                                        <button id="run-btn" className="icon-btn">run</button>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div className="dashboard-feed">

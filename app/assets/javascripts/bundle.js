@@ -1372,13 +1372,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
 
@@ -1433,6 +1433,7 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
     _this.latestActivity = _this.props.latestActivity;
     _this.icon = "bike";
+    _this.switchSport = _this.switchSport.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -1441,6 +1442,11 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchActivities();
       this.props.fetchRoutes();
+    }
+  }, {
+    key: "switchSport",
+    value: function switchSport() {
+      this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
     }
   }, {
     key: "render",
@@ -1490,7 +1496,25 @@ function (_React$Component) {
         id: "no-act-message"
       }, "No activties yet. ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
         to: 'activities/new'
-      }, "Record one!")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Record one!"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tabbed-card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "tabs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "rides"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab tab1"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "bike-btn",
+        className: "icon-btn"
+      }, "bike"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        id: "runs"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        id: "run-btn",
+        className: "icon-btn"
+      }, "run")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard-feed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Activities v"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-container"
