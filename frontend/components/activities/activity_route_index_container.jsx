@@ -41,7 +41,7 @@ class ActivityRouteIndex extends React.Component {
             return (
                 <div className="empty-index-container container">
                     <h1>You don't have any routes. Create routes to record activities.</h1>
-                    <button id='create-route-btn'><Link to={'routes/new'}>Create New Route</Link></button>
+                    <button id='create-route-btn'><Link to={'/routes/new'}>Create New Route</Link></button>
                 </div>
             )
         }

@@ -827,7 +827,7 @@ function (_React$Component) {
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "You don't have any routes. Create routes to record activities."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
           id: "create-route-btn"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
-          to: 'routes/new'
+          to: '/routes/new'
         }, "Create New Route")));
       }
 
