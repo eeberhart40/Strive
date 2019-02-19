@@ -62,7 +62,9 @@ class Dashboard extends React.Component {
 
     componentDidMount(){
         this.props.fetchActivities();
-        this.props.fetchRoutes();
+        this.props.fetchRoutes().then( routes => {
+            this.dispRides();
+        });
     
     }
 
@@ -116,23 +118,13 @@ class Dashboard extends React.Component {
                         <div className="tabbed-card">
                             <ul className="tabs">
                                 <li id="rides">
-                                    <div className="tab tab1">
-                                        <button
-                                        onClick={this.dispRides} 
-                                        id="bike-btn" 
-                                        className="icon-btn">
-                                        bike
-                                        </button>
+                                    <div onClick={this.dispRides} className="tab tab1 icon-btn">
+                                        <div id="bike" className="stat-icon" ></div>
                                     </div>
                                 </li>
                                 <li id="runs">
-                                    <div className="tab">
-                                        <button
-                                        onClick={this.dispRuns} 
-                                        id="run-btn"
-                                        className="icon-btn">
-                                        run
-                                        </button>
+                                    <div onClick={this.dispRuns} className="tab icon-btn">
+                                        <div id="run" className="stat-icon"></div>
                                     </div>
                                 </li>
                             </ul>
@@ -149,7 +141,7 @@ class Dashboard extends React.Component {
                             </div>
                             <div className="card-body bottom-card">
                                 <h4 className="total-stats">
-                                    {this.state.sport} miles
+                                    total {this.state.sport} miles
                                 </h4>
                                 <div className="primary-stats">
                                         {this.state.miles}

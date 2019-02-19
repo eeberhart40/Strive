@@ -1462,8 +1462,12 @@ function (_React$Component) {
   _createClass(Dashboard, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       this.props.fetchActivities();
-      this.props.fetchRoutes();
+      this.props.fetchRoutes().then(function (routes) {
+        _this2.dispRides();
+      });
     }
   }, {
     key: "dispRides",
@@ -1538,20 +1542,20 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "rides"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tab tab1"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.dispRides,
-        id: "bike-btn",
-        className: "icon-btn"
-      }, "bike"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "tab tab1 icon-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "bike",
+        className: "stat-icon"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
         id: "runs"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "tab"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: this.dispRuns,
-        id: "run-btn",
-        className: "icon-btn"
-      }, "run")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "tab icon-btn"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "run",
+        className: "stat-icon"
+      })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "second-card-body"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "message-container"
@@ -1567,7 +1571,7 @@ function (_React$Component) {
         className: "card-body bottom-card"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "total-stats"
-      }, this.state.sport, " miles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "total ", this.state.sport, " miles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "primary-stats"
       }, this.state.miles), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "total-stats"
