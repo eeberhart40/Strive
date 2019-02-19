@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 // import { fetchActivities, fetchActivity, deleteActivity, createActivity, updateActivity } from './util/activity_api_util';
-import { fetchActivities } from './actions/activity_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -22,16 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const root = document.getElementById('root');
 
-    //testing
-    window.fetchActivities = fetchActivities;
-    // window.fetchActivity = fetchActivity;
-    // window.deleteActivity = deleteActivity;
-    // window.createActivity = createActivity;
-    // window.updateActivity = updateActivity;
+    // //testing
+    // window.fetchActivities = fetchActivities;
+    // // window.fetchActivity = fetchActivity;
+    // // window.deleteActivity = deleteActivity;
+    // // window.createActivity = createActivity;
+    // // window.updateActivity = updateActivity;
 
-    window.dispatch = store.dispatch;
-    window.getState = store.getState;
-    window.fetchActivities = fetchActivities;
+    // window.dispatch = store.dispatch;
+    // window.getState = store.getState;
+    // window.fetchActivities = fetchActivities;
 
 
 
