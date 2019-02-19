@@ -54,9 +54,8 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props)
         this.latestActivity = this.props.latestActivity;
-        this.state = {icon: "bike", miles: this.props.rideMiles, num: this.props.numRides};
+        this.state = {sport: "bike", miles: this.props.rideMiles, num: this.props.numRides};
 
-        this.switchSport = this.switchSport.bind(this);
         this.dispRides = this.dispRides.bind(this);
         this.dispRuns = this.dispRuns.bind(this);
     }
@@ -64,19 +63,17 @@ class Dashboard extends React.Component {
     componentDidMount(){
         this.props.fetchActivities();
         this.props.fetchRoutes();
+    
     }
 
-    switchSport() {
-        this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
-    }
 
     dispRides() {
-        this.setState({ icon: "bike", miles: this.props.rideMiles, num: this.props.numRides});
+        this.setState({ sport: "bike", miles: this.props.rideMiles, num: this.props.numRides});
 
     }
 
     dispRuns() {
-        this.setState({ icon: "run", miles: this.props.runMiles, num: this.props.numRuns});
+        this.setState({ sport: "run", miles: this.props.runMiles, num: this.props.numRuns});
     }
 
     render() {
@@ -139,9 +136,31 @@ class Dashboard extends React.Component {
                                     </div>
                                 </li>
                             </ul>
-                            <div>{this.state.icon}</div>
-                            <div>{this.state.num}</div>
-                            <div>{this.state.miles}</div>
+                            <div className="second-card-body">
+                                <div className="message-container">
+                                    <div className="message-chev-container"></div>
+                                        <span id="chev"></span>
+                                    <div className="message-body">
+                                        Log as many miles as you feel comortable. Rest
+                                        is essential. Never ever forget to 
+                                        <strong id="hydrate"> Hydrate!</strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="card-body bottom-card">
+                                <h4 className="total-stats">
+                                    {this.state.sport} miles
+                                </h4>
+                                <div className="primary-stats">
+                                        {this.state.miles}
+                                </div>
+                                <h4 className="total-stats">
+                                    total {this.state.sport}s
+                                </h4>
+                                <div className="primary-stats">
+                                        {this.state.num}
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="dashboard-feed">

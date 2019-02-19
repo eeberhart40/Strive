@@ -1450,11 +1450,10 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dashboard).call(this, props));
     _this.latestActivity = _this.props.latestActivity;
     _this.state = {
-      icon: "bike",
+      sport: "bike",
       miles: _this.props.rideMiles,
       num: _this.props.numRides
     };
-    _this.switchSport = _this.switchSport.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.dispRides = _this.dispRides.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.dispRuns = _this.dispRuns.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
@@ -1467,15 +1466,10 @@ function (_React$Component) {
       this.props.fetchRoutes();
     }
   }, {
-    key: "switchSport",
-    value: function switchSport() {
-      this.icon === "bike" ? this.icon = "run" : this.icon = "bike";
-    }
-  }, {
     key: "dispRides",
     value: function dispRides() {
       this.setState({
-        icon: "bike",
+        sport: "bike",
         miles: this.props.rideMiles,
         num: this.props.numRides
       });
@@ -1484,7 +1478,7 @@ function (_React$Component) {
     key: "dispRuns",
     value: function dispRuns() {
       this.setState({
-        icon: "run",
+        sport: "run",
         miles: this.props.runMiles,
         num: this.props.numRuns
       });
@@ -1557,7 +1551,29 @@ function (_React$Component) {
         onClick: this.dispRuns,
         id: "run-btn",
         className: "icon-btn"
-      }, "run")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.icon), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.num), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.miles))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "run")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "second-card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-chev-container"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        id: "chev"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "message-body"
+      }, "Log as many miles as you feel comortable. Rest is essential. Never ever forget to", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", {
+        id: "hydrate"
+      }, " Hydrate!")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body bottom-card"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "total-stats"
+      }, this.state.sport, " miles"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "primary-stats"
+      }, this.state.miles), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "total-stats"
+      }, "total ", this.state.sport, "s"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "primary-stats"
+      }, this.state.num)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dashboard-feed"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Your Activities v"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-container"
