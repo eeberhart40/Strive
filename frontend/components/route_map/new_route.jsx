@@ -84,8 +84,6 @@ class NewRoute extends React.Component {
 
         // Add a listener for the click event
         google.maps.event.addListener(this.map, 'click', (event) => {
-            // const coords = getCoordsObj(event.latLng);
-            //
             const coords = event.latLng;
             this.handleClick(coords);
             this.waypoints.push(coords);
@@ -159,26 +157,9 @@ class NewRoute extends React.Component {
         this.markers = [];
         this.waypoints = [];
         this.routeData = {};
-        // this.setState({routeSet: false});
     }
 
-    // drawPoly() {
-    //     let marker1 = new google.maps.Marker({
-    //         position: polyPath[0],
-    //         label: {text:'A', color: 'white'},
-    //         map: this.map
-    //     });
-    //     let marker2 = new google.maps.Marker({
-    //         position: polyPath[polyPath.length - 1],
-    //         label: {text:'B', color: 'white'},
-    //         map: this.map
-    //     })
-    //   this.polyLine.setPath(polyPath);
 
-    // }
-
-
-    //does this work?
     handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
         infoWindow.setContent(browserHasGeolocation ?
@@ -249,7 +230,6 @@ class NewRoute extends React.Component {
     }
 
     render() {
-        // const disableButton = Object.keys(routeData).length === 0  ?'disabled': '';
         return (
             <div className="new-map-container">
                 <div id="map-new" ref={map => this.mapNode = map}>
@@ -260,13 +240,11 @@ class NewRoute extends React.Component {
                     <button id="save-route-btn" onClick={this.saveRoute}>
                         Save
                     </button>
-                    {/* <button onClick={this.drawPoly}>POLY</button> */}
                     <select id="mode">
                         <option value="WALKING">Run</option>
                         <option value="BICYCLING">Bike</option>
                     </select>
                 </div>
-                {/* <div id='elevation_chart'></div> */}
                 <div className='new-route-stats'>
                     <div id='distance'>Distance: {this.routeData['distance']}</div>
                     <div id='duration'>Est. Travel Time: {this.routeData['travelTime']} </div>
@@ -274,10 +252,6 @@ class NewRoute extends React.Component {
             </div>
         )
     }
-
-
-
-
 }
 
 const mdp = dispatch => {

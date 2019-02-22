@@ -1,8 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-//eventually refactor so that saving route doesnt redirect to show page
-//user should able to stay on newRoute map and create another route
 
 class CreateRouteForm extends React.Component {
     constructor(props) {
@@ -19,10 +17,7 @@ class CreateRouteForm extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         const route = Object.assign({}, this.state);
-        //trying to send to routes showpage once route is created
-        // this.props.createRoute(route).then(this.props.closeModalSave).then(({route}) => {
-        //     this.props.history.replace(`/routes/${route.id}`)});
-
+ 
         this.props.createRoute(route).then((route) => {
             this.props.closeModalSave();
             this.props.history.replace(`/routes/${route.id}`);
@@ -35,8 +30,7 @@ class CreateRouteForm extends React.Component {
             [field]: e.target.value
         })
     }
-
-    
+ 
     render() {
         const errors = this.props.errors.map((error, i) => {
             return (

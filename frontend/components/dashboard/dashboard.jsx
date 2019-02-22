@@ -19,10 +19,10 @@ const msp = ({ session, entities: { athletes, activities, routes } }) => {
     actIds.forEach(id => {
         if(activities[id].sport === "bike") {
             numRides += 1;
-            rideMiles += activities[id].distance;
+            rideMiles += parseInt(activities[id].distance.toFixed(2));
         } else {
             numRuns += 1;
-            runMiles += activities[id].distance;
+            runMiles += parseInt(activities[id].distance.toFixed(2));
         }
     })
 

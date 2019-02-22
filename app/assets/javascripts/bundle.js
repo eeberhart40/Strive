@@ -1404,10 +1404,10 @@ var msp = function msp(_ref) {
   actIds.forEach(function (id) {
     if (activities[id].sport === "bike") {
       numRides += 1;
-      rideMiles += activities[id].distance;
+      rideMiles += parseInt(activities[id].distance.toFixed(2));
     } else {
       numRuns += 1;
-      runMiles += activities[id].distance;
+      runMiles += parseInt(activities[id].distance.toFixed(2));
     }
   });
   return {
@@ -2340,8 +2340,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
- //eventually refactor so that saving route doesnt redirect to show page
-//user should able to stay on newRoute map and create another route
+
 
 var CreateRouteForm =
 /*#__PURE__*/
@@ -2370,10 +2369,7 @@ function (_React$Component) {
       var _this2 = this;
 
       e.preventDefault();
-      var route = Object.assign({}, this.state); //trying to send to routes showpage once route is created
-      // this.props.createRoute(route).then(this.props.closeModalSave).then(({route}) => {
-      //     this.props.history.replace(`/routes/${route.id}`)});
-
+      var route = Object.assign({}, this.state);
       this.props.createRoute(route).then(function (route) {
         _this2.props.closeModalSave();
 
@@ -3023,8 +3019,6 @@ function (_React$Component) {
 
 
       google.maps.event.addListener(this.map, 'click', function (event) {
-        // const coords = getCoordsObj(event.latLng);
-        //
         var coords = event.latLng;
 
         _this2.handleClick(coords);
@@ -3098,22 +3092,8 @@ function (_React$Component) {
       document.getElementById('duration').innerHTML = "Est. Travel Time";
       this.markers = [];
       this.waypoints = [];
-      this.routeData = {}; // this.setState({routeSet: false});
-    } // drawPoly() {
-    //     let marker1 = new google.maps.Marker({
-    //         position: polyPath[0],
-    //         label: {text:'A', color: 'white'},
-    //         map: this.map
-    //     });
-    //     let marker2 = new google.maps.Marker({
-    //         position: polyPath[polyPath.length - 1],
-    //         label: {text:'B', color: 'white'},
-    //         map: this.map
-    //     })
-    //   this.polyLine.setPath(polyPath);
-    // }
-    //does this work?
-
+      this.routeData = {};
+    }
   }, {
     key: "handleLocationError",
     value: function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -3183,7 +3163,6 @@ function (_React$Component) {
     value: function render() {
       var _this4 = this;
 
-      // const disableButton = Object.keys(routeData).length === 0  ?'disabled': '';
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-map-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
