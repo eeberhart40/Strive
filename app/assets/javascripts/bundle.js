@@ -1972,26 +1972,22 @@ var Greeting = function Greeting(_ref) {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "global-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "drop-down-menu dash"
+      className: "drop-down-menu feature dash"
     }, "Dashboard v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "options"
+      className: "options feats"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/routes"
-    }, "My Routes")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "gray-menu"
-    }, "STRIVE"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "drop-down-menu"
+    }, "My Routes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "drop-down-menu feature"
     }, "Training v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-      className: "options"
+      className: "options feats"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/activities"
-    }, "My Activites")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "gray-menu"
-    }, "STRIVE")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    }, "My Activites"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "user-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "personal-site"

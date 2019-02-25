@@ -16,24 +16,24 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     const dashBoardHeader = () => (
         <hgroup className="header-group">
             <ul className="global-nav nav-group">
-                <li className="drop-down-menu dash">Dashboard v
-                    <ul className="options">
+                <li className="drop-down-menu feature dash">Dashboard v
+                    <ul className="options feats">
                         <li className="list-option">
                             <Link to="/routes">My Routes</Link>
                         </li>
-                        <div className="gray-menu">
+                        {/* <div className="gray-menu">
                             STRIVE
-                        </div>
+                        </div> */}
                     </ul>
                 </li>
-                <li className="drop-down-menu">Training v
-                    <ul className="options">
+                <li className="drop-down-menu feature">Training v
+                    <ul className="options feats">
                         <li className="list-option">
                             <Link to="/activities">My Activites</Link> 
                         </li>
-                        <div className="gray-menu">
+                        {/* <div className="gray-menu">
                             STRIVE
-                        </div>
+                        </div> */}
                     </ul>
                 </li>
                 {/* <li className="drop-down-menu">Explore v

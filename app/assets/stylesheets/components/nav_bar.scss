@@ -44,14 +44,13 @@
 .options {
     display: none;
     position: absolute;
-    bottom: -102px;
+    bottom: -52px;
     left: -1px;
-    height: 100px;
+    height: 50px;
     width: 150px;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
     border-bottom: 1px solid gray;
-    border-top: 1px solid gray;
     list-style: none;
     margin: 0;
     padding-left: 0;
@@ -59,6 +58,12 @@
     line-height: 50px;
     color: black;
 }
+
+.feats {
+    bottom: -52px;
+    height: 50px;
+}
+
 
 .drop-down-menu:hover .options {
     display: block;
@@ -73,12 +78,26 @@
     border-left: 1px solid gray;
 }
 
+.feature {
+    width: 91px;
+}
+
+.feature:hover::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 57px;
+    border-bottom: 1px solid gray;
+    position: absolute;
+    left: 94px;
+    bottom: 0px;
+}
+
+
 .list-option:hover {
     background: #7c7b7b;
 }
-// .list-option {
-//     padding-top:10px;
-// }
+
 .gray-menu {
     position: absolute;
     bottom: 0px;
@@ -96,6 +115,17 @@
 
 .nav{
     position: relative;
+}
+
+.nav:hover::after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    border-bottom: 1px solid gray;
+    position: absolute;
+    left: -99px;
+    bottom: 0px;
 }
 
 .nav-av {
@@ -130,6 +160,8 @@
 
 .prof-nav {
     left: -99px;
+    height: 100px;
+    bottom: -102px;
 }
 
 .hire-btn {
