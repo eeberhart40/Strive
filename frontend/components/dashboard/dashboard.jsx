@@ -193,8 +193,7 @@ class Dashboard extends React.Component {
                                 <div className="media-body">
                                     <h4 className="media-title">My Github</h4>
                                     <p className="media-text">
-                                        Take a look at my Github. There's a decent chance that I'm tinkering 
-                                        with code and committing at this very moment.
+                                        Take a look at my Github. There's a decent chance that I'm coding and committing at this very moment.
                                     </p>
                                     <a className="media-link" href="https://github.com/eeberhart40">
                                         View All the Github Stuff

@@ -1620,7 +1620,7 @@ function (_React$Component) {
         className: "media-title"
       }, "My Github"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
         className: "media-text"
-      }, "Take a look at my Github. There's a decent chance that I'm tinkering with code and committing at this very moment."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, "Take a look at my Github. There's a decent chance that I'm coding and committing at this very moment."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
         className: "media-link",
         href: "https://github.com/eeberhart40"
       }, "View All the Github Stuff")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
