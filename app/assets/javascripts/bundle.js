@@ -832,6 +832,8 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-route-index-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-bar"
@@ -839,7 +841,7 @@ function (_React$Component) {
         className: "bottom-border"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "index-list"
-      }, routes));
+      }, routes)));
     }
   }]);
 
@@ -3732,7 +3734,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Splash = function Splash() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-container"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "#2 app for running and biking"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "devices image"

@@ -47,14 +47,16 @@ class ActivityRouteIndex extends React.Component {
         }
 
         return (
-            <div className="activity-route-index-container container">
-                <div className='index-bar'>
-                    <h1>Choose a Route</h1>
+            <div className="wrap">
+                <div className="activity-route-index-container container">
+                    <div className='index-bar'>
+                        <h1>Choose a Route</h1>
+                    </div>
+                    <div className="bottom-border"></div>
+                    <ul className="index-list">
+                        {routes}
+                    </ul>
                 </div>
-                <div className="bottom-border"></div>
-                <ul className="index-list">
-                    {routes}
-                </ul>
             </div>
         );
     };

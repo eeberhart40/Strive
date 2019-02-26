@@ -3,7 +3,7 @@ import  { Link } from 'react-router-dom'
 
 const Splash = () => {
    return (
-       <div>
+       <div className="wrap">
            <div className="main-container">
                <h2>#2 app for running and biking</h2>
                <div className="devices image">
