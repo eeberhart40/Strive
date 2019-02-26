@@ -33,12 +33,13 @@ Upon saving, the user is directed to the route's show page
 
 ##
 <img src="https://media.giphy.com/media/8w91I0pZSsDhi9YNcE/giphy.gif" width="480" height="380">
+
 ##
 
 ### Recording Actvitities
 User chooses a route with which they performed an activity
 
-<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/imag" width="600">
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/choose_route.png" width="600">
 
 Modal pops up, prompting user to enter the duration of their activity and a title
 
