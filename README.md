@@ -31,8 +31,6 @@ Upon saving, the user is directed to the route's show page
 
 <img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/show_route.png" width="600">
 
-<img src="https://media.giphy.com/media/8w91I0pZSsDhi9YNcE/giphy.gif" width="480" height="380">
-
 ##
 
 ### Recording Actvitities
@@ -79,7 +77,7 @@ A route can be generated between waypoints by using Google Directions Service an
         });
 ```
 
-When given an orgin, destination, and mode of travel, Directions Service generates an array (`path`) of many coordinate points respresenting a route along established roads and returns that array in a promise. The promise also contains the distance of that route and the estimated travel time. 
+When given an orgin, destination, and mode of travel, Directions Service generates an array (`path`) of many coordinate points respresenting a route along established roads and returns that array in a promise. The promise also contains the distance of that route and the estimated travel time depending on the specified mode of travel. 
 
 ```javascript
  displayRoute(origin, destination, service, display) {
