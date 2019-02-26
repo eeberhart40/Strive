@@ -54,8 +54,8 @@ User's activity feed updates with their most recent activity
 
 ##
 
-# Rendering and Saving Routes: Google Maps and Directions Service API
-Google Maps API allows for the rendering of dynamic maps of any size. By enabling certain map controls it is possible to generate an autocompleteing search bar and provide options for different modes of travel and different map overlays. Adding event listeners to a map makes it possible to mark and keep track of waypoints. 
+## Rendering and Saving Routes: Google Maps and Directions Service API
+Google Maps API allows for the rendering of dynamic maps of any size. By enabling certain map controls it is possible to generate an autocompleteing search bar and provide options for different modes of travel and different map overlays. Adding event listeners to a map makes it possible to mark waypoints. 
 
 ```javscript
       google.maps.event.addListener(this.map, 'click', (event) => {
@@ -96,8 +96,26 @@ When given an orgin, destination, and mode of travel, Directions Service generat
                 this.routeData['path'] = response.routes[0].overview_path;
               }
             }
+          );
   });
   
 ```
+Saving the `path` array allows the route to be drawn as a polyline from here on out, avoiding unessecary and expensive Directions Service requests.
 
+```javascript
+    constructor(props) {
+        super(props);
+        this.routeData = JSON.parse(props.route.route_data);
+    }
+```
+```javascript
+        let routePoly = new google.maps.Polyline({
+            path: this.routeData.path,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            strokeOpacity: 1.0,
+            map: map
+        })
+```
 
