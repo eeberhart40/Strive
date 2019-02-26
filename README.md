@@ -119,3 +119,8 @@ Saving the `path` array allows the route to be drawn as a polyline from here on 
         })
 ```
 
+# Planned Future Features
+* Route elevation profiles
+* User search funtionality for following other users
+* Ability to like and comment on other users activities
+
