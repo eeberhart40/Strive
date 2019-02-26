@@ -31,7 +31,6 @@ Upon saving, the user is directed to the route's show page
 
 <img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/show_route.png" width="600">
 
-##
 <img src="https://media.giphy.com/media/8w91I0pZSsDhi9YNcE/giphy.gif" width="480" height="380">
 
 ##
