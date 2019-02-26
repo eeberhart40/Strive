@@ -52,3 +52,21 @@ User's activity feed updates with their most recent activity
 
 <img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/feed_show.png" width="600">
 
+##
+
+# Rendering and Saving Routes: Google Maps and Directions Service API
+Google Maps API allows for the rendering of dynamic maps of any size. By enabling or disabling certain controls it is possible to generate an autocompleteing search bar and provide options for different modes of travel and different map overlays. Adding event listeners to a map makes it possible to mark and keep track of waypoints. 
+
+```javscript
+      google.maps.event.addListener(this.map, 'click', (event) => {
+            const coords = event.latLng;
+            this.handleClick(coords);
+            this.waypoints.push(coords);
+            if (this.waypoints.length === 2) {
+                this.removeOriginalMarkers();
+                this.displayRoute(this.waypoints[0], this.waypoints[1], this.directionsService, this.directionsDisplay);
+            }
+
+        });
+```
+
