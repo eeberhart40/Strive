@@ -55,7 +55,7 @@ User's activity feed updates with their most recent activity
 ##
 
 # Rendering and Saving Routes: Google Maps and Directions Service API
-Google Maps API allows for the rendering of dynamic maps of any size. By enabling or disabling certain controls it is possible to generate an autocompleteing search bar and provide options for different modes of travel and different map overlays. Adding event listeners to a map makes it possible to mark and keep track of waypoints. 
+Google Maps API allows for the rendering of dynamic maps of any size. By enabling certain map controls it is possible to generate an autocompleteing search bar and provide options for different modes of travel and different map overlays. Adding event listeners to a map makes it possible to mark and keep track of waypoints. 
 
 ```javscript
       google.maps.event.addListener(this.map, 'click', (event) => {
@@ -69,4 +69,35 @@ Google Maps API allows for the rendering of dynamic maps of any size. By enablin
 
         });
 ```
+A route can be generated between waypoints by using Google Directions Service and Direction Renderer
+
+```javascript
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer({
+            draggable: true,
+            map: this.map,
+        });
+```
+
+When given an orgin, destination, and mode of travel, Directions Service generates an array (`path`) of many coordinate points respresenting a route along established roads and returns that array in a promise. The promise also contains the distance of that route and the estimated travel time. 
+
+```javascript
+ displayRoute(origin, destination, service, display) {
+   let that = this;
+   service.route({
+            origin: origin,
+            destination: destination,
+            travelMode: google.maps.TravelMode[selectedMode],
+        },  (response, status) => {
+            if (status === 'OK') {
+                display.setDirections(response);
+                this.routeData['distance'] = that.getMiles(response.routes[0].legs[0].distance.value);
+                this.routeData['travelTime'] = that.getTravelTime(response.routes[0].legs[0].duration.value);
+                this.routeData['path'] = response.routes[0].overview_path;
+              }
+            }
+  });
+  
+```
+
 
