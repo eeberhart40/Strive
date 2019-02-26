@@ -82,7 +82,7 @@ class Dashboard extends React.Component {
 
         return (
             <div className="dash-bg">
-                <div className="dashboard-container">
+                <div className="dashboard-container scroll">
                     <div className="left col">
                         <div className="profile">
                             <div className="card-body">

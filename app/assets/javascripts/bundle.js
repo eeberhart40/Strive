@@ -953,6 +953,8 @@ function (_React$Component) {
       var route = this.props.route;
       var activity = this.props.activity;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-activity-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
         className: "with-border",
@@ -992,7 +994,7 @@ function (_React$Component) {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
-      })) : null);
+      })) : null));
     }
   }]);
 
@@ -1136,7 +1138,9 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "activity-index-container container"
+        className: "wrap scroll"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "activity-index-container container scroll"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "activity-index-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Activities"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, actCountDisp), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -1165,7 +1169,7 @@ function (_React$Component) {
         className: "act-col"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", {
         className: "actvity-index-list"
-      }, activities))));
+      }, activities)))));
     }
   }]);
 
@@ -1493,7 +1497,7 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "dash-bg"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "dashboard-container"
+        className: "dashboard-container scroll"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "left col"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -2543,7 +2547,9 @@ function (_React$Component) {
         });
       });
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "route-index-container container"
+        className: "wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "route-index-container container scroll"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "index-bar"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "My Routes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
@@ -2554,7 +2560,7 @@ function (_React$Component) {
         className: "bottom-border"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "index-list"
-      }, routes));
+      }, routes)));
     }
   }]);
 
@@ -3160,6 +3166,8 @@ function (_React$Component) {
       var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "new-map-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "map-new",
@@ -3191,7 +3199,7 @@ function (_React$Component) {
         id: "distance"
       }, "Distance: ", this.routeData['distance']), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         id: "duration"
-      }, "Est. Travel Time: ", this.routeData['travelTime'], " ")));
+      }, "Est. Travel Time: ", this.routeData['travelTime'], " "))));
     }
   }]);
 
@@ -3405,12 +3413,14 @@ function (_React$Component) {
     value: function render() {
       var route = this.props.route;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-route-container container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, route.title), route.route_data ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map-show"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_route_map_show_route__WEBPACK_IMPORTED_MODULE_1__["default"], {
         route: route
-      })) : null);
+      })) : null));
     }
   }]);
 

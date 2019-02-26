@@ -55,11 +55,11 @@ h1, h2, h3, p, table, button, link, a {
   color:  #ff5900;
 }
 
-  .container {
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
   @media only screen and (max-width: 1210px) {
     .container {
@@ -96,4 +96,15 @@ a {
 
 div {
   display: block;
+}
+
+.scroll {
+  overflow-y: scroll;
+}
+
+.wrap {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 51px;
 }

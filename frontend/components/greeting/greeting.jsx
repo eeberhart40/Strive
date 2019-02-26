@@ -15,6 +15,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
 
     const dashBoardHeader = () => (
         <hgroup className="header-group">
+            {/* <title>Strive</title> */}
             <ul className="global-nav nav-group">
                 <li className="drop-down-menu feature dash">Dashboard v
                     <ul className="options feats">

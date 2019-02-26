@@ -231,23 +231,25 @@ class NewRoute extends React.Component {
 
     render() {
         return (
-            <div className="new-map-container">
-                <div id="map-new" ref={map => this.mapNode = map}>
-                </div>
-                <div id="bar">
-                    <p className="auto"><input type="text" id="autoc" /></p>
-                    <button id="clear-route-btn" onClick={this.clearRoute}>Clear</button>
-                    <button id="save-route-btn" onClick={this.saveRoute}>
-                        Save
-                    </button>
-                    <select id="mode">
-                        <option value="WALKING">Run</option>
-                        <option value="BICYCLING">Bike</option>
-                    </select>
-                </div>
-                <div className='new-route-stats'>
-                    <div id='distance'>Distance: {this.routeData['distance']}</div>
-                    <div id='duration'>Est. Travel Time: {this.routeData['travelTime']} </div>
+            <div className="wrap">
+                <div className="new-map-container">
+                    <div id="map-new" ref={map => this.mapNode = map}>
+                    </div>
+                    <div id="bar">
+                        <p className="auto"><input type="text" id="autoc" /></p>
+                        <button id="clear-route-btn" onClick={this.clearRoute}>Clear</button>
+                        <button id="save-route-btn" onClick={this.saveRoute}>
+                            Save
+                        </button>
+                        <select id="mode">
+                            <option value="WALKING">Run</option>
+                            <option value="BICYCLING">Bike</option>
+                        </select>
+                    </div>
+                    <div className='new-route-stats'>
+                        <div id='distance'>Distance: {this.routeData['distance']}</div>
+                        <div id='duration'>Est. Travel Time: {this.routeData['travelTime']} </div>
+                    </div>
                 </div>
             </div>
         )
