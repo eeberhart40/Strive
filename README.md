@@ -1,24 +1,54 @@
-# README
+# Strive
+[Live Demo](https://strive-a.herokuapp.com/#/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/favicon.png" width="300">
 
-Things you may want to cover:
+## Features
+* User Authentication
+  * User login/Signup
+  * Demo User
+ * Create/Save biking or running routes
+ * Create/Record Activities
+ 
+## Technologies Used
+* **Google Maps and Directions Service API** to plot routes
+* **PostgresQL** for the database
+* **Ruby on Rails** for the backend framework
+* **React** for the Frontend with **Redux** to manage state
+* **jQuery** AJAX for accessing the backend through **Thunk** actions
+* **SASS/CSS** for styling
 
-* Ruby version
+## Implementation
+### Creating Routes
+User marks origin and destination waypoints on a globe-spanning, searchable map. Strive generates a route and calculates the distance and estimated travel time depending on mode of travel
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/new_route.png" width="600">
 
-* System dependencies
+The save route modal pops up prompting the user to enter a name for the route
 
-* Configuration
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/save_route.png" width="600">
 
-* Database creation
+Upon saving, the user is directed to the route's show page
 
-* Database initialization
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/show_route.png" width="600">
 
-* How to run the test suite
+##
+<img src="https://media.giphy.com/media/8w91I0pZSsDhi9YNcE/giphy.gif" width="480" height="380">
+##
 
-* Services (job queues, cache servers, search engines, etc.)
+### Recording Actvitities
+User chooses a route with which they performed an activity
 
-* Deployment instructions
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/imag" width="600">
 
-* ...
+Modal pops up, prompting user to enter the duration of their activity and a title
+
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/activty_modal.png" width="600">
+
+Upon Saving, the user is directed to the activity's show page displaying the distance traveled, duration and average speed
+
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/activity_show.png" width="600">
+
+User's activity feed updates with their most recent activity
+
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/feed_show.png" width="600">
+
