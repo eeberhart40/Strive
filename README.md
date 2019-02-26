@@ -25,7 +25,7 @@ User marks origin and destination waypoints on a globe-spanning, searchable map.
 
 The save route modal pops up prompting the user to enter a name for the route
 
-<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/save_route.png" width="600">
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/save_route.png" width="300">
 
 Upon saving, the user is directed to the route's show page
 
@@ -42,7 +42,7 @@ User chooses a route with which they performed an activity
 
 Modal pops up, prompting user to enter the duration of their activity and a title
 
-<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/activty_modal.png" width="600">
+<img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/activty_modal.png" width="300">
 
 Upon Saving, the user is directed to the activity's show page displaying the distance traveled, duration and average speed
 
