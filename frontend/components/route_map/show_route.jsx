@@ -62,7 +62,6 @@ class ShowRoute extends React.Component {
 
     }
 
-    //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
     render() {
         return (
             <div>

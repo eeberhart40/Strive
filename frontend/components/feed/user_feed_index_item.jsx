@@ -57,18 +57,18 @@ class UserFeedIndexItem extends React.Component {
                         <div className="feed-title">
                             <strong><Link to={`activities/${activity.id}`}>{activity.title}</Link></strong></div>
                         <ul className="list-stats">
-                            <li>
+                            <li className="feed-stats">
                                 <div className="under-stats">Distance</div>
                                 {activity.distance} mi
                                 </li>
                             {activity.elevation ? (
-                                <li>
+                                <li className="feed-stats">
                                     <div className="under-stats">Elevation</div>
                                     {activity.elevation} ft
                                 </li> ) : null}
                             
                             {activity.time ? (
-                            <li>
+                                <li className="feed-stats">
                                 <div className="under-stats">Time</div>
                                 {this.timeStr(activity.time)}
                             </li>

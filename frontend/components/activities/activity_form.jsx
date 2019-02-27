@@ -1,8 +1,5 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-// import ActivityRouteIndex from './activity_route_index_container';
-
-//figure out how to display errors
 
 class ActivityForm extends React.Component {
     constructor(props) {
@@ -17,11 +14,6 @@ class ActivityForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchRoutes();
-    // }
-
-
     update(field) {
         return (e) => {
             this.setState({ [field]: e.target.value });
@@ -29,20 +21,10 @@ class ActivityForm extends React.Component {
     }
 
     handleSubmit(e) {
-        // if(this.props.errors) return;
         e.preventDefault();
-        // Object.values(this.props.routes).some(route => {
-        //     if(route.id === this.state.routeId) {
-        //         this.state.route_id = route.id;
-        //         this.state.sport = JSON.parse(route.route_data).sport;
-        //         return true;
-        //     }
-        // })
+
         delete this.state.routeTitle;
         const activity = Object.assign({}, this.state);
-        // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
-        //     this.props.history.replace(`/activities/${activity.id}`)});
-        // // .then(() => this.props.history.push('/'));
         this.props.action(activity).then((activity) => {
             this.props.closeModalAct();
             this.props.history.replace(`/activities/${activity.id}`);
@@ -88,9 +70,6 @@ class ActivityForm extends React.Component {
                             onChange={this.update('title')}
                             />
                         </label>
-                        {/* <label className='activity-route'>
-                            Route: {this.state.routeTitle}
-                        </label> */}
                         <label className= 'activity-input description'>
                             Description 
                             <textarea

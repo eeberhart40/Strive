@@ -142,7 +142,6 @@ class NewRoute extends React.Component {
                     "Distance: " + this.routeData['distance'] + " mi";
                 document.getElementById('duration').innerHTML =
                     "Est. Travel Time: " + this.routeData['travelTime'];
-                // polyPath = routeData[path];
             } else {
                 alert('Could not display directions due to: ' + status);
             }

@@ -521,8 +521,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 
- // import ActivityRouteIndex from './activity_route_index_container';
-//figure out how to display errors
+
 
 var ActivityForm =
 /*#__PURE__*/
@@ -544,10 +543,7 @@ function (_React$Component) {
     _this.state.elevation = _this.props.elevation;
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
-  } // componentDidMount() {
-  //     this.props.fetchRoutes();
-  // }
-
+  }
 
   _createClass(ActivityForm, [{
     key: "update",
@@ -563,20 +559,9 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       var _this3 = this;
 
-      // if(this.props.errors) return;
-      e.preventDefault(); // Object.values(this.props.routes).some(route => {
-      //     if(route.id === this.state.routeId) {
-      //         this.state.route_id = route.id;
-      //         this.state.sport = JSON.parse(route.route_data).sport;
-      //         return true;
-      //     }
-      // })
-
+      e.preventDefault();
       delete this.state.routeTitle;
-      var activity = Object.assign({}, this.state); // this.props.action(activity).then(this.props.closeModalAct).then(({activity}) => {
-      //     this.props.history.replace(`/activities/${activity.id}`)});
-      // // .then(() => this.props.history.push('/'));
-
+      var activity = Object.assign({}, this.state);
       this.props.action(activity).then(function (activity) {
         _this3.props.closeModalAct();
 
@@ -1913,11 +1898,17 @@ function (_React$Component) {
         to: "activities/".concat(activity.id)
       }, activity.title))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "list-stats"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "feed-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Distance"), activity.distance, " mi"), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Distance"), activity.distance, " mi"), activity.elevation ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "feed-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
-      }, "Elevation"), activity.elevation, " ft") : null, activity.time ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Elevation"), activity.elevation, " ft") : null, activity.time ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "feed-stats"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-stats"
       }, "Time"), this.timeStr(activity.time)) : ""))), route ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "feed-map-container"
@@ -3082,7 +3073,7 @@ function (_React$Component) {
 
           _this3.routeData['path'] = response.routes[0].overview_path;
           document.getElementById('distance').innerHTML = "Distance: " + _this3.routeData['distance'] + " mi";
-          document.getElementById('duration').innerHTML = "Est. Travel Time: " + _this3.routeData['travelTime']; // polyPath = routeData[path];
+          document.getElementById('duration').innerHTML = "Est. Travel Time: " + _this3.routeData['travelTime'];
         } else {
           alert('Could not display directions due to: ' + status);
         }
@@ -3323,8 +3314,7 @@ function (_React$Component) {
         strokeOpacity: 1.0,
         strokeWeight: 2
       }, _defineProperty(_ref, "strokeOpacity", 1.0), _defineProperty(_ref, "map", map), _ref));
-    } //need divs to hold this.state.distance, this.state.travelTime, this.state.sport
-
+    }
   }, {
     key: "render",
     value: function render() {
