@@ -34,7 +34,7 @@ Upon saving, the user is directed to the route's show page.
 ##
 
 ### Recording Actvitities
-User chooses a route with which they performed an activity.
+User chooses a route that they ran or biked by clicking on it.
 
 <img src="https://github.com/eeberhart40/Strive/blob/master/app/assets/images/choose_route.png" width="600">
 
@@ -117,7 +117,139 @@ Saving the `path` array allows the route to be drawn as a polyline from here on 
         })
 ```
 
-3# Planned Future Features
+## Recording Activities: React, Redux
+The challenge in recording activities lay in figuring out how to grab the specific slice of state attributed to the route with which a user carried out their activity. That data would include the sport (runinng or biking), the distance of the route, and the route's path (array of coordinates)- all necessary peices of information in order to properly record an activity. To accomplish this, I built a Thunk action creator that accepted a specific type of modal, a `datString` (the 'stringified' path of a route) and a `routeId` as arguments and returned an action of type `OPEN_MODAL_ACT` containing the arguments as values. 
+```javascript
+export const openModalAct = (modal, dataString, routeId) => {
+    return {
+        type: OPEN_MODAL_ACT,
+        modal,
+        dataString,
+        routeId
+    };
+};
+```
+I set up the `modalReducer` to return the the modal associated with an action of type `OPEN_MODAL_ACT`. I also set up the `routeDataReducer` to return the `dataString` and `routeId` when that type of action was dispatched
+```javascript
+export default function modalReducer(state = null, action) {
+    switch (action.type) {
+      ...
+        case OPEN_MODAL_ACT:
+            return action.modal;
+       ...
+        default:
+            return state;
+    }
+}
+```
+```javascript
+export default function routeDataReducer(state = null, action) {
+    switch (action.type) {
+     ...
+        case OPEN_MODAL_ACT:
+            return { dataString: action.dataString, routeId: action.routeId};
+     ...
+        default:
+            return state;
+    }
+}
+```
+This allowed me to set up the `uiReducer` such that `modal` and `routeData` could be contained in the `ui` slice of state.
+```javascript
+import { combineReducers } from 'redux';
+import routeData from './route_data_reducer';
+import modal from './modal_reducer';
+
+export default combineReducers({
+    modal,
+    routeData
+});
+```
+Now that the Redux state had a shape I could work with, I went back and set up the modal to render an `ActvityForm` component when passed the argument 'activity',  mapping `routeData` and `routeId` to props by accessing the `ui` slice of state.
+```javascript
+const mapStateToProps = state => {
+    const routeData = state.ui.routeData;
+    const routeId = state.ui.routeId;
+    if(routeData){
+        return {
+            modal: state.ui.modal,
+            routeData,
+            routeId
+        }
+    } 
+    ...
+};
+
+function Modal({ modal, closeModal, routeData, routeId }) {
+   ...
+    let component;
+    switch (modal) {
+        case 'activity':
+            component = 
+            <CreateActivityFormContainer 
+            routeData={routeData}
+            routeId={routeId}
+            />
+            break;
+    ...
+        default:
+            return null;
+    }
+    return (
+        <div className="modal-background" onClick={closeModal}>
+            <div className="modal-child" onClick={e => e.stopPropagation()}>
+                {component}
+            </div>
+        </div>
+    );
+}
+```
+In building the component that was to render all the routes that a user could choose from to record their activity, I mapped the `openModalAct` thunk action creator to props.
+
+```javascript
+const mdp = dispatch => {
+    return({
+        fetchRoutes: () => dispatch(fetchRoutes()),
+        openModalAct: (dataString, routeId) => dispatch(openModalAct('activity', dataString, routeId))
+    });
+};
+```
+This allowed me to build a simple click handling function that could be attached to each `RouteIndexItem` (thumbnail image of route). Effectively, whichever route is clicked, that route's `path` (in this case route_data) and id are carried up as props to an `ActivityForm` modal, allowing access to all the necessary route information to record an activity.
+
+```javascript
+ class ActivityRouteIndex extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(routeData, routeId) {
+        this.props.openModalAct(routeData, routeId);
+    }
+
+    componentDidMount() {
+        this.props.fetchRoutes();
+    }
+
+    render() {
+        let routes = Object.values(this.props.routes).reverse().map(route => {
+            return (
+                <div 
+                key={route.id}
+                className="activity-index-route-map"
+                onClick={ () => this.handleClick(route.route_data, route.id)}>
+                    <RouteIndexItem
+                        key={route.id}
+                        route={route}
+                    />
+                </div>
+            );
+        });
+     ...
+   }
+```
+
+## Planned Future Features
 * Route elevation profiles
 * User search funtionality for following other users
 * Ability to like and comment on other users activities
