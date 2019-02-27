@@ -12,7 +12,7 @@
  
 ## Technologies Used
 * **Google Maps and Directions Service API** to plot routes
-* **PostgresQL** for the database
+* **PostgreSQL** for the database
 * **Ruby on Rails** for the backend framework
 * **React** for the Frontend with **Redux** to manage state
 * **jQuery** AJAX for accessing the backend through **Thunk** actions
