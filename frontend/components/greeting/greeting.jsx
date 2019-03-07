@@ -19,9 +19,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
             <ul className="global-nav nav-group">
                 <li className="drop-down-menu feature dash">Dashboard v
                     <ul className="options feats">
-                        <li className="list-option">
-                            <Link to="/routes">My Routes</Link>
-                        </li>
+                        <Link to="/routes"><li className="list-option">
+                            My Routes
+                        </li></Link>
                         {/* <div className="gray-menu">
                             STRIVE
                         </div> */}
@@ -29,9 +29,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                 </li>
                 <li className="drop-down-menu feature">Training v
                     <ul className="options feats">
-                        <li className="list-option">
-                            <Link to="/activities">My Activites</Link> 
-                        </li>
+                        <Link to="/activities"><li className="list-option">
+                            My Activites
+                        </li></Link> 
                         {/* <div className="gray-menu">
                             STRIVE
                         </div> */}
@@ -55,9 +55,9 @@ const Greeting = ({ currentUser, logout, openModal }) => {
                     <div className="avatar-wrapper"><div className="avatar-img nav-av"></div></div>
                     {/* <div className="drop-chev av">v</div> */}
                     <ul className="options prof-nav">
-                        <li className="list-option">
-                            <Link to='/dashboard'>My Profile</Link>
-                        </li>
+                        <Link to='/dashboard'><li className="list-option">
+                            My Profile
+                        </li></Link>
                         <li className="list-option" onClick={logout}>Log Out</li>
                     </ul>
                 </li>

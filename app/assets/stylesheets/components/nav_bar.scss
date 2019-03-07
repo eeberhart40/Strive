@@ -111,10 +111,16 @@
     
 }
 
-.list-option > a {
-    text-decoration: none;
-    color: black;
-}
+// .list-option > a {
+//     text-decoration: none;
+//     color: black;
+// }
+
+// .list-option {
+//     color: black;
+// }
+
+
 
 .nav{
     position: relative;
@@ -176,4 +182,8 @@
     cursor: pointer;
     margin-top: 16px;
     margin-right: 7px;
+}
+
+li {
+    color: black;
 }

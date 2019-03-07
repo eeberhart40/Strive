@@ -1972,18 +1972,18 @@ var Greeting = function Greeting(_ref) {
       className: "drop-down-menu feature dash"
     }, "Dashboard v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "options feats"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/routes"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
     }, "My Routes")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "drop-down-menu feature"
     }, "Training v", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "options feats"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/activities"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
     }, "My Activites"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "user-nav nav-group"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
@@ -2000,10 +2000,10 @@ var Greeting = function Greeting(_ref) {
       className: "avatar-img nav-av"
     })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
       className: "options prof-nav"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "list-option"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: "/dashboard"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "list-option"
     }, "My Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
       className: "list-option",
       onClick: logout
