@@ -40,6 +40,7 @@
     position: relative;
     margin-right: 20px;
     padding: 28px 2px 5px 0px;
+    border: 1px solid transparent;
 }
 
 .options {
@@ -77,6 +78,7 @@
     color: #ff5300;
     border-right: 1px solid gray;
     border-left: 1px solid gray;
+
 }
 
 .feature {
@@ -143,7 +145,7 @@
 }
 
 .dash:hover {
-    border-bottom: none;
+    border-bottom: 2px solid transparent;
 }
 
 .av {
